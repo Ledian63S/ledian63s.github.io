@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://ledian63s.github.io/sitemap-index.xml
+Host: https://ledian63s.github.io
