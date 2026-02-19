@@ -1,8 +1,8 @@
 ---
 title: 'Hi, my name is'
 name: 'Ledian Leka'
-subtitle: 'I build things for D365 BC!'
+subtitle: 'I craft ERP solutions for Dynamics 365 Business Central.'
 buttonText: 'Get In Touch'
 ---
 
-I'm a software developer with a goal-driven creative mindset and passion for learning. Currently working as a Dynamics 365 Business Central Developer at [BE-terna](https://www.BE-terna.com/).
+I'm a Dynamics 365 Business Central developer with over 6 years of experience building extensions, integrations, and custom solutions for clients across Europe. Currently working at [MoreOne Technologies](https://www.moreone.tech/).

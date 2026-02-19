@@ -1,7 +1,7 @@
 ---
 date: '2021-06-15'
 title: 'NAV/BC 365 Developer'
-company: 'IBS'
+company: 'Info Business Solutions'
 range: 'June 2021 - February 2023'
 url: 'https://www.ibs-al.com/'
 ---

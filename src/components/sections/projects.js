@@ -74,8 +74,8 @@ const StyledProjectHeader = styled.div`
 const StyledFolder = styled.div`
   color: ${colors.green};
   svg {
-    width: 40px;
-    height: 40px;
+    width: 80px;
+    height: 80px;
   }
 `;
 const StyledProjectLinks = styled.div`
@@ -156,7 +156,7 @@ const Projects = ({ data }) => {
           {projectsToShow &&
             projectsToShow.map(({ node }, i) => {
               const { frontmatter, html } = node;
-              const { github, external, title, tech } = frontmatter;
+              const { github, external, title, tech, image } = frontmatter;
               return (
                 <CSSTransition
                   key={i}
@@ -174,7 +174,15 @@ const Projects = ({ data }) => {
                       <header>
                         <StyledProjectHeader>
                           <StyledFolder>
-                            <FormattedIcon name="Star" />
+                            {image ? (
+                              <img
+                                src={image}
+                                alt={title}
+                                style={{ width: '80px', height: '80px', objectFit: 'contain' }}
+                              />
+                            ) : (
+                              <FormattedIcon name="Star" />
+                            )}
                           </StyledFolder>
                           <StyledProjectLinks>
                             {github && (

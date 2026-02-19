@@ -115,6 +115,7 @@ export const pageQuery = graphql`
             tech
             github
             external
+            image
           }
           html
         }
