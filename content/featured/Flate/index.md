@@ -3,6 +3,7 @@ date: '2'
 title: 'FLATE — Colorful Dark Themes'
 cover: 'flate.png'
 github: 'https://github.com/Ledian63S/flate-next'
+external: 'https://marketplace.visualstudio.com/items?itemName=lekaledian.flate-next'
 tech:
   - VS Code
   - JSON
