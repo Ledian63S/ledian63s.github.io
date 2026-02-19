@@ -2,24 +2,20 @@
 title: 'About Me'
 avatar: 'me.jpg'
 skills:
-  - NAV/BC 365
-  - RDLC/SSRS Reports
+  - AL / C/AL
+  - JavaScript (ES6)
   - Power Platform
   - Azure
-  - Docker
-  - Powershell
-  - DevOps
+  - RDLC/SSRS Reports
   - MS SQL Server
+  - Docker
+  - DevOps
 ---
 
-Hello, my name is Ledian Leka,
+Hi, I'm Ledian Leka, a Dynamics 365 Business Central developer based in Albania.
 
-I consider myself a creative, correct, scattered and restless person.
+I entered the ERP world in 2020 and have since built a career around developing extensions, integrations, and custom solutions for clients across Albania, Serbia, and Italy. Over the years I've had the opportunity to work on projects ranging from eCommerce integrations to a solution now listed on Microsoft AppSource.
 
-At the end of 2020, due to things in life, I got to know the immense world of ERP — until then I had not heard anything about Navision/Business Central or its history. Although I had been programming for two and a half years in another technology, everything was new to me. I found myself facing a huge wall of concepts, theory and a world to discover. Thus began my career as a Business Central developer.
-
-Since then, I've had the opportunity to work across a wide range of industries and clients — from building integrations between Business Central and external APIs, to contributing to a product now listed on Microsoft AppSource, to training end-users and providing technical support. Each step has pushed me to grow both technically and professionally.
-
-Outside of work I enjoy tinkering with side projects — including building VS Code themes, experimenting with open source tools, and exploring new technologies. When I'm not at the keyboard, you'll find me snowboarding, swimming, hiking or traveling.
+Outside of work, I enjoy working on side projects and exploring new technologies. When I'm away from the keyboard, you'll find me snowboarding, swimming, hiking, or traveling.
 
 Here are a few technologies I've been working with recently:
