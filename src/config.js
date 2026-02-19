@@ -1,7 +1,7 @@
 module.exports = {
   siteTitle: 'Ledian Leka',
   siteDescription:
-    'Ledian Leka is a Software Developer at BE-terna, who loves learning new things and helping tech beginners.',
+    'Ledian Leka is a Dynamics 365 Business Central Developer based in Albania, who loves building ERP solutions and exploring new technologies.',
   siteKeywords:
     'Ledian Leka, Ledian, Leka, Ledian63S, software developer, software engineer',
   siteUrl: 'https://ledian63s.github.io/',
@@ -44,6 +44,10 @@ module.exports = {
     {
       name: 'Work',
       url: '/#projects',
+    },
+    {
+      name: 'Certifications',
+      url: '/#certifications',
     },
     {
       name: 'Contact',
