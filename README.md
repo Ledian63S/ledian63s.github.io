@@ -31,13 +31,14 @@ Yes, you can fork this repo. Please give proper credit by linking back to [ledia
 2. Install and use the correct version of Node using [NVM](https://github.com/nvm-sh/nvm)
 
    ```sh
-   nvm install
+   nvm install 18
+   nvm use 18
    ```
 
 3. Install dependencies
 
    ```sh
-   yarn
+   npm install --legacy-peer-deps
    ```
 
 4. Start the development server
@@ -54,7 +55,7 @@ Yes, you can fork this repo. Please give proper credit by linking back to [ledia
    npm run build
    ```
 
-1. Preview the site as it will appear once deployed
+2. Preview the site as it will appear once deployed
 
    ```sh
    npm run serve
