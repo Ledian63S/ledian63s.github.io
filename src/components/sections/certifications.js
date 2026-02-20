@@ -3,18 +3,13 @@ import PropTypes from 'prop-types';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import styled from 'styled-components';
-import { theme, mixins, media, Section } from '@styles';
+import { theme, mixins, media, Section, Heading } from '@styles';
 const { colors, fontSizes, fonts } = theme;
 
 const StyledContainer = styled(Section)`
   ${mixins.flexCenter};
   flex-direction: column;
   align-items: flex-start;
-`;
-const StyledTitle = styled.h4`
-  margin: 0 auto 50px;
-  font-size: ${fontSizes.h3};
-  ${media.tablet`font-size: 24px;`};
 `;
 const StyledGrid = styled.div`
   width: 100%;
@@ -101,7 +96,7 @@ const Certifications = ({ data }) => {
 
   return (
     <StyledContainer id="certifications">
-      <StyledTitle ref={revealTitle}>Certifications</StyledTitle>
+      <Heading ref={revealTitle}>Certifications</Heading>
 
       <StyledGrid>
         <div className="certifications">
