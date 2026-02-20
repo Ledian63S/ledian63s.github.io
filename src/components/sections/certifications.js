@@ -14,15 +14,12 @@ const StyledContainer = styled(Section)`
 `;
 const StyledGrid = styled.div`
   width: 100%;
-  margin-left: 10%;
-  ${media.tablet`margin-left: 0;`};
 
   .certifications {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 20px;
     position: relative;
-    ${media.desktop`grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));`};
   }
 `;
 const StyledCertInner = styled.div`
