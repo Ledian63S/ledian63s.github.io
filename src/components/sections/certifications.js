@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
+import { FormattedIcon } from '@components/icons';
 import styled from 'styled-components';
 import { theme, mixins, media, Section, Heading } from '@styles';
 const { colors, fontSizes, fonts } = theme;
@@ -18,23 +19,24 @@ const StyledGrid = styled.div`
 
   .certifications {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
     position: relative;
-    ${media.desktop`grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));`};
+    ${media.desktop`grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));`};
   }
 `;
 const StyledCertInner = styled.div`
   ${mixins.boxShadow};
-  ${mixins.flexBetween};
+  display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   position: relative;
   padding: 2rem 1.75rem;
   height: 100%;
   border-radius: ${theme.borderRadius};
   transition: ${theme.transition};
   background-color: ${colors.lightNavy};
+  text-align: center;
 `;
 const StyledCert = styled.div`
   transition: ${theme.transition};
@@ -47,26 +49,26 @@ const StyledCert = styled.div`
     }
   }
 `;
-const StyledCertHeader = styled.div`
-  ${mixins.flexBetween};
-  margin-bottom: 20px;
-  width: 100%;
+const StyledExternalLink = styled.a`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: ${colors.lightSlate};
+  padding: 5px;
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+  &:hover {
+    color: ${colors.green};
+  }
 `;
 const StyledBadge = styled.div`
+  margin-bottom: 20px;
   img {
     width: 80px;
     height: 80px;
     object-fit: contain;
-  }
-`;
-const StyledExternalLink = styled.a`
-  color: ${colors.lightSlate};
-  position: relative;
-  top: -10px;
-  padding: 10px;
-  svg {
-    width: 20px;
-    height: 20px;
   }
 `;
 const StyledCertName = styled.h5`
@@ -110,38 +112,21 @@ const Certifications = ({ data }) => {
                   ref={el => (revealCerts.current[i] = el)}
                   tabIndex="0">
                   <StyledCertInner>
-                    <header>
-                      <StyledCertHeader>
-                        <StyledBadge>
-                          {image && <img src={image} alt={title} />}
-                        </StyledBadge>
-                        {external && (
-                          <StyledExternalLink
-                            href={external}
-                            target="_blank"
-                            rel="nofollow noopener noreferrer"
-                            aria-label="Certification Link">
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              role="img"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round">
-                              <title>External Link</title>
-                              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                              <polyline points="15 3 21 3 21 9" />
-                              <line x1="10" y1="14" x2="21" y2="3" />
-                            </svg>
-                          </StyledExternalLink>
-                        )}
-                      </StyledCertHeader>
-                      <StyledCertName>{title}</StyledCertName>
-                      {company && <StyledCompany>{company}</StyledCompany>}
-                      <StyledCertDescription dangerouslySetInnerHTML={{ __html: html }} />
-                    </header>
+                    {external && (
+                      <StyledExternalLink
+                        href={external}
+                        target="_blank"
+                        rel="nofollow noopener noreferrer"
+                        aria-label="Certification Link">
+                        <FormattedIcon name="External" />
+                      </StyledExternalLink>
+                    )}
+                    <StyledBadge>
+                      {image && <img src={image} alt={title} />}
+                    </StyledBadge>
+                    <StyledCertName>{title}</StyledCertName>
+                    {company && <StyledCompany>{company}</StyledCompany>}
+                    <StyledCertDescription dangerouslySetInnerHTML={{ __html: html }} />
                   </StyledCertInner>
                 </StyledCert>
               );
