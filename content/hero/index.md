@@ -1,7 +1,7 @@
 ---
 title: 'Hi, my name is'
 name: 'Ledian Leka'
-subtitle: 'I craft ERP solutions for Dynamics 365 Business Central.'
+subtitle: 'I build ERP solutions on Business Central.'
 buttonText: 'Get In Touch'
 ---
 
