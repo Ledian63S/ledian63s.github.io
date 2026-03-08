@@ -1,6 +1,6 @@
 ---
 date: '2'
-title: 'Ruby Nights — Warm Dark VS Code Theme'
+title: 'Ruby Nights'
 cover: 'ruby-nights.png'
 github: 'https://github.com/Ledian63S/ruby-nights'
 external: 'https://marketplace.visualstudio.com/items?itemName=lekaledian.ruby-nights'
