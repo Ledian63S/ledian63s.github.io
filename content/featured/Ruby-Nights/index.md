@@ -1,5 +1,5 @@
 ---
-date: '2'
+date: '3'
 title: 'Ruby Nights'
 cover: 'ruby-nights.png'
 github: 'https://github.com/Ledian63S/ruby-nights'
