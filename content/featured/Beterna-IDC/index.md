@@ -1,5 +1,5 @@
 ---
-date: '3'
+date: '1'
 title: 'BE-terna IDC Incoming Documents'
 cover: 'beterna-idc.png'
 external: 'https://marketplace.microsoft.com/en-us/product/PUBID.terna%7CAID.be-terna-idc-incoming-documents%7CPAPPID.7b5384f0-4185-4164-9306-7bfd9f2ecfd6?tab=Overview'

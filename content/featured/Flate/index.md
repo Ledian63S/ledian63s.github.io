@@ -1,5 +1,5 @@
 ---
-date: '1'
+date: '2'
 title: 'Flate-Next — Colorful Dark Themes'
 cover: 'flatenext.png'
 github: 'https://github.com/Ledian63S/flate-next'
