@@ -6,10 +6,6 @@
   [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=1000&color=64FFDA&center=true&vCenter=true&width=500&lines=Dynamics+365+Business+Central+Developer;ERP+%26+AL+Developer+based+in+Albania;Flutter+%26+Mobile+App+Builder;VS+Code+Theme+Creator)](https://ledian63s.github.io)
 
   [![Portfolio](https://img.shields.io/badge/ledian63s.github.io-0a192f?style=flat&logo=github&logoColor=64ffda)](https://ledian63s.github.io)
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0a192f?style=flat&logo=linkedin&logoColor=64ffda)](https://www.linkedin.com/in/lekaledian/)
-  [![GitHub](https://img.shields.io/badge/GitHub-0a192f?style=flat&logo=github&logoColor=64ffda)](https://github.com/Ledian63S)
-  [![Twitter](https://img.shields.io/badge/Twitter-0a192f?style=flat&logo=twitter&logoColor=64ffda)](https://twitter.com/Ledian63S)
-  [![Instagram](https://img.shields.io/badge/Instagram-0a192f?style=flat&logo=instagram&logoColor=64ffda)](https://www.instagram.com/leka.ledian)
 
   <br />
 
