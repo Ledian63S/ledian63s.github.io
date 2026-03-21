@@ -1,75 +1,36 @@
 <div align="center">
-  <img alt="Logo" src="https://github.com/ledian63s/ledian63s.github.io/blob/code/src/images/logo.png" width="100" />
-</div>
-<h1 align="center">
-  Portfolio Website Version 2
-</h1>
-<p align="center">
-  The second iteration of <a href="https://ledian63s.github.io/" target="_blank">ledian63s.github.io</a> built with <a href="https://www.gatsbyjs.org/" target="_blank">Gatsby</a> and hosted with <a href="https://pages.github.com/" target="_blank">Github Pages</a>
-</p>
-<p align="center">
-  Previous iterations:
-  <a href="https://github.com/ledian63s/ledian63s.github.io-v1" target="_blank">Version 1</a>
-</p>
+  <img alt="Logo" src="https://github.com/ledian63s/ledian63s.github.io/blob/code/src/images/logo.png" width="80" />
+  <h1>ledian63s.github.io</h1>
+  <p>Personal portfolio of <a href="https://ledian63s.github.io">Ledian Leka</a> — built with Gatsby, deployed on GitHub Pages.</p>
 
-<div align="center">
+  ![Gatsby](https://img.shields.io/badge/Gatsby-663399?style=flat&logo=gatsby&logoColor=white)
+  ![React](https://img.shields.io/badge/React-20232a?style=flat&logo=react&logoColor=61DAFB)
+  ![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-121013?style=flat&logo=github&logoColor=white)
+
   <img alt="Demo" src="https://github.com/ledian63s/ledian63s.github.io/blob/code/src/images/demo.png" />
 </div>
 
-### TL;DR
+> Fork-friendly — just link back to [ledian63s.github.io](https://ledian63s.github.io). Thanks!
 
-Yes, you can fork this repo. Please give proper credit by linking back to [ledian63s.github.io](https://ledian63s.github.io). Thanks!
+## Setup
 
-## 🛠 Installation & Set Up
+```sh
+nvm use 18
+npm install --legacy-peer-deps
+npm start            # dev server
+npm run build        # production build
+npm run deploy       # build + publish to GitHub Pages
+```
 
-1. Install the Gatsby CLI
+## Color Reference
 
-   ```sh
-   npm install -g gatsby-cli
-   ```
-
-2. Install and use the correct version of Node using [NVM](https://github.com/nvm-sh/nvm)
-
-   ```sh
-   nvm install 18
-   nvm use 18
-   ```
-
-3. Install dependencies
-
-   ```sh
-   npm install --legacy-peer-deps
-   ```
-
-4. Start the development server
-
-   ```sh
-   npm start
-   ```
-
-## 🚀 Building and Running for Production
-
-1. Generate a full static production build
-
-   ```sh
-   npm run build
-   ```
-
-2. Preview the site as it will appear once deployed
-
-   ```sh
-   npm run serve
-   ```
-
-## 🎨 Color Reference
-
-| Color          | Hex                                                                |
-| -------------- | ------------------------------------------------------------------ |
-| Navy           | ![#0a192f](https://img.shields.io/badge/-%230a192f-0a192f) `#0a192f` |
-| Light Navy     | ![#172a45](https://img.shields.io/badge/-%23172a45-172a45) `#172a45` |
-| Lightest Navy  | ![#303C55](https://img.shields.io/badge/-%23303C55-303C55) `#303C55` |
-| Slate          | ![#8892b0](https://img.shields.io/badge/-%238892b0-8892b0) `#8892b0` |
-| Light Slate    | ![#a8b2d1](https://img.shields.io/badge/-%23a8b2d1-a8b2d1) `#a8b2d1` |
+| Color | Hex |
+| --- | --- |
+| Navy | ![#0a192f](https://img.shields.io/badge/-%230a192f-0a192f) `#0a192f` |
+| Light Navy | ![#172a45](https://img.shields.io/badge/-%23172a45-172a45) `#172a45` |
+| Lightest Navy | ![#303C55](https://img.shields.io/badge/-%23303C55-303C55) `#303C55` |
+| Slate | ![#8892b0](https://img.shields.io/badge/-%238892b0-8892b0) `#8892b0` |
+| Light Slate | ![#a8b2d1](https://img.shields.io/badge/-%23a8b2d1-a8b2d1) `#a8b2d1` |
 | Lightest Slate | ![#ccd6f6](https://img.shields.io/badge/-%23ccd6f6-ccd6f6) `#ccd6f6` |
-| White          | ![#e6f1ff](https://img.shields.io/badge/-%23e6f1ff-e6f1ff) `#e6f1ff` |
-| Green          | ![#64ffda](https://img.shields.io/badge/-%2364ffda-64ffda) `#64ffda` |
+| White | ![#e6f1ff](https://img.shields.io/badge/-%23e6f1ff-e6f1ff) `#e6f1ff` |
+| Green | ![#64ffda](https://img.shields.io/badge/-%2364ffda-64ffda) `#64ffda` |
