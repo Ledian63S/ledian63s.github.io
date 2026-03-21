@@ -3,9 +3,8 @@
 
   # Ledian Leka
 
-  [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&pause=1000&color=64FFDA&center=true&vCenter=true&width=500&lines=Dynamics+365+Business+Central+Developer;ERP+%26+AL+Developer+based+in+Albania;Flutter+%26+Mobile+App+Builder;VS+Code+Theme+Creator)](https://ledian63s.github.io)
-
   [![Portfolio](https://img.shields.io/badge/ledian63s.github.io-0a192f?style=flat&logo=github&logoColor=64ffda)](https://ledian63s.github.io)
+  [![v1](https://img.shields.io/badge/Previous%20v1-0a192f?style=flat&logo=github&logoColor=64ffda)](https://github.com/ledian63s/ledian63s.github.io-v1)
 
   <br />
 
@@ -24,6 +23,14 @@
 <br />
 
 > Fork-friendly — just link back to [ledian63s.github.io](https://ledian63s.github.io). Thanks!
+
+## Featured Projects
+
+| Project | Description | Links |
+| --- | --- | --- |
+| **Quanta** | Futures position sizing calculator for traders. Built with Flutter. | [![Site](https://img.shields.io/badge/Site-0a192f?style=flat&logo=googlechrome&logoColor=64ffda)](https://ledian63s.github.io/quanta/) [![GitHub](https://img.shields.io/badge/GitHub-0a192f?style=flat&logo=github&logoColor=64ffda)](https://github.com/Ledian63S/quanta) |
+| **Ruby Nights** | Dark VS Code theme with ruby and garnet palettes. Four variants. | [![Marketplace](https://img.shields.io/badge/Marketplace-0a192f?style=flat&logo=visualstudiocode&logoColor=64ffda)](https://marketplace.visualstudio.com/items?itemName=lekaledian.ruby-nights) [![GitHub](https://img.shields.io/badge/GitHub-0a192f?style=flat&logo=github&logoColor=64ffda)](https://github.com/Ledian63S/ruby-nights) |
+| **BE-terna IDC** | Business Central extension for electronic document management. | [![AppSource](https://img.shields.io/badge/AppSource-0a192f?style=flat&logo=microsoft&logoColor=64ffda)](https://marketplace.microsoft.com/en-us/product/PUBID.terna%7CAID.be-terna-idc-incoming-documents%7CPAPPID.7b5384f0-4185-4164-9306-7bfd9f2ecfd6?tab=Overview) |
 
 ## Setup
 
