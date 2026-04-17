@@ -10,6 +10,11 @@ const { colors, fontSizes, fonts } = theme;
 const GlobalStyle = createGlobalStyle`
   ${FontFaces};
 
+  :root {
+    --color-bg: #ffffff;
+    --color-nav: transparent;
+  }
+
   html {
     box-sizing: border-box;
     width: 100%;
@@ -28,9 +33,10 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: ${colors.navy};
+    background-color: var(--color-bg);
     color: ${colors.slate};
     line-height: 1.3;
+    transition: background-color 0.4s ease, color 0.4s ease;
     font-family: ${fonts.Calibre};
     font-size: ${fontSizes.xl};
     ${media.phablet`font-size: ${fontSizes.lg};`}

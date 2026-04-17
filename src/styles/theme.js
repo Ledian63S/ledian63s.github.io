@@ -1,27 +1,28 @@
 import { hex2rgba } from '@utils';
 
-const ACCENT = '#64ffda';
-const DARK_BG = '#020c1b';
-const BG = '#0a192f';
+const ACCENT = '#4f46e5';
+const DARK_BG = '#f8f9ff';
+const BG = '#ffffff';
 
 const theme = {
   colors: {
     darkNavy: DARK_BG,
     navy: BG,
-    lightNavy: '#172a45',
-    lightestNavy: '#303C55',
-    slate: '#8892b0',
-    lightSlate: '#a8b2d1',
-    lightestSlate: '#ccd6f6',
-    white: '#e6f1ff',
+    lightNavy: '#f0f4ff',
+    lightestNavy: '#e2e8f8',
+    slate: '#64748b',
+    lightSlate: '#475569',
+    lightestSlate: '#1e293b',
+    white: '#0f172a',
     green: ACCENT,
-    transGreen: hex2rgba(ACCENT, 0.07),
-    shadowNavy: hex2rgba(DARK_BG, 0.7),
+    transGreen: hex2rgba(ACCENT, 0.08),
+    shadowNavy: hex2rgba('#c7d2fe', 0.6),
+    lightblue: '#3b82f6',
   },
 
   fonts: {
     Calibre:
-      'Calibre, San Francisco, SF Pro Text, -apple-system, system-ui, BlinkMacSystemFont, Roboto, Helvetica Neue, Segoe UI, Arial, sans-serif',
+      'Space Grotesk, Calibre, San Francisco, SF Pro Text, -apple-system, system-ui, BlinkMacSystemFont, Roboto, Helvetica Neue, Segoe UI, Arial, sans-serif',
     SFMono: 'SF Mono, Fira Code, Fira Mono, Roboto Mono, Lucida Console, Monaco, monospace',
   },
 
@@ -39,14 +40,14 @@ const theme = {
   easing: 'cubic-bezier(0.645, 0.045, 0.355, 1)',
   transition: 'all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1)',
 
-  borderRadius: '3px',
+  borderRadius: '4px',
   navHeight: '100px',
   navScrollHeight: '70px',
   margin: '20px',
 
   tabHeight: 42,
   tabWidth: 120,
-  radius: 3,
+  radius: 4,
 
   hamburgerWidth: 30,
   hamBefore: `top 0.1s ease-in 0.25s, opacity 0.1s ease-in`,

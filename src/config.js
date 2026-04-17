@@ -26,10 +26,6 @@ module.exports = {
       name: 'Instagram',
       url: 'https://www.instagram.com/leka.ledian',
     },
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com/Ledian63S',
-    },
   ],
 
   navLinks: [

@@ -1,10 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { email } from '@config';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { theme, mixins, media, Section } from '@styles';
 const { colors, fontSizes, fonts, navDelay, loaderDelay } = theme;
+
+const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&';
+
+function useScramble(target, active, duration = 1600) {
+  const [display, setDisplay] = useState('');
+  const rafRef = useRef(null);
+
+  useEffect(() => {
+    if (!active) return;
+    const start = Date.now();
+
+    const tick = () => {
+      const elapsed = Date.now() - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const resolved = Math.floor(progress * target.length);
+
+      setDisplay(
+        target
+          .split('')
+          .map((ch, i) => {
+            if (ch === ' ') return ' ';
+            if (i < resolved) return ch;
+            return SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+          })
+          .join(''),
+      );
+
+      if (progress < 1) rafRef.current = requestAnimationFrame(tick);
+    };
+
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [active, target, duration]);
+
+  return display;
+}
+
+const gradientMove = keyframes`
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+`;
 
 const StyledContainer = styled(Section)`
   ${mixins.flexCenter};
@@ -29,6 +71,14 @@ const StyledTitle = styled.h2`
   font-size: 80px;
   line-height: 1.1;
   margin: 0;
+  font-weight: 700;
+  background: linear-gradient(120deg, #0f172a 0%, #1e293b 40%, #4f46e5 75%, #7c3aed 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: ${gradientMove} 6s ease infinite;
+  font-family: ${fonts.Calibre};
   ${media.desktop`font-size: 70px;`};
   ${media.tablet`font-size: 60px;`};
   ${media.phablet`font-size: 50px;`};
@@ -38,6 +88,7 @@ const StyledSubtitle = styled.h3`
   font-size: 80px;
   line-height: 1.1;
   color: ${colors.slate};
+  font-weight: 600;
   ${media.desktop`font-size: 70px;`};
   ${media.tablet`font-size: 60px;`};
   ${media.phablet`font-size: 50px;`};
@@ -52,8 +103,30 @@ const StyledDescription = styled.div`
   }
 `;
 const StyledEmailLink = styled.a`
-  ${mixins.bigButton};
+  display: inline-block;
   margin-top: 30px;
+  padding: 1.1rem 2rem;
+  background: ${colors.green};
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: ${fonts.SFMono};
+  font-size: ${fontSizes.sm};
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: ${theme.transition};
+  letter-spacing: 0.05em;
+  &:hover,
+  &:focus {
+    background: #4338ca;
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.35);
+  }
+  &:after {
+    display: none !important;
+  }
 `;
 
 const Hero = ({ data }) => {
@@ -65,12 +138,13 @@ const Hero = ({ data }) => {
   }, []);
 
   const { frontmatter, html } = data[0].node;
+  const scrambledName = useScramble(frontmatter.name + '.', isMounted, 1800);
 
   const one = () => (
     <StyledOverline style={{ transitionDelay: '100ms' }}>{frontmatter.title}</StyledOverline>
   );
   const two = () => (
-    <StyledTitle style={{ transitionDelay: '200ms' }}>{frontmatter.name}.</StyledTitle>
+    <StyledTitle style={{ transitionDelay: '200ms' }}>{scrambledName}</StyledTitle>
   );
   const three = () => (
     <StyledSubtitle style={{ transitionDelay: '300ms' }}>{frontmatter.subtitle}</StyledSubtitle>

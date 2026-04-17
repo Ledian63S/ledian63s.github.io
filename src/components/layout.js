@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
-import { Head, Loader, Nav, Social, Email, Footer } from '@components';
+import Helmet from 'react-helmet';
+import { Head, Loader, Nav, Social, Email, Footer, ParticleBackground } from '@components';
 import styled from 'styled-components';
 import { GlobalStyle, theme } from '@styles';
+import { ThemeProvider } from '../context/ThemeContext';
 const { colors, fontSizes, fonts } = theme;
 
 // https://medium.com/@chrisfitkin/how-to-smooth-scroll-links-in-gatsby-3dc445299558
@@ -45,6 +47,8 @@ const StyledContent = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 `;
 
 const Layout = ({ children, location }) => {
@@ -56,7 +60,7 @@ const Layout = ({ children, location }) => {
       return;
     }
     if (location.hash) {
-      const id = location.hash.substring(1); // location.hash without the '#'
+      const id = location.hash.substring(1);
       setTimeout(() => {
         const el = document.getElementById(id);
         if (el) {
@@ -81,28 +85,35 @@ const Layout = ({ children, location }) => {
         }
       `}
       render={({ site }) => (
-        <div id="root">
-          <Head metadata={site.siteMetadata} />
+        <ThemeProvider>
+          <div id="root">
+            <Head metadata={site.siteMetadata} />
+            <Helmet>
+              <link rel="preconnect" href="https://fonts.googleapis.com" />
+              <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+              <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+            </Helmet>
+            <GlobalStyle />
+            <SkipToContent href="#content">Skip to Content</SkipToContent>
 
-          <GlobalStyle />
-
-          <SkipToContent href="#content">Skip to Content</SkipToContent>
-
-          {isLoading && isHome ? (
-            <Loader finishLoading={() => setIsLoading(false)} />
-          ) : (
-            <StyledContent>
-              <Nav isHome={isHome} />
-              <Social isHome={isHome} />
-              <Email isHome={isHome} />
-
-              <div id="content">
-                {children}
-                <Footer />
-              </div>
-            </StyledContent>
-          )}
-        </div>
+            {isLoading && isHome ? (
+              <Loader finishLoading={() => setIsLoading(false)} />
+            ) : (
+              <>
+                <ParticleBackground />
+                <StyledContent>
+                  <Nav isHome={isHome} />
+                  <Social isHome={isHome} />
+                  <Email isHome={isHome} />
+                  <div id="content">
+                    {children}
+                    <Footer />
+                  </div>
+                </StyledContent>
+              </>
+            )}
+          </div>
+        </ThemeProvider>
       )}
     />
   );
