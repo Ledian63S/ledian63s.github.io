@@ -1,10 +1,9 @@
 <div align="center">
-  <img alt="Logo" src="https://github.com/ledian63s/ledian63s.github.io/blob/code/src/images/logo.png" width="60" />
 
   # Ledian Leka
 
-  [![Portfolio](https://img.shields.io/badge/ledian63s.github.io-0a192f?style=flat&logo=github&logoColor=64ffda)](https://ledian63s.github.io)
-  [![v1](https://img.shields.io/badge/Previous%20v1-0a192f?style=flat&logo=github&logoColor=64ffda)](https://github.com/ledian63s/ledian63s.github.io-v1)
+  [![Portfolio](https://img.shields.io/badge/ledian63s.github.io-4f46e5?style=flat&logo=github&logoColor=white)](https://ledian63s.github.io)
+  [![v1](https://img.shields.io/badge/Previous%20v1-4f46e5?style=flat&logo=github&logoColor=white)](https://github.com/ledian63s/ledian63s.github.io-v1)
 
   <br />
 
@@ -28,9 +27,9 @@
 
 | Project | Description | Links |
 | --- | --- | --- |
-| **Quanta** | Futures position sizing calculator for traders. Built with Flutter. | [![Site](https://img.shields.io/badge/Site-0a192f?style=flat&logo=googlechrome&logoColor=64ffda)](https://ledian63s.github.io/quanta/) [![GitHub](https://img.shields.io/badge/GitHub-0a192f?style=flat&logo=github&logoColor=64ffda)](https://github.com/Ledian63S/quanta) |
-| **Ruby Nights** | Dark VS Code theme with ruby and garnet palettes. Four variants. | [![Marketplace](https://img.shields.io/badge/Marketplace-0a192f?style=flat&logo=visualstudiocode&logoColor=64ffda)](https://marketplace.visualstudio.com/items?itemName=lekaledian.ruby-nights) [![GitHub](https://img.shields.io/badge/GitHub-0a192f?style=flat&logo=github&logoColor=64ffda)](https://github.com/Ledian63S/ruby-nights) |
-| **BE-terna IDC** | Business Central extension for electronic document management. | [![AppSource](https://img.shields.io/badge/AppSource-0a192f?style=flat&logo=microsoft&logoColor=64ffda)](https://marketplace.microsoft.com/en-us/product/PUBID.terna%7CAID.be-terna-idc-incoming-documents%7CPAPPID.7b5384f0-4185-4164-9306-7bfd9f2ecfd6?tab=Overview) |
+| **Quanta** | Futures position sizing calculator for traders. Built with Flutter. | [![Site](https://img.shields.io/badge/Site-4f46e5?style=flat&logo=googlechrome&logoColor=white)](https://ledian63s.github.io/quanta/) [![GitHub](https://img.shields.io/badge/GitHub-4f46e5?style=flat&logo=github&logoColor=white)](https://github.com/Ledian63S/quanta) |
+| **Ruby Nights** | Dark VS Code theme with ruby and garnet palettes. Four variants. | [![Marketplace](https://img.shields.io/badge/Marketplace-4f46e5?style=flat&logo=visualstudiocode&logoColor=white)](https://marketplace.visualstudio.com/items?itemName=lekaledian.ruby-nights) [![GitHub](https://img.shields.io/badge/GitHub-4f46e5?style=flat&logo=github&logoColor=white)](https://github.com/Ledian63S/ruby-nights) |
+| **BE-terna IDC** | Business Central extension for electronic document management. | [![AppSource](https://img.shields.io/badge/AppSource-4f46e5?style=flat&logo=microsoft&logoColor=white)](https://marketplace.microsoft.com/en-us/product/PUBID.terna%7CAID.be-terna-idc-incoming-documents%7CPAPPID.7b5384f0-4185-4164-9306-7bfd9f2ecfd6?tab=Overview) |
 
 ## Setup
 
@@ -46,11 +45,9 @@ npm run deploy        # build + publish to GitHub Pages
 
 | Color | Hex |
 | --- | --- |
-| Navy | ![#0a192f](https://img.shields.io/badge/-%230a192f-0a192f) `#0a192f` |
-| Light Navy | ![#172a45](https://img.shields.io/badge/-%23172a45-172a45) `#172a45` |
-| Lightest Navy | ![#303C55](https://img.shields.io/badge/-%23303C55-303C55) `#303C55` |
-| Slate | ![#8892b0](https://img.shields.io/badge/-%238892b0-8892b0) `#8892b0` |
-| Light Slate | ![#a8b2d1](https://img.shields.io/badge/-%23a8b2d1-a8b2d1) `#a8b2d1` |
-| Lightest Slate | ![#ccd6f6](https://img.shields.io/badge/-%23ccd6f6-ccd6f6) `#ccd6f6` |
-| White | ![#e6f1ff](https://img.shields.io/badge/-%23e6f1ff-e6f1ff) `#e6f1ff` |
-| Green | ![#64ffda](https://img.shields.io/badge/-%2364ffda-64ffda) `#64ffda` |
+| Indigo | ![#4f46e5](https://img.shields.io/badge/-%234f46e5-4f46e5) `#4f46e5` |
+| Violet | ![#a855f7](https://img.shields.io/badge/-%23a855f7-a855f7) `#a855f7` |
+| Pink | ![#ec4899](https://img.shields.io/badge/-%23ec4899-ec4899) `#ec4899` |
+| Dark | ![#0f172a](https://img.shields.io/badge/-%230f172a-0f172a) `#0f172a` |
+| Slate | ![#64748b](https://img.shields.io/badge/-%2364748b-64748b) `#64748b` |
+| White | ![#ffffff](https://img.shields.io/badge/-%23ffffff-dddddd) `#ffffff` |
