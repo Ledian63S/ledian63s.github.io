@@ -3,21 +3,24 @@ import React from 'react';
 const IconLogo = () => (
   <svg id="logo" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
     <title>Logo</title>
-    <g transform="translate(-8.000000, -2.000000)">
-      <g transform="translate(11.000000, 5.000000)">
-        <polygon
-          id="Shape"
-          stroke="currentColor"
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          points="39 0 0 22 0 67 39 90 78 68 78 23"
-        />
-      </g>
-    </g>
-    <text x="26" y="65" fill="currentColor" fontSize="50px" fontFamily="Consolas">
-      L
-    </text>
+    <defs>
+      <linearGradient id="hexGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stopColor="#4f46e5" />
+        <stop offset="100%" stopColor="#a855f7" />
+      </linearGradient>
+    </defs>
+    {/* Pointy-top hexagon */}
+    <polygon
+      stroke="url(#hexGrad)"
+      strokeWidth="4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+      points="42,6 76,25 76,70 42,90 8,70 8,25"
+    />
+    {/* Clean geometric "L" — stem + foot */}
+    <rect x="28" y="24" width="8" height="44" rx="2" fill="url(#hexGrad)" />
+    <rect x="28" y="60" width="28" height="8" rx="2" fill="url(#hexGrad)" />
   </svg>
 );
 
