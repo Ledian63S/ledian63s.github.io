@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { Head, Loader, Nav, Social, Email, Footer, ParticleBackground } from '@components';
+import { Head, Loader, Nav, Social, Email, Footer, ParticleBackground, Cursor, BackToTop } from '@components';
 import styled from 'styled-components';
 import { GlobalStyle, theme } from '@styles';
 import { ThemeProvider } from '../context/ThemeContext';
@@ -100,6 +100,8 @@ const Layout = ({ children, location }) => {
               <Loader finishLoading={() => setIsLoading(false)} />
             ) : (
               <>
+                <Cursor />
+                <BackToTop />
                 <ParticleBackground />
                 <StyledContent>
                   <Nav isHome={isHome} />

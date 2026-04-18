@@ -21,7 +21,7 @@ const StyledList = styled.ul`
     width: 1px;
     height: 90px;
     margin: 0 auto;
-    background-color: ${colors.lightSlate};
+    background: linear-gradient(180deg, #4f46e5, #a855f7, rgba(168,85,247,0));
   }
 
   li:last-of-type {
@@ -30,15 +30,17 @@ const StyledList = styled.ul`
 `;
 const StyledLink = styled.a`
   padding: 14px;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   &:hover,
   &:focus {
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    color: ${colors.green};
   }
   svg {
     width: 18px;
     height: 18px;
     color: ${colors.slate};
-    // color: #D3D3D3;
+    transition: color 0.2s ease;
     &:hover,
     &:focus {
       color: ${colors.green};

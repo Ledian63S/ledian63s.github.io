@@ -3,9 +3,14 @@ import PropTypes from 'prop-types';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { FormattedIcon } from '@components/icons';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { theme, mixins, media, Section, Heading } from '@styles';
 const { colors, fontSizes, fonts } = theme;
+
+const badgeSpin = keyframes`
+  from { transform: rotateY(0deg); }
+  to   { transform: rotateY(360deg); }
+`;
 
 const StyledContainer = styled(Section)`
   ${mixins.flexCenter};
@@ -31,18 +36,21 @@ const StyledCertInner = styled.div`
   padding: 2rem 1.75rem;
   height: 100%;
   border-radius: ${theme.borderRadius};
-  transition: ${theme.transition};
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
   background-color: ${colors.lightNavy};
   text-align: center;
+  will-change: transform;
 `;
 const StyledCert = styled.div`
   transition: ${theme.transition};
   cursor: default;
+  perspective: 800px;
   &:hover,
   &:focus {
     outline: 0;
     ${StyledCertInner} {
-      transform: translateY(-5px);
+      transform: translateY(-8px) rotateX(2deg);
+      box-shadow: 0 24px 48px -16px rgba(79, 70, 229, 0.28);
     }
   }
 `;
@@ -66,6 +74,12 @@ const StyledBadge = styled.div`
     width: 80px;
     height: 80px;
     object-fit: contain;
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+    filter: saturate(0.85);
+  }
+  ${StyledCert}:hover & img {
+    transform: scale(1.1);
+    filter: saturate(1.15);
   }
 `;
 const StyledCertName = styled.h5`
@@ -90,7 +104,7 @@ const Certifications = ({ data }) => {
 
   useEffect(() => {
     sr.reveal(revealTitle.current, srConfig());
-    revealCerts.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
+    revealCerts.current.forEach((ref, i) => sr.reveal(ref, { ...srConfig(i * 60), distance: '30px', duration: 600, scale: 0.96 }));
   }, []);
 
   return (

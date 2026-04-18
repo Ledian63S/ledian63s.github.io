@@ -35,11 +35,22 @@ const StyledLabel = styled.h4`
 const StyledProjectName = styled.h5`
   font-size: 28px;
   margin: 0 0 20px;
-  color: ${colors.lightestSlate};
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg, #0f172a 0%, #1e293b 40%, #4f46e5 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  transition: background-position 0.5s ease;
   ${media.tablet`font-size: 24px;`};
-  ${media.thone`color: ${colors.white};`};
   a {
     ${media.tablet`display: block;`};
+    -webkit-text-fill-color: transparent;
+  }
+  &:hover {
+    background-position: right center;
   }
 `;
 const StyledDescription = styled.div`
@@ -112,13 +123,13 @@ const StyledFeaturedImg = styled(Img)`
   vertical-align: middle;
   border-radius: ${theme.borderRadius};
   position: relative;
-  mix-blend-mode: multiply;
-  filter: grayscale(100%) contrast(1) brightness(90%);
+  filter: grayscale(55%) saturate(0.85) brightness(0.96);
+  opacity: 0.82;
+  transition: filter 0.35s ease, opacity 0.35s ease, transform 0.4s ease;
   ${media.tablet`
     object-fit: cover;
     width: auto;
     height: 100%;
-    filter: grayscale(100%) contrast(1) brightness(80%);
   `};
 `;
 const StyledImgContainer = styled.a`
@@ -127,21 +138,27 @@ const StyledImgContainer = styled.a`
   grid-row: 1 / -1;
   position: relative;
   z-index: 1;
-  background-color: ${colors.green};
   border-radius: ${theme.radius + 1}px;
+  overflow: hidden;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.18), rgba(236, 72, 153, 0.18));
   transition: ${theme.transition};
   ${media.tablet`height: 100%;`};
   ${media.thone`
     grid-column: 1 / -1;
-    opacity: 0.25;
+    opacity: 0.2;
   `};
   &:hover,
   &:focus {
     background: transparent;
-    &:before,
+    transform: translateY(-3px);
+    box-shadow: 0 20px 40px -15px rgba(79, 70, 229, 0.35);
     ${StyledFeaturedImg} {
-      background: transparent;
       filter: none;
+      opacity: 1;
+      transform: scale(1.02);
+    }
+    &:before {
+      opacity: 0;
     }
   }
   &:before {
@@ -151,12 +168,11 @@ const StyledImgContainer = styled.a`
     height: 100%;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
     z-index: 3;
-    transition: ${theme.transition};
-    background-color: ${colors.navy};
-    mix-blend-mode: screen;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    background: linear-gradient(135deg, rgba(79, 70, 229, 0.12), rgba(236, 72, 153, 0.1));
+    opacity: 1;
   }
 `;
 const StyledProject = styled.div`
@@ -211,7 +227,16 @@ const Featured = ({ data }) => {
   const revealProjects = useRef([]);
   useEffect(() => {
     sr.reveal(revealTitle.current, srConfig());
-    revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
+    revealProjects.current.forEach((ref, i) => {
+      const isOdd = i % 2 !== 0;
+      sr.reveal(ref, {
+        ...srConfig(i * 150),
+        origin: 'bottom',
+        distance: '40px',
+        duration: 700,
+        scale: 0.97,
+      });
+    });
   }, []);
 
   return (

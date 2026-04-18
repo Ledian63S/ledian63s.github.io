@@ -1,4 +1,6 @@
 export { default as Head } from './head';
+export { default as Cursor } from './cursor';
+export { default as BackToTop } from './backToTop';
 export { default as ParticleBackground } from './particleBackground';
 export { default as Layout } from './layout';
 export { default as Loader } from './loader';

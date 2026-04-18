@@ -11,135 +11,133 @@ const Canvas = styled.canvas`
   pointer-events: none;
 `;
 
-const PALETTE = ['#4f46e5', '#7c3aed', '#ec4899', '#2563eb', '#0891b2'];
-const COUNT = 200;
-
-function fieldAngle(x, y, t) {
-  const nx = x * 0.0018;
-  const ny = y * 0.0018;
-  return (
-    Math.sin(nx * 3.2 + t * 0.35) * Math.cos(ny * 2.6 + t * 0.28) +
-    Math.sin(nx * 1.4 + t * 0.48) * Math.cos(ny * 3.8 + t * 0.22)
-  ) * Math.PI;
-}
-
-class Particle {
-  constructor(w, h) {
-    this.color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
-    this.reset(w, h);
-  }
-
-  reset(w, h) {
-    this.x = Math.random() * w;
-    this.y = Math.random() * h;
-    this.vx = 0;
-    this.vy = 0;
-    this.age = 0;
-    this.maxAge = 120 + Math.random() * 120;
-  }
-
-  update(t, w, h, mx, my) {
-    const a = fieldAngle(this.x, this.y, t);
-    this.vx = this.vx * 0.92 + Math.cos(a) * 0.22;
-    this.vy = this.vy * 0.92 + Math.sin(a) * 0.22;
-
-    const dx = this.x - mx;
-    const dy = this.y - my;
-    const d2 = dx * dx + dy * dy;
-    if (d2 < 7000 && d2 > 0) {
-      const d = Math.sqrt(d2);
-      const f = ((84 - d) / 84) * 0.45;
-      this.vx += (dx / d) * f;
-      this.vy += (dy / d) * f;
-    }
-
-    const spd = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-    if (spd > 1.9) {
-      this.vx = (this.vx / spd) * 1.9;
-      this.vy = (this.vy / spd) * 1.9;
-    }
-
-    this.x += this.vx;
-    this.y += this.vy;
-    this.age++;
-
-    if (
-      this.age > this.maxAge ||
-      this.x < -10 || this.x > w + 10 ||
-      this.y < -10 || this.y > h + 10
-    ) {
-      this.reset(w, h);
-    }
-  }
-
-  draw(ctx) {
-    const alpha = Math.sin((this.age / this.maxAge) * Math.PI) * 0.28;
-    ctx.globalAlpha = alpha;
-    ctx.fillStyle = this.color;
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, 1.6, 0, Math.PI * 2);
-    ctx.fill();
-  }
-}
-
-const FlowField = () => {
+const RippleBackground = () => {
   const canvasRef = useRef(null);
+  const ripplesRef = useRef([]);
+  const mouseRef = useRef({ x: -1, y: -1 });
+  const lastSpawnRef = useRef(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas || typeof window === 'undefined') return;
-
     const ctx = canvas.getContext('2d');
     let raf;
     let t = 0;
-    const mouse = { x: -999, y: -999 };
 
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
     };
     resize();
     window.addEventListener('resize', resize);
 
-    const onMouseMove = e => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    };
-    window.addEventListener('mousemove', onMouseMove);
+    // Soft drifting bulbs
+    const bulbs = [
+      { x: 0.18, y: 0.22, r: 420, color: [79, 70, 229],  alpha: 0.08, vx: 0.00055, vy: 0.00038 },
+      { x: 0.78, y: 0.68, r: 380, color: [168, 85, 247], alpha: 0.07, vx: -0.00045, vy: -0.00050 },
+      { x: 0.52, y: 0.12, r: 320, color: [236, 72, 153], alpha: 0.06, vx: 0.00035, vy: 0.00060 },
+    ];
 
-    const particles = Array.from(
-      { length: COUNT },
-      () => new Particle(canvas.width, canvas.height),
-    );
+    // Mouse ripples
+    const onMove = e => {
+      const now = performance.now();
+      mouseRef.current = { x: e.clientX, y: e.clientY };
+      if (now - lastSpawnRef.current > 80) {
+        ripplesRef.current.push({
+          x: e.clientX,
+          y: e.clientY,
+          r: 0,
+          alpha: 0.55,
+          speed: 2.8 + Math.random() * 1.6,
+          width: 1.5,
+          color: Math.random() > 0.45 ? [79, 70, 229] : [139, 92, 246],
+        });
+        lastSpawnRef.current = now;
+      }
+    };
+    window.addEventListener('mousemove', onMove);
+
+    const ambientInterval = setInterval(() => {
+      const w = canvas.width;
+      const h = canvas.height;
+      ripplesRef.current.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: 0,
+        alpha: 0.18,
+        speed: 1.2 + Math.random() * 0.8,
+        width: 1,
+        color: [99, 102, 241],
+      });
+    }, 1800);
 
     const animate = () => {
-      const { width: w, height: h } = canvas;
+      const w = canvas.width;
+      const h = canvas.height;
 
-      ctx.fillStyle = 'rgba(255,255,255,0.20)';
+      ctx.fillStyle = '#ffffff';
       ctx.fillRect(0, 0, w, h);
 
-      particles.forEach(p => {
-        p.update(t, w, h, mouse.x, mouse.y);
-        p.draw(ctx);
+      // Draw bulbs — positions stored as 0-1 fractions, drift and wrap gently
+      bulbs.forEach(b => {
+        b.x += b.vx;
+        b.y += b.vy;
+        // Slow bounce at edges
+        if (b.x < -0.1 || b.x > 1.1) b.vx *= -1;
+        if (b.y < -0.1 || b.y > 1.1) b.vy *= -1;
+
+        // Gentle breathe
+        const breathe = 0.85 + 0.15 * Math.sin(t * 0.008 + b.r);
+        const px = b.x * w;
+        const py = b.y * h;
+        const pr = b.r * breathe;
+
+        const g = ctx.createRadialGradient(px, py, 0, px, py, pr);
+        g.addColorStop(0,   `rgba(${b.color[0]}, ${b.color[1]}, ${b.color[2]}, ${b.alpha})`);
+        g.addColorStop(0.5, `rgba(${b.color[0]}, ${b.color[1]}, ${b.color[2]}, ${b.alpha * 0.4})`);
+        g.addColorStop(1,   `rgba(${b.color[0]}, ${b.color[1]}, ${b.color[2]}, 0)`);
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, w, h);
       });
 
-      ctx.globalAlpha = 1;
-      t += 0.012;
+      // Draw ripples
+      ripplesRef.current = ripplesRef.current.filter(rip => rip.alpha > 0.005);
+      ripplesRef.current.forEach(rip => {
+        rip.r += rip.speed;
+        rip.alpha *= 0.964;
+        ctx.beginPath();
+        ctx.arc(rip.x, rip.y, rip.r, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${rip.color[0]}, ${rip.color[1]}, ${rip.color[2]}, ${rip.alpha})`;
+        ctx.lineWidth = rip.width;
+        ctx.stroke();
+      });
+
+      // Cursor glow
+      const mx = mouseRef.current.x;
+      const my = mouseRef.current.y;
+      if (mx >= 0) {
+        const glow = ctx.createRadialGradient(mx, my, 0, mx, my, 80);
+        glow.addColorStop(0,   'rgba(99, 102, 241, 0.12)');
+        glow.addColorStop(0.5, 'rgba(99, 102, 241, 0.04)');
+        glow.addColorStop(1,   'rgba(255, 255, 255, 0)');
+        ctx.fillStyle = glow;
+        ctx.fillRect(0, 0, w, h);
+      }
+
+      t++;
       raf = requestAnimationFrame(animate);
     };
-
     animate();
 
     return () => {
       cancelAnimationFrame(raf);
+      clearInterval(ambientInterval);
       window.removeEventListener('resize', resize);
-      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mousemove', onMove);
     };
   }, []);
 
   return <Canvas ref={canvasRef} />;
 };
 
-export default FlowField;
+export default RippleBackground;

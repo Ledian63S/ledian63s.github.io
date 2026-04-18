@@ -3,11 +3,21 @@ import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import styled, { keyframes, css } from 'styled-components';
 
-const fillBar = keyframes`
-  0%   { width: 0%; }
-  70%  { width: 85%; }
-  90%  { width: 96%; }
-  100% { width: 100%; }
+const CIRCUMFERENCE = 2 * Math.PI * 44; // r=44
+
+const drawCircle = keyframes`
+  from { stroke-dashoffset: ${CIRCUMFERENCE}; }
+  to   { stroke-dashoffset: 0; }
+`;
+
+const wordReveal = keyframes`
+  from { transform: translateY(110%); }
+  to   { transform: translateY(0); }
+`;
+
+const fadeInSub = keyframes`
+  from { opacity: 0; }
+  to   { opacity: 0.5; }
 `;
 
 const fadeOut = keyframes`
@@ -15,7 +25,7 @@ const fadeOut = keyframes`
   to   { opacity: 0; }
 `;
 
-const StyledContainer = styled.div`
+const Wrap = styled.div`
   position: fixed;
   inset: 0;
   z-index: 99;
@@ -24,8 +34,7 @@ const StyledContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 28px;
-
+  gap: 32px;
   ${({ leaving }) =>
     leaving &&
     css`
@@ -33,67 +42,131 @@ const StyledContainer = styled.div`
     `}
 `;
 
-const StyledCount = styled.span`
+const RingWrap = styled.div`
+  position: relative;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Ring = styled.svg`
+  position: absolute;
+  inset: 0;
+  transform: rotate(-90deg);
+
+  circle {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-dasharray: ${CIRCUMFERENCE};
+    stroke-dashoffset: ${CIRCUMFERENCE};
+  }
+
+  .track {
+    stroke: rgba(79, 70, 229, 0.1);
+    stroke-dashoffset: 0;
+  }
+
+  .fill {
+    stroke: url(#ringGrad);
+    animation: ${drawCircle} 1.6s cubic-bezier(0.65, 0, 0.35, 1) 0.15s forwards;
+  }
+`;
+
+const Initials = styled.span`
   font-family: 'Space Grotesk', 'Calibre', sans-serif;
-  font-size: 72px;
+  font-size: 26px;
   font-weight: 700;
-  color: #4f46e5;
-  letter-spacing: -2px;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #4f46e5, #a855f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  position: relative;
+  z-index: 1;
+`;
+
+const NameRow = styled.div`
+  display: flex;
+  gap: 0.3em;
+  font-family: 'Space Grotesk', 'Calibre', sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
   line-height: 1;
-  min-width: 3ch;
-  text-align: center;
 `;
 
-const TrackWrap = styled.div`
-  width: 160px;
-  height: 2px;
-  background: #e2e8f8;
-  border-radius: 2px;
+const Mask = styled.span`
   overflow: hidden;
+  display: inline-block;
 `;
 
-const Bar = styled.div`
-  height: 100%;
-  background: #4f46e5;
-  border-radius: 2px;
-  width: 0%;
-  animation: ${fillBar} 1.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+const Word = styled.span`
+  display: inline-block;
+  transform: translateY(110%);
+  color: #0f172a;
+  animation: ${wordReveal} 0.65s cubic-bezier(0.77, 0, 0.175, 1) ${p => p.delay}s forwards;
+
+  ${p =>
+    p.accent &&
+    css`
+      background: linear-gradient(110deg, #4f46e5, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    `}
+`;
+
+const Sub = styled.div`
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: #64748b;
+  opacity: 0;
+  animation: ${fadeInSub} 0.5s ease 1.4s forwards;
 `;
 
 const Loader = ({ finishLoading }) => {
-  const [count, setCount] = useState(0);
   const [leaving, setLeaving] = useState(false);
 
   useEffect(() => {
-    const start = Date.now();
-    const DURATION = 1700;
-    let raf;
-
-    const tick = () => {
-      const progress = Math.min((Date.now() - start) / DURATION, 1);
-      setCount(Math.round(progress * 100));
-      if (progress < 1) {
-        raf = requestAnimationFrame(tick);
-      } else {
-        setTimeout(() => {
-          setLeaving(true);
-          setTimeout(finishLoading, 460);
-        }, 100);
-      }
-    };
-
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
+    const t = setTimeout(() => {
+      setLeaving(true);
+      setTimeout(finishLoading, 450);
+    }, 2500);
+    return () => clearTimeout(t);
   }, []);
 
   return (
-    <StyledContainer leaving={leaving}>
+    <Wrap leaving={leaving}>
       <Helmet bodyAttributes={{ class: 'hidden' }} />
-      <StyledCount>{count}</StyledCount>
-      <TrackWrap>
-        <Bar />
-      </TrackWrap>
-    </StyledContainer>
+
+      <RingWrap>
+        <Ring viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#4f46e5" />
+              <stop offset="100%" stopColor="#a855f7" />
+            </linearGradient>
+          </defs>
+          <circle className="track" cx="50" cy="50" r="44" />
+          <circle className="fill"  cx="50" cy="50" r="44" />
+        </Ring>
+        <Initials>LL</Initials>
+      </RingWrap>
+
+      <NameRow>
+        <Mask><Word delay={0.9}>Ledian</Word></Mask>
+        <Mask><Word delay={1.05} accent>Leka.</Word></Mask>
+      </NameRow>
+
+      <Sub>Software Engineer</Sub>
+    </Wrap>
   );
 };
 

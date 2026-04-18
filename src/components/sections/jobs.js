@@ -2,9 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { theme, mixins, media, Section, Heading } from '@styles';
 const { colors, fontSizes, fonts } = theme;
+
+const slideIn = keyframes`
+  from { opacity: 0; transform: translateX(12px); }
+  to   { opacity: 1; transform: translateX(0); }
+`;
 
 const StyledContainer = styled(Section)`
   position: relative;
@@ -89,7 +94,7 @@ const StyledTabButton = styled.button`
 `;
 const StyledHighlight = styled.span`
   display: block;
-  background: ${colors.green};
+  background: linear-gradient(180deg, #4f46e5, #a855f7);
   width: 2px;
   height: ${theme.tabHeight}px;
   border-radius: ${theme.borderRadius};
@@ -123,6 +128,7 @@ const StyledTabContent = styled.div`
   height: auto;
   padding-top: 12px;
   padding-left: 30px;
+  animation: ${slideIn} 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
   ${media.tablet`padding-left: 20px;`};
   ${media.thone`padding-left: 0;`};
 
@@ -226,7 +232,7 @@ const Jobs = ({ data }) => {
             const { title, url, company, range } = frontmatter;
             return (
               <StyledTabContent
-                key={i}
+                key={`${i}-${activeTabId}`}
                 isActive={activeTabId === i}
                 id={`panel-${i}`}
                 role="tabpanel"

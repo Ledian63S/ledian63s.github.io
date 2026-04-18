@@ -17,10 +17,11 @@ const StyledContainer = styled.header`
   position: fixed;
   top: 0;
   padding: 0px 50px;
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  transition: ${theme.transition}, background 0.4s ease;
+  background: ${props => props.scrolled ? 'rgba(255,255,255,0.82)' : 'transparent'};
+  backdrop-filter: ${props => props.scrolled ? 'blur(12px)' : 'none'};
+  -webkit-backdrop-filter: ${props => props.scrolled ? 'blur(12px)' : 'none'};
+  box-shadow: ${props => props.scrolled ? '0 1px 0 rgba(0,0,0,0.05)' : 'none'};
+  transition: ${theme.transition}, background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
   z-index: 11;
   filter: none !important;
   pointer-events: auto !important;
@@ -38,27 +39,34 @@ const StyledNav = styled.nav`
   position: relative;
   width: 100%;
   color: ${colors.lightestSlate};
-  font-family: ${fonts.SFMono};
+  font-family: ${fonts.Calibre};
   counter-reset: item 0;
   z-index: 12;
 `;
 const StyledLogo = styled.div`
   ${mixins.flexCenter};
   a {
-    display: block;
-    color: ${colors.green};
-    width: 42px;
-    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: ${fonts.Calibre};
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #4f46e5, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    transition: ${theme.transition};
+    user-select: none;
+    text-decoration: none;
     &:hover,
     &:focus {
-      svg {
-        fill: ${colors.transGreen};
-      }
+      opacity: 0.75;
     }
-    svg {
-      fill: none;
-      transition: ${theme.transition};
-      user-select: none;
+    &:after {
+      display: none !important;
     }
   }
 `;
@@ -142,22 +150,51 @@ const StyledList = styled.ol`
 const StyledListItem = styled.li`
   margin: 0 10px;
   position: relative;
-  font-size: ${fontSizes.smish};
+  font-size: ${fontSizes.xs};
   counter-increment: item 1;
+  font-family: ${fonts.Calibre};
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
   &:before {
     content: '0' counter(item) '.';
     text-align: right;
     color: ${colors.green};
     font-size: ${fontSizes.xs};
+    font-family: ${fonts.SFMono};
+    margin-right: 4px;
+    letter-spacing: 0;
   }
 `;
 const StyledListLink = styled(Link)`
   padding: 12px 10px;
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 6px;
+    left: 10px;
+    right: 10px;
+    height: 1.5px;
+    background: linear-gradient(90deg, #4f46e5, #a855f7);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+    transform-origin: left center;
+  }
+  &.active-section:after,
+  &:hover:after,
+  &:focus:after {
+    transform: scaleX(1);
+  }
 `;
 const StyledResumeButton = styled.a`
   ${mixins.smallButton};
   margin-left: 10px;
-  font-size: ${fontSizes.smish};
+  font-size: ${fontSizes.xs};
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 600;
 `;
 const StyledThemeToggle = styled.button`
   ${mixins.flexCenter};
@@ -211,12 +248,26 @@ const MoonIcon = () => (
   </svg>
 );
 
+const ProgressBar = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #4f46e5, #a855f7, #ec4899);
+  width: ${p => p.progress}%;
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+`;
+
 const DELTA = 5;
 
 const Nav = ({ isHome }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrollDirection, setScrollDirection] = useState('none');
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState('');
+  const [scrolled, setScrolled] = useState(false);
   const lastScrollTopRef = useRef(0);
   const scrollDirectionRef = useRef('none');
   const { isDark, toggleTheme } = useTheme();
@@ -230,6 +281,22 @@ const Nav = ({ isHome }) => {
     const handleScroll = () => {
       const fromTop = window.scrollY;
       const lastScrollTop = lastScrollTopRef.current;
+
+      // Scroll progress
+      const total = document.body.scrollHeight - window.innerHeight;
+      setScrollProgress(total > 0 ? (fromTop / total) * 100 : 0);
+      setScrolled(fromTop > 120);
+
+      // Active section via IntersectionObserver ids
+      const sectionIds = ['about', 'jobs', 'projects', 'certifications', 'contact'];
+      for (let i = sectionIds.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sectionIds[i]);
+        if (el && el.getBoundingClientRect().top <= 120) {
+          setActiveSection(sectionIds[i]);
+          break;
+        }
+        if (i === 0) setActiveSection('');
+      }
 
       if (Math.abs(lastScrollTop - fromTop) <= DELTA || menuOpen) {
         lastScrollTopRef.current = fromTop;
@@ -276,28 +343,15 @@ const Nav = ({ isHome }) => {
   const fadeDownClass = isHome ? 'fadedown' : '';
 
   return (
-    <StyledContainer scrollDirection={scrollDirection}>
+    <StyledContainer scrollDirection={scrollDirection} scrolled={scrolled}>
+      <ProgressBar progress={scrollProgress} />
       <Helmet>
         <body className={menuOpen ? 'blur' : ''} />
       </Helmet>
       <StyledNav>
-        <TransitionGroup component={null}>
-          {isMounted && (
-            <CSSTransition classNames={fadeClass} timeout={timeout}>
-              <StyledLogo tabindex="-1">
-                {isHome ? (
-                  <a href="/" aria-label="home">
-                    <IconLogo />
-                  </a>
-                ) : (
-                  <Link to="/" aria-label="home">
-                    <IconLogo />
-                  </Link>
-                )}
-              </StyledLogo>
-            </CSSTransition>
-          )}
-        </TransitionGroup>
+        <StyledLogo style={{ opacity: scrolled ? 1 : 0, transition: 'opacity 0.35s ease' }}>
+          <Link to="/" aria-label="home">LL</Link>
+        </StyledLogo>
 
         <TransitionGroup component={null}>
           {isMounted && (
@@ -321,7 +375,11 @@ const Nav = ({ isHome }) => {
                     <StyledListItem
                       key={i}
                       style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
-                      <StyledListLink to={url}>{name}</StyledListLink>
+                      <StyledListLink
+                        to={url}
+                        className={activeSection === url.replace('/#', '') ? 'active-section' : ''}>
+                        {name}
+                      </StyledListLink>
                     </StyledListItem>
                   </CSSTransition>
                 ))}

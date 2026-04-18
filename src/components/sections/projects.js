@@ -5,9 +5,14 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { FormattedIcon } from '@components/icons';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { theme, mixins, media, Section, Button } from '@styles';
 const { colors, fontSizes, fonts } = theme;
+
+const borderSweep = keyframes`
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+`;
 
 const StyledContainer = styled(Section)`
   ${mixins.flexCenter};
@@ -53,8 +58,37 @@ const StyledProjectInner = styled.div`
   padding: 2rem 1.75rem;
   height: 100%;
   border-radius: ${theme.borderRadius};
-  transition: ${theme.transition};
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
   background-color: ${colors.lightNavy};
+  overflow: hidden;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, #4f46e5, #a855f7);
+    border-radius: ${theme.borderRadius} ${theme.borderRadius} 0 0;
+    transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &:before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1.5px;
+    background: linear-gradient(120deg, rgba(79, 70, 229, 0), rgba(168, 85, 247, 0), rgba(236, 72, 153, 0));
+    background-size: 200% 100%;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
 `;
 const StyledProject = styled.div`
   transition: ${theme.transition};
@@ -63,7 +97,15 @@ const StyledProject = styled.div`
   &:focus {
     outline: 0;
     ${StyledProjectInner} {
-      transform: translateY(-5px);
+      transform: translateY(-7px);
+      box-shadow: 0 20px 40px -18px rgba(79, 70, 229, 0.35);
+      &:after { width: 100%; }
+      &:before {
+        opacity: 1;
+        background: linear-gradient(120deg, #4f46e5, #a855f7, #ec4899, #4f46e5);
+        background-size: 200% 100%;
+        animation: ${borderSweep} 2.5s linear infinite;
+      }
     }
   }
 `;

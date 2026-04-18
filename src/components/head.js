@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import config from '@config';
 import favicon from '@images/favicons/favicon.ico';
+import faviconSvg from '@images/favicons/favicon.svg';
 import ogImage from '@images/og.png';
 import appleIcon57x57 from '@images/favicons/apple-icon-57x57.png';
 import appleIcon60x60 from '@images/favicons/apple-icon-60x60.png';
@@ -25,6 +26,7 @@ const Head = ({ metadata }) => (
     <title itemProp="name" lang="en">
       {metadata.title}
     </title>
+    <link rel="icon" type="image/svg+xml" href={faviconSvg} />
     <link rel="shortcut icon" href={favicon} />
     <link rel="canonical" href="https://ledian63s.github.io" />
 
