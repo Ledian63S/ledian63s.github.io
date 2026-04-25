@@ -58,10 +58,11 @@ button { background: none; border: none; padding: 0; }
   display: flex; align-items: center; justify-content: center;
   pointer-events: none;
   opacity: 0;
-  transition: opacity .2s ease;
+  transition: opacity .2s ease, transform .75s cubic-bezier(.22,.61,.36,1);
 }
 #splash.visible { opacity: 1; }
-#splash.fade    { opacity: 0; transition: opacity .6s ease; }
+/* Curtain rises — .visible keeps opacity:1, only transform transitions */
+#splash.fade    { transform: translateY(-105%); }
 
 .splash-logo {
   width: 11.2rem; height: 11.2rem;
@@ -87,17 +88,6 @@ button { background: none; border: none; padding: 0; }
   opacity: 0;
   animation: splash-text .5s ease forwards;
   animation-delay: .8s;
-}
-
-/* Page hidden under the splash; reveals with a slide-up transition */
-.home .page {
-  opacity: 0;
-  transform: translateY(2rem);
-  transition: opacity .65s var(--ease), transform .65s var(--ease);
-}
-.home .page.splash-reveal {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 #type-cursor {

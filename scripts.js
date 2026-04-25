@@ -1,13 +1,17 @@
 (function () {
   'use strict';
 
-  const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const noMotion   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Animations play once per page per session — same behaviour as Julia Krantz */
+  const sessionKey = 'll_' + location.pathname;
+  const firstVisit = !sessionStorage.getItem(sessionKey);
+  if (firstVisit) sessionStorage.setItem(sessionKey, '1');
 
   /* ── Page intro: typewriter ── */
   (function () {
     const overlay = document.getElementById('intro');
     if (!overlay) return;
-    if (noMotion) { overlay.remove(); return; }
+    if (noMotion || !firstVisit) { overlay.remove(); return; }
 
     function collectTextNodes(root) {
       const skip = '#intro,#cursor,#cookie-banner,#cookie-modal,script,style,noscript';
@@ -115,7 +119,7 @@
   /* ── Homepage splash / welcome screen ── */
   (function () {
     if (!document.body.classList.contains('home')) return;
-    if (noMotion) return;
+    if (noMotion || !firstVisit) return;
 
     const splash = document.createElement('div');
     splash.id = 'splash';
@@ -124,13 +128,11 @@
 
     requestAnimationFrame(() => requestAnimationFrame(() => splash.classList.add('visible')));
 
-    /* Hold for 1.8s (border draw 0.9s + text 0.5s + pause), then slide the
-       homepage content up into view as the splash fades out */
+    /* Border draws in 0.9s, LL text appears at 0.8s — hold then curtain-rise */
     setTimeout(() => {
-      document.querySelector('.page')?.classList.add('splash-reveal');
       splash.classList.add('fade');
-      setTimeout(() => splash.remove(), 700);
-    }, 1800);
+      setTimeout(() => splash.remove(), 750);
+    }, 1900);
   })();
 
   /* ── bfcache fix ── */
