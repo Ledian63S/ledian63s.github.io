@@ -763,7 +763,11 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
   .element-grid { grid-template-columns: repeat(2, 1fr); overflow: hidden; }
   .element--empty { display: none; }
   .project-grid { grid-template-columns: 1fr; }
-  .project-cell--left { min-height: 6rem; }
+  .project-cell--left { min-height: auto; }
+  .project-cell--left .el-sym  { font-size: 4rem; }
+  .project-cell--left .el-name { font-size: 1.5rem; }
+  .project-cell--left h1.el-name { font-size: 1.5rem; }
+  .project-cell--left .el-cat  { font-size: .85rem; }
   .footer__bottom { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .footer__copy { font-size: 1rem; }
   .footer__cta { font-size: 1rem; }
