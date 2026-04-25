@@ -14,7 +14,7 @@
   (function () {
     const overlay = document.getElementById('intro');
     if (!overlay) return;
-    if (noMotion || !firstVisit || window.matchMedia('(max-width: 768px)').matches) { overlay.remove(); return; }
+    if (noMotion || !firstVisit) { overlay.remove(); return; }
 
     function collectTextNodes(root) {
       const skip = '#intro,#cursor,#cookie-banner,#cookie-modal,script,style,noscript';
