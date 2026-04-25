@@ -135,8 +135,9 @@
     }, 1900);
   })();
 
-  /* ── bfcache fix ── */
-  window.addEventListener('pageshow', () => {
+  /* ── bfcache fix — only clean up on back/forward cache restores ── */
+  window.addEventListener('pageshow', e => {
+    if (!e.persisted) return;
     document.getElementById('intro')?.remove();
     document.getElementById('splash')?.remove();
     document.querySelectorAll('.page-veil').forEach(el => el.remove());
