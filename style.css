@@ -720,6 +720,8 @@ body {
   .project-grid { grid-template-columns: 1fr; }
   .project-cell--left { min-height: 6rem; }
   .footer__bottom { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .footer__copy { font-size: 1rem; }
+  .footer__cta { font-size: 1rem; }
   .exp-row { grid-template-columns: 1fr; }
   .work-grid { grid-template-columns: 1fr; }
   /* Typography */
