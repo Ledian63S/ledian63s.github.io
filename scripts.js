@@ -208,6 +208,26 @@
     const b = document.getElementById('cookie-banner'); if (b) b.style.display = 'none';
   };
 
+  /* ── Mobile hamburger ── */
+  (function () {
+    const header = document.querySelector('.header');
+    const nav    = document.querySelector('.header__nav');
+    if (!header || !nav) return;
+    const btn = document.createElement('button');
+    btn.className = 'header__hamburger';
+    btn.setAttribute('aria-label', 'Toggle navigation');
+    btn.innerHTML = '<span></span><span></span><span></span>';
+    header.appendChild(btn);
+    function close() { nav.classList.remove('open'); btn.classList.remove('open'); document.body.style.overflow = ''; }
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+  })();
+
   /* ── Code cloud ── */
   if (!window.matchMedia('(hover:none)').matches) {
     const chars = '{}[]<>/\\01=+*#;:.~&^'.split('');
