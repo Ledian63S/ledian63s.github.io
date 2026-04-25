@@ -7,6 +7,9 @@
   const firstVisit = !sessionStorage.getItem(sessionKey);
   if (firstVisit) sessionStorage.setItem(sessionKey, '1');
 
+  /* Splash is active on homepage first visit — typewriter must wait for it */
+  const splashActive = firstVisit && !noMotion && document.body.classList.contains('home');
+
   /* ── Page intro: typewriter ── */
   (function () {
     const overlay = document.getElementById('intro');
@@ -78,7 +81,9 @@
       const last    = sorted[sorted.length - 1];
       const totalMs = AFTER + STAGGER + Math.max(2, Math.min(28, 480 / (last?.orig.length || 1))) * (last?.orig.length || 0) + 400;
       setTimeout(() => { cur.style.opacity = '0'; setTimeout(() => cur.remove(), 200); }, totalMs);
-    }, 280);
+    /* On homepage first visit, wait for the splash curtain to rise before
+       fading #intro and starting the typewriter — so both happen together */
+    }, splashActive ? 2850 : 280);
 
     setTimeout(() => {
       nodes.forEach((n, i) => { n.textContent = originals[i]; });
@@ -128,11 +133,11 @@
 
     requestAnimationFrame(() => requestAnimationFrame(() => splash.classList.add('visible')));
 
-    /* Border draws in 0.9s, LL text appears at 0.8s — hold then curtain-rise */
+    /* Border draws in 1.4s, LL text appears at 1.1s — hold then curtain-rise */
     setTimeout(() => {
       splash.classList.add('fade');
       setTimeout(() => splash.remove(), 750);
-    }, 1900);
+    }, 2800);
   })();
 
   /* ── bfcache fix — only clean up on back/forward cache restores ── */

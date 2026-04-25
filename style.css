@@ -46,7 +46,6 @@ button { background: none; border: none; padding: 0; }
 #intro {
   position: fixed; inset: 0; z-index: 10001;
   background: #000; pointer-events: none;
-  display: flex; align-items: center; justify-content: center;
   transition: opacity .22s ease;
 }
 #intro.fade { opacity: 0; }
@@ -81,13 +80,13 @@ button { background: none; border: none; padding: 0; }
 .splash-logo .border-rect {
   stroke-dasharray: 120;
   stroke-dashoffset: 120;
-  animation: splash-border .9s var(--ease) forwards;
+  animation: splash-border 1.4s var(--ease) forwards;
   animation-delay: .1s;
 }
 .splash-logo .logo-text {
   opacity: 0;
-  animation: splash-text .5s ease forwards;
-  animation-delay: .8s;
+  animation: splash-text .7s ease forwards;
+  animation-delay: 1.1s;
 }
 
 #type-cursor {
