@@ -9,13 +9,6 @@
     if (!overlay) return;
     if (noMotion) { overlay.remove(); return; }
 
-    /* Loading logo — inline SVG so it renders instantly (no network round-trip) */
-    const logo = document.createElement('div');
-    logo.className = 'intro-logo';
-    logo.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#000"/><rect x="1" y="1" width="30" height="30" fill="none" stroke="rgba(248,248,248,0.25)" stroke-width="1"/><text x="16" y="19" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="500" fill="#f8f8f8" letter-spacing="-0.4">LL</text></svg>';
-    overlay.appendChild(logo);
-    requestAnimationFrame(() => requestAnimationFrame(() => logo.classList.add('visible')));
-
     function collectTextNodes(root) {
       const skip = '#intro,#cursor,#cookie-banner,#cookie-modal,script,style,noscript';
       const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
@@ -119,9 +112,28 @@
     });
   });
 
+  /* ── Homepage splash / welcome screen ── */
+  (function () {
+    if (!document.body.classList.contains('home')) return;
+    if (noMotion) return;
+
+    const splash = document.createElement('div');
+    splash.id = 'splash';
+    splash.innerHTML = '<div class="splash-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#000"/><rect x="1" y="1" width="30" height="30" fill="none" stroke="rgba(248,248,248,0.35)" stroke-width="1"/><text x="16" y="19" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="500" fill="#f8f8f8" letter-spacing="-0.4">LL</text></svg></div>';
+    document.body.appendChild(splash);
+
+    requestAnimationFrame(() => requestAnimationFrame(() => splash.classList.add('visible')));
+
+    setTimeout(() => {
+      splash.classList.add('fade');
+      setTimeout(() => splash.remove(), 500);
+    }, 1300);
+  })();
+
   /* ── bfcache fix ── */
   window.addEventListener('pageshow', () => {
     document.getElementById('intro')?.remove();
+    document.getElementById('splash')?.remove();
     document.querySelectorAll('.page-veil').forEach(el => el.remove());
   });
 
