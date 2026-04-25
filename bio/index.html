@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bio — Ledian Leka</title>
+  <link rel="canonical" href="https://ledianleka.com/bio/">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <meta name="description" content="About Ledian Leka — AL and Business Central developer with 5+ years building ERP extensions and integrations for clients across Europe.">
+  <meta name="author" content="Ledian Leka">
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://ledianleka.com/bio/">
+  <meta property="og:title" content="Bio — Ledian Leka">
+  <meta property="og:description" content="AL and Business Central developer with 5+ years building ERP extensions and integrations for clients across Europe.">
+  <meta property="og:image" content="https://ledianleka.com/content/featured/Beterna-IDC/beterna-idc.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Bio — Ledian Leka">
+  <meta name="twitter:description" content="AL and Business Central developer with 5+ years building ERP extensions and integrations for clients across Europe.">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    /* name-banner on bio: h1 + tag inline left, no space-between */
+    .name-banner { justify-content: flex-start; gap: 1.6rem; flex-wrap: nowrap; }
+
+    /* ─── BIO GRID ───────────────── */
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 5fr 5fr 1.75fr 1.75fr 1.75fr;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .bio-portrait {
+      grid-column: 1;
+      grid-row: 1 / 4;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .bio-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+    }
+    .bio-cell {
+      grid-column: 2;
+      grid-row: 1 / 4;
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+    }
+    @media (max-width: 900px) {
+      .bio-grid { grid-template-columns: 2fr 3fr 1.3fr 1.3fr 1.3fr; }
+    }
+    @media (max-width: 680px) {
+      .bio-grid { grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto; }
+      .bio-portrait { grid-column: 1 / 4; grid-row: 1; height: 70vw; }
+      .bio-cell { grid-column: 1 / 4; grid-row: auto; }
+    }
+    @media (max-width: 440px) {
+      .bio-grid { grid-template-columns: 1fr 1fr; }
+      .bio-portrait { grid-column: 1 / 3; height: 80vw; }
+      .bio-cell { grid-column: 1 / 3; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="intro" role="presentation" aria-hidden="true"></div>
+
+<div id="cursor"></div>
+
+<header class="header">
+  <a href="/" class="header__logo"><img src="../favicon.svg" alt="Ledian Leka"></a>
+  <nav class="header__nav">
+    <a href="/bio/" class="active">Bio</a>
+    <a href="/experience/">Experience</a>
+    <a href="/work/">Work</a>
+    <a href="mailto:leka.ledian@live.co.uk">Contact</a>
+    <a href="/resume.pdf" target="_blank" rel="noopener" class="header__resume">Resume</a>
+  </nav>
+</header>
+
+<div class="page">
+
+  <div class="name-banner">
+    <h1>Ledian Leka</h1>
+    <span class="page-tag">Biography</span>
+  </div>
+
+  <div class="bio-grid">
+
+    <div class="bio-portrait">
+      <img src="../content/about/me.jpg" alt="Ledian Leka" fetchpriority="high">
+    </div>
+
+    <div class="bio-cell">
+      <span class="cell-label">About</span>
+      <div class="intro-body">
+        <p>I entered the ERP world in 2020, joining Smartwork where I built my foundation working with Dynamics AX and Finance & Operations. From there I moved into Business Central, spending years at Info Business Solutions and BE-terna developing extensions, integrations, and custom solutions for clients across Albania, Italy, and Serbia.</p>
+        <p>At BE-terna I was part of the team that shipped BE-terna IDC Incoming Documents — a Business Central extension now listed on Microsoft AppSource. I led the AL development, wrote automated tests, and drove the product through AppSource certification.</p>
+        <p>Since 2024 I've been at MoreOne Technologies, continuing to build for clients across Europe. Outside of work I enjoy side projects in Flutter and VS Code tooling, and when I'm away from the keyboard you'll find me snowboarding, swimming, hiking, or traveling.</p>
+      </div>
+    </div>
+
+    <div class="element">
+      <span class="el-num">01</span>
+      <span class="el-sym">BC</span>
+      <span class="el-name">Business Central</span>
+      <span class="el-cat">Practice</span>
+    </div>
+    <div class="element">
+      <span class="el-num">02</span>
+      <span class="el-sym">AL</span>
+      <span class="el-name">AL / C/AL</span>
+      <span class="el-cat">Practice</span>
+    </div>
+    <div class="element">
+      <span class="el-num">03</span>
+      <span class="el-sym">Mo</span>
+      <span class="el-name"><a href="https://www.moreone.tech/" target="_blank" rel="noopener">MoreOne ↗&#xFE0E;</a></span>
+      <span class="el-cat">Currently At</span>
+    </div>
+    <div class="element">
+      <span class="el-num">04</span>
+      <span class="el-sym">Er</span>
+      <span class="el-name">ERP Development</span>
+      <span class="el-cat">Practice</span>
+    </div>
+    <div class="element">
+      <span class="el-num">05</span>
+      <span class="el-sym">Tr</span>
+      <span class="el-name">Tirana, Albania</span>
+      <span class="el-cat">Location</span>
+    </div>
+    <div class="element">
+      <span class="el-num">06</span>
+      <span class="el-sym">AS</span>
+      <span class="el-name">AppSource</span>
+      <span class="el-cat">Published</span>
+    </div>
+    <div class="element">
+      <span class="el-num">07</span>
+      <span class="el-sym">Az</span>
+      <span class="el-name">Azure</span>
+      <span class="el-cat">Practice</span>
+    </div>
+    <div class="element">
+      <span class="el-num">08</span>
+      <span class="el-sym">Pp</span>
+      <span class="el-name">Power Platform</span>
+      <span class="el-cat">Practice</span>
+    </div>
+    <div class="element">
+      <span class="el-num">09</span>
+      <span class="el-sym">Dk</span>
+      <span class="el-name">Docker</span>
+      <span class="el-cat">Practice</span>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer__bottom">
+    <span class="footer__copy">© 2026 Ledian Leka</span>
+    <a href="mailto:leka.ledian@live.co.uk" class="footer__cta">Get in touch → leka.ledian@live.co.uk</a>
+  </div>
+</footer>
+
+<div id="cookie-banner" role="dialog" aria-label="Cookie preferences">
+  <div class="cb-text"><p>This site uses cookies to remember your preferences.</p></div>
+  <div class="cb-btns">
+    <button class="cb-btn" onclick="cookieDeny()">Reject</button>
+    <button class="cb-btn cb-customize" onclick="cookieCustomize()">Customize</button>
+    <button class="cb-btn primary" onclick="cookieAccept()">Accept all</button>
+  </div>
+</div>
+<div id="cookie-modal" role="dialog" aria-modal="true" aria-label="Cookie preferences">
+  <div class="cm-box">
+    <div class="cm-head"><h2>Preferences</h2></div>
+    <div class="cm-grid">
+      <div class="cm-cell cm-cell--active">
+        <span class="el-num">01</span><span class="el-sym">Es</span><span class="el-name">Essential</span><span class="el-cat">Always on</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle always-on"><input type="checkbox" checked disabled><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+      <div class="cm-cell" id="cm-cell-analytics">
+        <span class="el-num">02</span><span class="el-sym">An</span><span class="el-name">Analytics</span><span class="el-cat">Optional</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle"><input type="checkbox" id="toggle-analytics" onchange="document.getElementById('cm-cell-analytics').classList.toggle('cm-cell--active',this.checked)"><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+    </div>
+    <div class="cm-save">
+      <button class="cb-btn primary" onclick="cookieSavePrefs()">Save</button>
+      <button class="cb-btn" onclick="document.getElementById('cookie-modal').classList.remove('open')">Cancel</button>
+    </div>
+  </div>
+</div>
+<script src="../scripts.js"></script>
+
+</body>
+</html>

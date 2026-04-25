@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quanta — Ledian Leka</title>
+  <link rel="canonical" href="https://ledianleka.com/quanta/">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <meta name="description" content="Quanta — a cross-platform futures position size calculator for Quantower traders. Built with Flutter by Ledian Leka.">
+  <meta name="author" content="Ledian Leka">
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ledianleka.com/quanta/">
+  <meta property="og:title" content="Quanta — Ledian Leka">
+  <meta property="og:description" content="A cross-platform futures position size calculator for Quantower traders. Built with Flutter.">
+  <meta property="og:image" content="https://ledianleka.com/content/featured/Quanta/quanta.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Quanta — Ledian Leka">
+  <meta name="twitter:description" content="A cross-platform futures position size calculator for Quantower traders. Built with Flutter.">
+  <meta name="twitter:image" content="https://ledianleka.com/content/featured/Quanta/quanta.png">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div id="intro" role="presentation" aria-hidden="true"></div>
+
+<div id="cursor"></div>
+
+<header class="header">
+  <a href="/" class="header__logo"><img src="../favicon.svg" alt="Ledian Leka"></a>
+  <nav class="header__nav">
+    <a href="/bio/">Bio</a>
+    <a href="/experience/">Experience</a>
+    <a href="/work/">Work</a>
+    <a href="mailto:leka.ledian@live.co.uk">Contact</a>
+    <a href="/resume.pdf" target="_blank" rel="noopener" class="header__resume">Resume</a>
+  </nav>
+</header>
+
+<div class="page">
+
+  <div class="project-grid">
+
+    <div class="project-cell project-cell--left">
+      <span class="el-num">05</span>
+      <div>
+        <div class="el-sym">Qu</div>
+        <div class="el-name">Quanta</div>
+        <div class="el-cat">Flutter App · 2026</div>
+      </div>
+    </div>
+
+    <div class="project-cell project-cell--mid">
+      <p>A cross-platform futures position size calculator built for Quantower traders. Input your account balance, risk per trade, and stop loss — Quanta instantly computes the exact number of contracts. Includes a full risk ladder at your fixed stop loss, a contract override for manual adjustments, and persistent settings across sessions. Gold-on-black terminal aesthetic with a scanline overlay.</p>
+    </div>
+
+    <div class="project-cell project-cell--right">
+      <div class="meta-group">
+        <span class="meta-group-label">Year</span>
+        <div class="meta-group-value">2026</div>
+      </div>
+      <div class="meta-group">
+        <span class="meta-group-label">Stack</span>
+        <div class="meta-group-value">Flutter · Dart · Provider</div>
+      </div>
+      <div class="meta-group">
+        <span class="meta-group-label">Platforms</span>
+        <div class="meta-group-value">macOS · Windows · iOS · Android · Web</div>
+      </div>
+      <div class="meta-group">
+        <span class="meta-group-label">Markets</span>
+        <div class="meta-group-value">ES · NQ · GC · 6E · 6B · MES · MNQ · MGC</div>
+      </div>
+      <div class="meta-group">
+        <span class="meta-group-label">Links</span>
+        <div class="meta-group-value">
+          <a href="https://ledianleka.com/quanta/" target="_blank" rel="noopener">Site ↗&#xFE0E;</a><br>
+          <a href="https://github.com/Ledian63S/quanta" target="_blank" rel="noopener">GitHub ↗&#xFE0E;</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="img-slider">
+    <div class="img-slider__item"><img src="../content/featured/Quanta/quanta.png" alt="Quanta app"></div>
+    <div class="img-slider__item"><img src="../content/featured/Quanta/quanta-calc.png" alt="Quanta calculator screen"></div>
+    <div class="img-slider__item"><img src="../content/featured/Quanta/quanta-levels.png" alt="Quanta levels screen"></div>
+    <div class="img-slider__item"><img src="../content/featured/Quanta/quanta-markets.png" alt="Quanta markets screen"></div>
+    <div class="img-slider__item"><img src="../content/featured/Quanta/quanta-settings.png" alt="Quanta settings screen"></div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer__bottom">
+    <span class="footer__copy">© 2026 Ledian Leka</span>
+    <a href="/" class="footer__cta">← Back</a>
+  </div>
+</footer>
+
+
+<div id="cookie-banner" role="dialog" aria-label="Cookie preferences">
+  <div class="cb-text"><p>This site uses cookies to remember your preferences.</p></div>
+  <div class="cb-btns">
+    <button class="cb-btn" onclick="cookieDeny()">Reject</button>
+    <button class="cb-btn cb-customize" onclick="cookieCustomize()">Customize</button>
+    <button class="cb-btn primary" onclick="cookieAccept()">Accept all</button>
+  </div>
+</div>
+<div id="cookie-modal" role="dialog" aria-modal="true" aria-label="Cookie preferences">
+  <div class="cm-box">
+    <div class="cm-head"><h2>Preferences</h2></div>
+    <div class="cm-grid">
+      <div class="cm-cell cm-cell--active">
+        <span class="el-num">01</span><span class="el-sym">Es</span><span class="el-name">Essential</span><span class="el-cat">Always on</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle always-on"><input type="checkbox" checked disabled><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+      <div class="cm-cell" id="cm-cell-analytics">
+        <span class="el-num">02</span><span class="el-sym">An</span><span class="el-name">Analytics</span><span class="el-cat">Optional</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle"><input type="checkbox" id="toggle-analytics" onchange="document.getElementById('cm-cell-analytics').classList.toggle('cm-cell--active',this.checked)"><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+    </div>
+    <div class="cm-save">
+      <button class="cb-btn primary" onclick="cookieSavePrefs()">Save</button>
+      <button class="cb-btn" onclick="document.getElementById('cookie-modal').classList.remove('open')">Cancel</button>
+    </div>
+  </div>
+</div>
+<script src="../scripts.js"></script>
+
+</body>
+</html>
