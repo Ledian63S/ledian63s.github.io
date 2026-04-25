@@ -439,6 +439,7 @@ body {
   margin-bottom: .3rem;
   overflow-wrap: break-word;
 }
+h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0 0 .3rem; }
 .el-name a { color: var(--fg); transition: color .2s; }
 .el-name a:hover { color: var(--mid); }
 .el-cat {
