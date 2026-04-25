@@ -513,6 +513,44 @@ body {
   object-fit: contain;
   display: block;
 }
+.lightbox-prev,
+.lightbox-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: 1px solid rgba(248,248,248,.18);
+  color: var(--fg);
+  font-family: var(--clash);
+  font-size: 1.8rem;
+  width: 4.4rem;
+  height: 4.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .15s, opacity .15s;
+  z-index: 10001;
+  opacity: .55;
+}
+.lightbox-prev { left: 2rem; }
+.lightbox-next { right: 2rem; }
+.lightbox-prev:hover,
+.lightbox-next:hover { border-color: rgba(248,248,248,.55); opacity: 1; }
+.lightbox-prev:focus,
+.lightbox-next:focus { outline: none; }
+.lightbox-counter {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--clash);
+  font-size: 1.1rem;
+  letter-spacing: .1em;
+  color: rgba(248,248,248,.4);
+  z-index: 10001;
+  pointer-events: none;
+}
 
 /* ─── IMAGE STRIP (legacy) ───── */
 .image-strip {

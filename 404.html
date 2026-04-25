@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Ledian Leka</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="robots" content="noindex, follow">
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied'});</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3GPVW3414"></script>
+  <script>gtag('js',new Date());gtag('config','G-W3GPVW3414');</script>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .not-found {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: calc(100vh - var(--hdr) - 12rem);
+      padding: var(--pad);
+      border-top: 1px solid var(--line);
+    }
+    .not-found-num {
+      font-family: var(--clash);
+      font-size: clamp(8rem, 18vw, 18rem);
+      font-weight: 600;
+      line-height: 1;
+      color: rgba(248,248,248,.08);
+      margin-bottom: 2.4rem;
+      letter-spacing: -.02em;
+    }
+    .not-found-msg {
+      font-family: var(--clash);
+      font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+    }
+    .not-found-sub {
+      font-family: var(--sans);
+      font-size: 1.4rem;
+      color: var(--mid);
+      margin-bottom: 3.6rem;
+    }
+    .not-found-link {
+      font-family: var(--clash);
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--fg);
+      border: 1px solid var(--line);
+      padding: 1.2rem 2.4rem;
+      transition: border-color .15s;
+    }
+    .not-found-link:hover { border-color: rgba(248,248,248,.5); }
+  </style>
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<header class="header">
+  <a href="/" class="header__logo"><img src="/favicon.svg" alt="Ledian Leka"></a>
+  <nav class="header__nav">
+    <a href="/bio/">Bio</a>
+    <a href="/experience/">Experience</a>
+    <a href="/work/">Work</a>
+    <a href="mailto:leka.ledian@live.co.uk">Contact</a>
+    <a href="/resume.pdf" target="_blank" rel="noopener" class="header__resume">Resume</a>
+  </nav>
+</header>
+
+<div class="page">
+  <div class="not-found">
+    <div class="not-found-num">404</div>
+    <div class="not-found-msg">Page not found.</div>
+    <p class="not-found-sub">The page you're looking for doesn't exist or has been moved.</p>
+    <a href="/" class="not-found-link">← Back to home</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer__bottom">
+    <span class="footer__copy">© 2026 Ledian Leka · <a href="/privacy/">Privacy</a></span>
+  </div>
+</footer>
+
+<div id="cookie-banner" role="dialog" aria-label="Cookie preferences">
+  <div class="cb-text"><p>This site uses cookies to remember your preferences.</p></div>
+  <div class="cb-btns">
+    <button class="cb-btn" onclick="cookieDeny()">Reject</button>
+    <button class="cb-btn cb-customize" onclick="cookieCustomize()">Customize</button>
+    <button class="cb-btn primary" onclick="cookieAccept()">Accept all</button>
+  </div>
+</div>
+<div id="cookie-modal" role="dialog" aria-modal="true" aria-label="Cookie preferences">
+  <div class="cm-box">
+    <div class="cm-head"><h2>Preferences</h2></div>
+    <div class="cm-grid">
+      <div class="cm-cell cm-cell--active">
+        <span class="el-num">01</span><span class="el-sym">Es</span><span class="el-name">Essential</span><span class="el-cat">Always on</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle always-on"><input type="checkbox" checked disabled><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+      <div class="cm-cell" id="cm-cell-analytics">
+        <span class="el-num">02</span><span class="el-sym">An</span><span class="el-name">Analytics</span><span class="el-cat">Optional</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle"><input type="checkbox" id="toggle-analytics" onchange="document.getElementById('cm-cell-analytics').classList.toggle('cm-cell--active',this.checked)"><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+    </div>
+    <div class="cm-save">
+      <button class="cb-btn primary" onclick="cookieSavePrefs()">Save</button>
+      <button class="cb-btn" onclick="document.getElementById('cookie-modal').classList.remove('open')">Cancel</button>
+    </div>
+  </div>
+</div>
+<script src="/scripts.js"></script>
+
+</body>
+</html>
