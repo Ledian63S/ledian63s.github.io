@@ -67,7 +67,7 @@
       const AFTER   = 160;
 
       sorted.forEach(({ node, orig, y }) => {
-        const charMs  = Math.max(2, Math.min(28, 480 / orig.length));
+        const charMs  = Math.max(10, Math.min(28, 480 / orig.length));
         const startAt = AFTER + (y / maxY) * STAGGER;
         let i = 0;
         setTimeout(function type() {
@@ -79,7 +79,7 @@
       });
 
       const last    = sorted[sorted.length - 1];
-      const totalMs = AFTER + STAGGER + Math.max(2, Math.min(28, 480 / (last?.orig.length || 1))) * (last?.orig.length || 0) + 400;
+      const totalMs = AFTER + STAGGER + Math.max(10, Math.min(28, 480 / (last?.orig.length || 1))) * (last?.orig.length || 0) + 400;
       setTimeout(() => { cur.style.opacity = '0'; setTimeout(() => cur.remove(), 200); }, totalMs);
     /* On homepage first visit, wait for the splash curtain to rise before
        fading #intro and starting the typewriter — so both happen together */
