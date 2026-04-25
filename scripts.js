@@ -150,16 +150,23 @@
     const banner = document.getElementById('cookie-banner');
     const modal  = document.getElementById('cookie-modal');
     if (!banner) return;
-    if (!localStorage.getItem('cookie_consent')) banner.style.display = 'flex';
+    const stored = localStorage.getItem('cookie_consent');
+    if (!stored) {
+      banner.style.display = 'flex';
+    } else if (typeof gtag === 'function') {
+      gtag('consent', 'update', { analytics_storage: stored === 'granted' ? 'granted' : 'denied' });
+    }
     if (modal) modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
   })();
 
   window.cookieAccept = function () {
     localStorage.setItem('cookie_consent', 'granted');
+    if (typeof gtag === 'function') gtag('consent', 'update', { analytics_storage: 'granted' });
     const b = document.getElementById('cookie-banner'); if (b) b.style.display = 'none';
   };
   window.cookieDeny = function () {
     localStorage.setItem('cookie_consent', 'denied');
+    if (typeof gtag === 'function') gtag('consent', 'update', { analytics_storage: 'denied' });
     const b = document.getElementById('cookie-banner'); if (b) b.style.display = 'none';
   };
   window.cookieCustomize = function () {
@@ -173,7 +180,9 @@
   };
   window.cookieSavePrefs = function () {
     const tog = document.getElementById('toggle-analytics');
-    localStorage.setItem('cookie_consent', tog && tog.checked ? 'granted' : 'denied');
+    const val = tog && tog.checked ? 'granted' : 'denied';
+    localStorage.setItem('cookie_consent', val);
+    if (typeof gtag === 'function') gtag('consent', 'update', { analytics_storage: val });
     const modal = document.getElementById('cookie-modal'); if (modal) modal.classList.remove('open');
     const b = document.getElementById('cookie-banner'); if (b) b.style.display = 'none';
   };
