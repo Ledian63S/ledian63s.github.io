@@ -119,15 +119,18 @@
 
     const splash = document.createElement('div');
     splash.id = 'splash';
-    splash.innerHTML = '<div class="splash-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#000"/><rect x="1" y="1" width="30" height="30" fill="none" stroke="rgba(248,248,248,0.35)" stroke-width="1"/><text x="16" y="19" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="500" fill="#f8f8f8" letter-spacing="-0.4">LL</text></svg></div>';
+    splash.innerHTML = '<div class="splash-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#000"/><rect class="border-rect" x="1" y="1" width="30" height="30" fill="none" stroke="rgba(248,248,248,0.45)" stroke-width="1"/><text class="logo-text" x="16" y="19" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="500" fill="#f8f8f8" letter-spacing="-0.4">LL</text></svg></div>';
     document.body.appendChild(splash);
 
     requestAnimationFrame(() => requestAnimationFrame(() => splash.classList.add('visible')));
 
+    /* Hold for 1.8s (border draw 0.9s + text 0.5s + pause), then slide the
+       homepage content up into view as the splash fades out */
     setTimeout(() => {
+      document.querySelector('.page')?.classList.add('splash-reveal');
       splash.classList.add('fade');
-      setTimeout(() => splash.remove(), 500);
-    }, 1300);
+      setTimeout(() => splash.remove(), 700);
+    }, 1800);
   })();
 
   /* ── bfcache fix ── */

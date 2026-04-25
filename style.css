@@ -58,15 +58,47 @@ button { background: none; border: none; padding: 0; }
   display: flex; align-items: center; justify-content: center;
   pointer-events: none;
   opacity: 0;
-  transition: opacity .18s ease;
+  transition: opacity .2s ease;
 }
 #splash.visible { opacity: 1; }
-#splash.fade    { opacity: 0; transition: opacity .5s ease; }
+#splash.fade    { opacity: 0; transition: opacity .6s ease; }
 
 .splash-logo {
-  width: 9.6rem; height: 9.6rem;
+  width: 11.2rem; height: 11.2rem;
 }
-.splash-logo svg { width: 100%; height: 100%; display: block; }
+.splash-logo svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+/* Border draws itself clockwise — rect perimeter = 2*(30+30) = 120 */
+@keyframes splash-border {
+  from { stroke-dashoffset: 120; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes splash-text {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.splash-logo .border-rect {
+  stroke-dasharray: 120;
+  stroke-dashoffset: 120;
+  animation: splash-border .9s var(--ease) forwards;
+  animation-delay: .1s;
+}
+.splash-logo .logo-text {
+  opacity: 0;
+  animation: splash-text .5s ease forwards;
+  animation-delay: .8s;
+}
+
+/* Page hidden under the splash; reveals with a slide-up transition */
+.home .page {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity .65s var(--ease), transform .65s var(--ease);
+}
+.home .page.splash-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 #type-cursor {
   position: fixed;
