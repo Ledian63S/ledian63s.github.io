@@ -55,18 +55,20 @@
       display: flex;
       flex-direction: column;
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
       .bio-grid { grid-template-columns: 2fr 3fr 1.3fr 1.3fr 1.3fr; }
     }
-    @media (max-width: 680px) {
+    @media (max-width: 760px) {
       .bio-grid { grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto; }
       .bio-portrait { grid-column: 1 / 4; grid-row: 1; height: 70vw; }
       .bio-cell { grid-column: 1 / 4; grid-row: auto; }
+      .bio-grid .element { grid-column: auto; grid-row: auto; }
     }
-    @media (max-width: 440px) {
+    @media (max-width: 540px) {
       .bio-grid { grid-template-columns: 1fr 1fr; }
-      .bio-portrait { grid-column: 1 / 3; height: 80vw; }
-      .bio-cell { grid-column: 1 / 3; }
+      .bio-portrait { grid-column: 1 / 3; grid-row: 1; height: 80vw; }
+      .bio-cell { grid-column: 1 / 3; grid-row: auto; }
+      .bio-grid .element { grid-column: auto; grid-row: auto; aspect-ratio: auto; min-height: 10rem; }
     }
   </style>
 </head>
