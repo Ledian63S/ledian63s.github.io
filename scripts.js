@@ -9,6 +9,14 @@
     if (!overlay) return;
     if (noMotion) { overlay.remove(); return; }
 
+    /* Loading logo */
+    const logo = document.createElement('img');
+    logo.src = '/favicon.svg';
+    logo.className = 'intro-logo';
+    logo.alt = '';
+    overlay.appendChild(logo);
+    requestAnimationFrame(() => requestAnimationFrame(() => logo.classList.add('visible')));
+
     function collectTextNodes(root) {
       const skip = '#intro,#cursor,#cookie-banner,#cookie-modal,script,style,noscript';
       const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
@@ -164,6 +172,17 @@
       if (e.key === 'ArrowLeft') { e.preventDefault(); openAt(idx - 1); }
       if (e.key === 'ArrowRight') { e.preventDefault(); openAt(idx + 1); }
     });
+
+    /* Touch swipe on lightbox */
+    let lbTouchX = null;
+    lb.addEventListener('touchstart', e => { lbTouchX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', e => {
+      if (lbTouchX === null) return;
+      const dx = e.changedTouches[0].clientX - lbTouchX;
+      lbTouchX = null;
+      if (Math.abs(dx) < 40) return;
+      if (dx < 0) openAt(idx + 1); else openAt(idx - 1);
+    }, { passive: true });
   })();
 
   /* ── Cookie consent ── */
