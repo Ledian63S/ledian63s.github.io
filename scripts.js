@@ -7,7 +7,7 @@
   (function () {
     const overlay = document.getElementById('intro');
     if (!overlay) return;
-    if (noMotion || window.matchMedia('(max-width: 768px)').matches) { overlay.remove(); return; }
+    if (noMotion) { overlay.remove(); return; }
 
     function collectTextNodes(root) {
       const skip = '#intro,#cursor,#cookie-banner,#cookie-modal,script,style,noscript';
