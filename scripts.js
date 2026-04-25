@@ -9,11 +9,10 @@
     if (!overlay) return;
     if (noMotion) { overlay.remove(); return; }
 
-    /* Loading logo */
-    const logo = document.createElement('img');
-    logo.src = '/favicon.svg';
+    /* Loading logo — inline SVG so it renders instantly (no network round-trip) */
+    const logo = document.createElement('div');
     logo.className = 'intro-logo';
-    logo.alt = '';
+    logo.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#000"/><rect x="1" y="1" width="30" height="30" fill="none" stroke="rgba(248,248,248,0.25)" stroke-width="1"/><text x="16" y="19" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="500" fill="#f8f8f8" letter-spacing="-0.4">LL</text></svg>';
     overlay.appendChild(logo);
     requestAnimationFrame(() => requestAnimationFrame(() => logo.classList.add('visible')));
 
