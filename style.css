@@ -772,6 +772,9 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
   .footer__copy { font-size: 1rem; }
   .footer__cta { font-size: 1rem; }
   .exp-row { grid-template-columns: 1fr; }
+  .exp-cell .el-sym  { font-size: 4rem; }
+  .exp-cell .el-name { font-size: 1.5rem; }
+  .exp-cell .el-cat  { font-size: .85rem; }
   .work-grid { grid-template-columns: 1fr; }
   /* Typography */
   .intro-body { padding: 1.4rem; }
