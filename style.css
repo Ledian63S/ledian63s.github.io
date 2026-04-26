@@ -698,10 +698,10 @@ h1.el-name { font-family: var(--clash); font-weight: 500; margin: 0 0 .3rem; }
   text-transform: uppercase;
 }
 .exp-cell p {
-  font-size: clamp(1.1rem, .88vw, 1.25rem);
-  line-height: 1.85;
+  font-size: 1.4rem;
+  line-height: 1.65;
   color: rgba(248,248,248,.78);
-  font-weight: 400;
+  font-weight: 300;
   margin: 0 0 1rem;
 }
 .exp-cell p:last-of-type { margin-bottom: 0; }
@@ -840,8 +840,9 @@ h1.el-name { font-family: var(--clash); font-weight: 500; margin: 0 0 .3rem; }
   min-width: 0;
 }
 .post-lead {
-  font-size: clamp(1.2rem, 1.05vw, 1.4rem);
-  line-height: 1.85;
+  font-size: 1.5rem;
+  line-height: 1.72;
+  font-weight: 300;
   color: rgba(248,248,248,.88);
   margin: 0 0 3rem;
   padding-bottom: 3rem;
@@ -865,8 +866,9 @@ h1.el-name { font-family: var(--clash); font-weight: 500; margin: 0 0 .3rem; }
   line-height: 1.3;
 }
 .post-body p {
-  font-size: clamp(1.1rem, .88vw, 1.25rem);
-  line-height: 1.9;
+  font-size: 1.4rem;
+  line-height: 1.65;
+  font-weight: 300;
   color: rgba(248,248,248,.78);
   margin: 0 0 1.5rem;
 }
