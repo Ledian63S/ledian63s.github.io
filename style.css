@@ -759,7 +759,6 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
 .post-toc a:hover { color: var(--fg); }
 .post-content {
   padding: clamp(3.2rem, 5vw, 6.4rem) clamp(2.4rem, 4vw, 6rem);
-  max-width: 72ch;
 }
 .post-content h2 { font-family: var(--clash); font-size: clamp(1.4rem, 1.5vw, 1.9rem); font-weight: 500; color: var(--fg); margin: 3.6rem 0 1.2rem; line-height: 1.2; }
 .post-content h2:first-child { margin-top: 0; }
