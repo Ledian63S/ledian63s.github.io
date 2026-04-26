@@ -195,6 +195,9 @@
       color: var(--mid);
     }
 
+    /* arrow glyph — pulled from DM Sans so it matches the web font metrics */
+    .arr { font-family: var(--sans); font-size: .82em; font-weight: 400; letter-spacing: 0; }
+
     /* success state */
     .form-success {
       display: none;
@@ -295,7 +298,7 @@
           <textarea id="message" name="message" placeholder="Describe your project or question..." required></textarea>
         </div>
         <div class="form-submit">
-          <button type="submit" class="form-btn">Send →</button>
+          <button type="submit" class="form-btn"><span class="btn-label">Send</span> <span class="arr" aria-hidden="true">→</span></button>
           <span class="form-note">No spam, ever.</span>
         </div>
         <div class="form-success" id="form-success">Message sent — I'll be in touch shortly.</div>
@@ -320,7 +323,7 @@
 <footer class="footer">
   <div class="footer__bottom">
     <span class="footer__copy">© 2026 Ledian Leka · <a href="/privacy/">Privacy</a></span>
-    <a href="/" class="footer__cta">← Back</a>
+    <a href="/" class="footer__cta"><span class="arr">←</span> Back</a>
   </div>
 </footer>
 
@@ -360,7 +363,7 @@
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
       const btn = form.querySelector('.form-btn');
-      btn.textContent = 'Sending…';
+      btn.innerHTML = 'Sending…';
       btn.disabled = true;
       try {
         const res = await fetch(form.action, {
@@ -373,12 +376,12 @@
           form.style.display = 'none';
           success.style.display = 'block';
         } else {
-          btn.textContent = 'Send →';
+          btn.innerHTML = '<span class="btn-label">Send</span> <span class="arr" aria-hidden="true">→</span>';
           btn.disabled = false;
           alert('Something went wrong. Please email me directly at leka.ledian@live.co.uk');
         }
       } catch {
-        btn.textContent = 'Send →';
+        btn.innerHTML = '<span class="btn-label">Send</span> <span class="arr" aria-hidden="true">→</span>';
         btn.disabled = false;
         alert('Something went wrong. Please email me directly at leka.ledian@live.co.uk');
       }
