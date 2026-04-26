@@ -66,8 +66,19 @@
       const STAGGER = 550;
       const AFTER   = 160;
 
+      /* Group text nodes by their nearest block ancestor so that inline
+         elements (e.g. <a> inside <p>) share the same charMs as the rest
+         of the paragraph and don't type at a visibly different speed. */
+      const blockLengths = new Map();
+      sorted.forEach(({ node, orig }) => {
+        const block = node.parentElement?.closest('p,h1,h2,h3,h4,li') ?? node.parentElement;
+        blockLengths.set(block, (blockLengths.get(block) || 0) + orig.length);
+      });
+
       sorted.forEach(({ node, orig, y }) => {
-        const charMs  = Math.max(2, Math.min(10, 480 / orig.length));
+        const block   = node.parentElement?.closest('p,h1,h2,h3,h4,li') ?? node.parentElement;
+        const groupLen = blockLengths.get(block) || orig.length;
+        const charMs  = Math.max(2, Math.min(28, 480 / groupLen));
         const startAt = AFTER + (y / maxY) * STAGGER;
         let i = 0;
         setTimeout(function type() {
@@ -78,8 +89,10 @@
         }, startAt);
       });
 
-      const last    = sorted[sorted.length - 1];
-      const totalMs = AFTER + STAGGER + Math.max(2, Math.min(10, 480 / (last?.orig.length || 1))) * (last?.orig.length || 0) + 400;
+      const last      = sorted[sorted.length - 1];
+      const lastBlock = last?.node.parentElement?.closest('p,h1,h2,h3,h4,li') ?? last?.node.parentElement;
+      const lastGroupLen = blockLengths.get(lastBlock) || (last?.orig.length || 1);
+      const totalMs = AFTER + STAGGER + Math.max(2, Math.min(28, 480 / lastGroupLen)) * (last?.orig.length || 0) + 400;
       setTimeout(() => { cur.style.opacity = '0'; setTimeout(() => cur.remove(), 200); }, totalMs);
     /* On homepage first visit, wait for the splash curtain to rise before
        fading #intro and starting the typewriter — so both happen together */
