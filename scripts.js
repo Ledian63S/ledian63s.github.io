@@ -19,16 +19,22 @@
       });
     };
 
-    const updateToc = function () {
+    function elOffsetTop(el) {
+      var t = 0;
+      while (el) { t += el.offsetTop; el = el.offsetParent; }
+      return t;
+    }
+
+    var offsets = targets.map(elOffsetTop);
+
+    var updateToc = function (sy) {
       if (!targets.length) return;
-      var active = targets[0];
+      var active = 0;
+      var threshold = window.innerHeight * 0.45;
       for (var i = targets.length - 1; i >= 0; i--) {
-        if (targets[i].getBoundingClientRect().top <= 120) {
-          active = targets[i];
-          break;
-        }
+        if (offsets[i] - sy < threshold) { active = i; break; }
       }
-      activate(active.id);
+      activate(targets[active].id);
     };
 
     tocLinks.forEach(function (a) {
@@ -37,14 +43,19 @@
       });
     });
 
-    window.addEventListener('scroll', function () {
-      const scrolled = document.documentElement.scrollTop;
-      const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
-      updateToc();
-    }, { passive: true });
+    var lastSY = -1;
+    (function rafLoop() {
+      var sy = window.scrollY !== undefined ? window.scrollY : document.documentElement.scrollTop;
+      if (Math.abs(sy - lastSY) > 0.5) {
+        lastSY = sy;
+        updateToc(sy);
+        var total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        bar.style.width = (total > 0 ? (sy / total * 100) : 0) + '%';
+      }
+      requestAnimationFrame(rafLoop);
+    }());
 
-    updateToc();
+    updateToc(0);
   }
 
   const noMotion   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

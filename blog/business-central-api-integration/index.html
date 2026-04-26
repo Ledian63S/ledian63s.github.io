@@ -90,16 +90,6 @@
         <a href="#database-queries">Direct database queries &amp; .NET interop</a>
         <a href="#integration-failures">What makes integrations fail</a>
       </nav>
-      <nav class="post-aside-more">
-        <span class="post-toc-label">More posts</span>
-        <a href="/blog/business-central-upgrade/">BC Upgrade</a>
-        <a href="/blog/al-extension-development/">AL Extension Development</a>
-        <a href="/blog/hiring-business-central-developer/">Hiring a BC Developer</a>
-      </nav>
-      <div class="post-aside-cta">
-        <a href="/bio/">Written by Ledian Leka ↗&#xFE0E;</a>
-        <a href="/contact/">Available for BC work →</a>
-      </div>
     </aside>
 
     <div class="post-body">
@@ -125,6 +115,19 @@
       <p>In my experience, most integration failures aren't caused by the initial build. They're caused by insufficient error handling, inadequate logging, and missing retry logic. An integration that works in normal conditions but silently swallows errors under load is worse than one that fails loudly — because silent failures cause data drift that takes weeks to detect and reconcile.</p>
       <p>Every integration I build includes structured error logging, alerting on repeated failures, and a documented recovery procedure. That operational thinking is as important as the technical implementation.</p>
       <p>If you're evaluating BC integration work and want a developer who has handled both modern API and legacy file-based scenarios across multiple production environments, <a href="/contact/">reach out to discuss your requirements</a>. Related reading: <a href="/blog/al-extension-development/">how AL extensions work</a> — most integrations are delivered as extensions that live alongside your BC customizations.</p>
+    </div>
+
+    <div class="post-aside-foot">
+      <nav class="post-aside-more">
+        <span class="post-toc-label">More posts</span>
+        <a href="/blog/business-central-upgrade/">BC Upgrade</a>
+        <a href="/blog/al-extension-development/">AL Extension Development</a>
+        <a href="/blog/hiring-business-central-developer/">Hiring a BC Developer</a>
+      </nav>
+      <div class="post-aside-cta">
+        <a href="/bio/">Written by Ledian Leka ↗&#xFE0E;</a>
+        <a href="/contact/">Available for BC work →</a>
+      </div>
     </div>
 
   </div>
