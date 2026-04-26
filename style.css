@@ -652,9 +652,10 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
 .exp-cell {
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  padding: clamp(1rem, 1.2vw, 1.6rem) clamp(1rem, 1.2vw, 1.8rem);
+  padding: clamp(1.6rem, 2vw, 2.8rem) clamp(1.2rem, 1.4vw, 2rem);
   display: flex;
   flex-direction: column;
+  gap: .5rem;
 }
 .exp-cell .el-sym { margin: .4rem 0; }
 .exp-role-row {
