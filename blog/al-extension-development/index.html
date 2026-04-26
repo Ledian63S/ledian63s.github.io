@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AL Extension Development for Business Central: What It Is and Why It Matters | Ledian Leka</title>
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <link rel="canonical" href="https://ledianleka.com/blog/al-extension-development/">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../favicon.png">
+  <meta name="description" content="AL extension development is how Business Central is customised without modifying base code. What the extension model means for your project, and what good AL development looks like in practice.">
+  <meta name="author" content="Ledian Leka">
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://ledianleka.com/blog/al-extension-development/">
+  <meta property="og:title" content="AL Extension Development for Business Central: What It Is and Why It Matters">
+  <meta property="og:description" content="AL extension development is how Business Central is customised without modifying base code. What the extension model means for your project, and what good AL development looks like in practice.">
+  <meta property="og:image" content="https://ledianleka.com/content/featured/Beterna-IDC/beterna-idc.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AL Extension Development for Business Central: What It Is and Why It Matters">
+  <meta name="twitter:description" content="AL extension development is how Business Central is customised without modifying base code. What the extension model means for your project, and what good AL development looks like in practice.">
+  <meta name="twitter:image" content="https://ledianleka.com/content/featured/Beterna-IDC/beterna-idc.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ledianleka.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ledianleka.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "AL Extension Development", "item": "https://ledianleka.com/blog/al-extension-development/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "AL Extension Development for Business Central: What It Is and Why It Matters",
+    "description": "AL extension development is how Business Central is customised without modifying base code. What the extension model means for your project, and what good AL development looks like in practice.",
+    "author": { "@type": "Person", "name": "Ledian Leka", "url": "https://ledianleka.com" },
+    "publisher": { "@type": "Person", "name": "Ledian Leka", "url": "https://ledianleka.com" },
+    "url": "https://ledianleka.com/blog/al-extension-development/",
+    "datePublished": "2026-04-26",
+    "keywords": ["AL extension development", "Business Central AL extension", "BC customisation", "AL language", "Microsoft AppSource"]
+  }
+  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied'});</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3GPVW3414"></script>
+  <script>gtag('js',new Date());gtag('config','G-W3GPVW3414');</script>
+  <link rel="preload" href="../../fonts/ClashDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../fonts/ClashDisplay-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+<div id="intro" role="presentation" aria-hidden="true"></div>
+
+<div id="cursor"></div>
+
+<header class="header">
+  <a href="/" class="header__logo"><img src="../../favicon.svg" alt="Ledian Leka"></a>
+  <nav class="header__nav">
+    <a href="/bio/">Bio</a>
+    <a href="/experience/">Experience</a>
+    <a href="/work/">Work</a>
+    <a href="/contact/">Contact</a>
+    <a href="/Ledian-Leka-Resume.pdf" target="_blank" rel="noopener" class="header__resume">Resume</a>
+  </nav>
+</header>
+
+<div class="page">
+
+  <div class="post-wrap">
+
+    <aside class="post-aside">
+      <span class="el-num">02</span>
+      <div class="el-sym">AL</div>
+      <h1 class="el-name">AL Extension Development</h1>
+      <div class="el-cat post-aside-cat">AL Development · Apr 2026 · 4 min read</div>
+      <div class="post-aside-tags">
+        <span class="exp-tag">AL</span>
+        <span class="exp-tag">Business Central</span>
+        <span class="exp-tag">AppSource</span>
+        <span class="exp-tag">Extensions</span>
+      </div>
+      <nav class="post-aside-toc">
+        <span class="post-toc-label">On this page</span>
+        <a href="#what-extensions-are">What AL extensions actually are</a>
+        <a href="#appsource">AppSource and the bar it sets</a>
+        <a href="#good-news-for-clients">Why the extension model is good news for clients</a>
+      </nav>
+    </aside>
+
+    <div class="post-body">
+      <p class="post-lead">AL extension development is the foundation of how Business Central is customized today — and understanding it is essential for any organization that wants to tailor BC to fit how they actually work. Over eight years building AL extensions across industries and client sizes, from single-entity SMEs to multi-country enterprise deployments, I've come to see the extension model as one of the smarter architectural decisions Microsoft made when redesigning the platform.</p>
+
+      <h2 id="what-extensions-are">What AL Extensions Actually Are</h2>
+      <p>In the old NAV world, customizations were modifications — changes made directly to the base application's code and objects. That approach worked, but it made <a href="/blog/business-central-upgrade/">upgrades painful</a>. Every version bump required reconciling your changes against Microsoft's changes, and there was no clean separation between platform and customization.</p>
+      <p>AL extensions changed that. An extension is a separate package that layers on top of the base application without touching it. It can add new tables, pages, and codeunits, or extend existing ones through a controlled event-and-subscriber model. When Microsoft updates BC, your extension doesn't have to be rewritten — it just needs to remain compatible.</p>
+
+      <h3>The Extension Model in Practice</h3>
+      <p>In practice, working within the extension model requires a different mindset than classic NAV development. You can't just reach into a base table and add a field anymore — you add it through a table extension. You can't modify a base codeunit directly — you subscribe to its events. That constraint is intentional, and it pushes developers toward cleaner, more maintainable designs.</p>
+      <p>It also means the quality of an AL extension depends heavily on how well the developer understands BC's event architecture. Poorly written extensions that work around the model rather than with it tend to break on upgrades and cause subtle data integrity issues down the line.</p>
+
+      <h2 id="appsource">AppSource and the Bar It Sets</h2>
+      <p>Publishing an extension on Microsoft AppSource — as I did with <a href="/work/beterna-idc/">BE-terna IDC</a> — requires meeting a certification standard that goes beyond basic functionality. Microsoft reviews the code for security, performance, and compliance with the extension model. The process forces a level of rigor that's genuinely useful: it surfaces edge cases, validates upgrade paths, and ensures the extension handles multi-tenancy correctly.</p>
+      <p>That experience translates directly to client work. Extensions built to AppSource standards are more reliable, easier to maintain, and far less likely to cause problems during BC's regular update cycles.</p>
+
+      <h3>Custom Extensions Across Industries</h3>
+      <p>Beyond AppSource, the bulk of AL extension work is custom — solutions built for a specific client's processes. I've built extensions for manufacturing, distribution, professional services, and retail clients, covering everything from custom approval workflows and document management to complex pricing logic and industry-specific reporting. The domain variety matters: it means encountering edge cases that a single-industry developer might never see.</p>
+
+      <h2 id="good-news-for-clients">Why the Extension Model Is Good News for Clients</h2>
+      <p>For organizations evaluating Business Central customization, the extension model is genuinely good news. It means customizations are isolated, testable, and upgradeable. It means you're not locked into a developer who made undocumented changes to base objects. And it means your investment in custom development can survive Microsoft's continuous update cadence without constant rewrites.</p>
+      <p>If you're planning custom BC development and want extensions built to the standards that AppSource certification demands, <a href="/contact/">let's talk about what you need</a>. Also worth reading: <a href="/blog/business-central-api-integration/">how BC connects to external systems</a> — extensions and integrations often go hand in hand.</p>
+    </div>
+
+    <div class="post-aside-foot">
+      <nav class="post-aside-more">
+        <span class="post-toc-label">More posts</span>
+        <a href="/blog/business-central-upgrade/">BC Upgrade</a>
+        <a href="/blog/business-central-api-integration/">BC API Integration</a>
+        <a href="/blog/hiring-business-central-developer/">Hiring a BC Developer</a>
+      </nav>
+      <div class="post-aside-related">
+        <span class="post-toc-label">Related work</span>
+        <a href="/work/beterna-idc/">BE-terna IDC ↗&#xFE0E;</a>
+      </div>
+      <div class="post-aside-cta">
+        <a href="/bio/">Written by Ledian Leka ↗&#xFE0E;</a>
+        <a href="/contact/">Available for BC work →</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer__bottom">
+    <span class="footer__copy">© 2026 Ledian Leka · <a href="/privacy/">Privacy</a></span>
+    <a href="/blog/" class="footer__cta">← Back</a>
+  </div>
+</footer>
+
+<div id="cookie-banner" role="dialog" aria-label="Cookie preferences">
+  <div class="cb-text"><p>This site uses cookies to remember your preferences.</p></div>
+  <div class="cb-btns">
+    <button class="cb-btn" onclick="cookieDeny()">Reject</button>
+    <button class="cb-btn cb-customize" onclick="cookieCustomize()">Customize</button>
+    <button class="cb-btn primary" onclick="cookieAccept()">Accept all</button>
+  </div>
+</div>
+<div id="cookie-modal" role="dialog" aria-modal="true" aria-label="Cookie preferences">
+  <div class="cm-box">
+    <div class="cm-head"><h2>Preferences</h2></div>
+    <div class="cm-grid">
+      <div class="cm-cell cm-cell--active">
+        <span class="el-num">01</span><span class="el-sym">Es</span><span class="el-name">Essential</span><span class="el-cat">Always on</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle always-on"><input type="checkbox" checked disabled><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+      <div class="cm-cell" id="cm-cell-analytics">
+        <span class="el-num">02</span><span class="el-sym">An</span><span class="el-name">Analytics</span><span class="el-cat">Optional</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle"><input type="checkbox" id="toggle-analytics" onchange="document.getElementById('cm-cell-analytics').classList.toggle('cm-cell--active',this.checked)"><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+    </div>
+    <div class="cm-save">
+      <button class="cb-btn primary" onclick="cookieSavePrefs()">Save</button>
+      <button class="cb-btn" onclick="document.getElementById('cookie-modal').classList.remove('open')">Cancel</button>
+    </div>
+  </div>
+</div>
+<script src="../../scripts.js"></script>
+
+</body>
+</html>

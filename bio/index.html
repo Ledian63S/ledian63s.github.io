@@ -3,28 +3,60 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bio — Ledian Leka</title>
+  <title>Ledian Leka — AL & Business Central Developer</title>
+  <link rel="preconnect" href="https://www.google-analytics.com">
   <link rel="canonical" href="https://ledianleka.com/bio/">
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-  <meta name="description" content="About Ledian Leka — AL and Business Central developer with 5+ years building ERP extensions and integrations for clients across Europe.">
+  <link rel="icon" type="image/png" sizes="192x192" href="../favicon.png">
+  <meta name="description" content="Meet Ledian Leka — Business Central developer based in Tirana, Albania, with 8 years in the Microsoft ERP stack delivering AL extensions, API integrations, and AppSource-certified solutions.">
   <meta name="author" content="Ledian Leka">
   <meta name="theme-color" content="#000000">
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://ledianleka.com/bio/">
-  <meta property="og:title" content="Bio — Ledian Leka">
-  <meta property="og:description" content="AL and Business Central developer with 5+ years building ERP extensions and integrations for clients across Europe.">
+  <meta property="og:title" content="Ledian Leka — AL & Business Central Developer">
+  <meta property="og:description" content="Business Central developer based in Tirana, Albania, with 8 years in the Microsoft ERP stack delivering AL extensions, API integrations, and AppSource-certified solutions.">
   <meta property="og:image" content="https://ledianleka.com/content/featured/Beterna-IDC/beterna-idc.png">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Bio — Ledian Leka">
-  <meta name="twitter:description" content="AL and Business Central developer with 5+ years building ERP extensions and integrations for clients across Europe.">
+  <meta name="twitter:title" content="Ledian Leka — AL & Business Central Developer">
+  <meta name="twitter:description" content="Business Central developer based in Tirana, Albania, with 8 years in the Microsoft ERP stack delivering AL extensions, API integrations, and AppSource-certified solutions.">
+  <meta name="twitter:image" content="https://ledianleka.com/content/featured/Beterna-IDC/beterna-idc.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ledianleka.com" },
+      { "@type": "ListItem", "position": 2, "name": "Bio", "item": "https://ledianleka.com/bio/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "mainEntity": {
+      "@type": "Person",
+      "name": "Ledian Leka",
+      "jobTitle": "Business Central Developer",
+      "url": "https://ledianleka.com",
+      "email": "leka.ledian@live.co.uk",
+      "address": { "@type": "PostalAddress", "addressLocality": "Tirana", "addressCountry": "AL" },
+      "worksFor": { "@type": "Organization", "name": "MoreOne Technologies", "url": "https://www.moreone.tech/" },
+      "sameAs": ["https://github.com/Ledian63S", "https://www.linkedin.com/in/lekaledian/"],
+      "knowsAbout": ["Dynamics 365 Business Central", "AL Development", "ERP Integration", "Microsoft AppSource"]
+    }
+  }
+  </script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied'});</script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3GPVW3414"></script>
   <script>gtag('js',new Date());gtag('config','G-W3GPVW3414');</script>
+  <link rel="preload" href="../fonts/ClashDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/ClashDisplay-Medium.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../style.css">
   <style>
-    /* name-banner on bio: h1 + tag inline left, no space-between */
-    .name-banner { justify-content: flex-start; gap: 1.6rem; flex-wrap: nowrap; }
+    /* name-banner on bio: h1 + tag always inline, never stack */
+    .name-banner { flex-direction: row; align-items: baseline; justify-content: flex-start; gap: 1.6rem; flex-wrap: nowrap; }
 
     /* ─── BIO GRID ───────────────── */
     .bio-grid {
@@ -55,18 +87,20 @@
       display: flex;
       flex-direction: column;
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1000px) {
       .bio-grid { grid-template-columns: 2fr 3fr 1.3fr 1.3fr 1.3fr; }
     }
-    @media (max-width: 680px) {
+    @media (max-width: 760px) {
       .bio-grid { grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto; }
       .bio-portrait { grid-column: 1 / 4; grid-row: 1; height: 70vw; }
       .bio-cell { grid-column: 1 / 4; grid-row: auto; }
+      .bio-grid .element { grid-column: auto; grid-row: auto; }
     }
-    @media (max-width: 440px) {
+    @media (max-width: 540px) {
       .bio-grid { grid-template-columns: 1fr 1fr; }
-      .bio-portrait { grid-column: 1 / 3; height: 80vw; }
-      .bio-cell { grid-column: 1 / 3; }
+      .bio-portrait { grid-column: 1 / 3; grid-row: 1; height: 80vw; }
+      .bio-cell { grid-column: 1 / 3; grid-row: auto; }
+      .bio-grid .element { grid-column: auto; grid-row: auto; aspect-ratio: auto; min-height: 10rem; }
     }
   </style>
 </head>
@@ -82,8 +116,8 @@
     <a href="/bio/" class="active">Bio</a>
     <a href="/experience/">Experience</a>
     <a href="/work/">Work</a>
-    <a href="mailto:leka.ledian@live.co.uk">Contact</a>
-    <a href="/resume.pdf" target="_blank" rel="noopener" class="header__resume">Resume</a>
+    <a href="/contact/">Contact</a>
+    <a href="/Ledian-Leka-Resume.pdf" target="_blank" rel="noopener" class="header__resume">Resume</a>
   </nav>
 </header>
 
@@ -97,15 +131,15 @@
   <div class="bio-grid">
 
     <div class="bio-portrait">
-      <img src="../content/about/me.jpg" alt="Ledian Leka" width="600" height="600" fetchpriority="high">
+      <img src="../content/about/me.webp" alt="Ledian Leka" width="600" height="600" fetchpriority="high" decoding="sync">
     </div>
 
     <div class="bio-cell">
-      <span class="cell-label">About</span>
+      <h2 class="cell-label">About</h2>
       <div class="intro-body">
-        <p>I started in ERP at Smartwork, building a foundation in Dynamics AX and Finance & Operations. Moving into Business Central, I spent four years at Info Business Solutions and BE-terna — delivering extensions, API integrations, and custom solutions for clients across Albania, Italy, and Serbia.</p>
-        <p>At BE-terna I led the AL development of BE-terna IDC Incoming Documents, now listed on Microsoft AppSource. I built the test suite, handled performance profiling, and drove the product through certification.</p>
-        <p>Since 2024 I've been at MoreOne Technologies, continuing to ship for clients across Europe. Outside coding — side projects in Flutter and VS Code tooling, and when I'm away from the keyboard: snowboarding, swimming, hiking, traveling.</p>
+        <p>I started in ERP at Smartwork, building a foundation in Dynamics AX and Finance & Operations. Moving into Business Central, I've been at Info Business Solutions, BE-terna, and MoreOne Technologies — delivering extensions, API integrations, and custom solutions for clients across Albania, Italy, Serbia, Denmark, and Ireland.</p>
+        <p>One of those projects ended up on Microsoft AppSource — I led the AL development, built the test suite, handled performance profiling, and drove it through certification.</p>
+        <p>Currently at MoreOne Technologies, working with clients across Europe. Outside coding — side projects in Flutter and VS Code tooling, and when I'm away from the keyboard: snowboarding, swimming, hiking, traveling.</p>
       </div>
     </div>
 

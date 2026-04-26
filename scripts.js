@@ -1,13 +1,77 @@
 (function () {
   'use strict';
 
-  const noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* ─── Reading progress bar + active TOC (blog posts only) ─── */
+  if (document.querySelector('.post-body')) {
+    const bar = document.createElement('div');
+    bar.id = 'reading-progress';
+    document.body.prepend(bar);
+
+    const toc = document.querySelector('.post-aside-toc');
+    const tocLinks = toc ? Array.from(toc.querySelectorAll('a')) : [];
+    const targets = tocLinks.map(function (a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    }).filter(Boolean);
+
+    const activate = function (id) {
+      tocLinks.forEach(function (a) {
+        a.classList.toggle('toc-active', a.getAttribute('href') === '#' + id);
+      });
+    };
+
+    function elOffsetTop(el) {
+      var t = 0;
+      while (el) { t += el.offsetTop; el = el.offsetParent; }
+      return t;
+    }
+
+    var offsets = targets.map(elOffsetTop);
+
+    var updateToc = function (sy) {
+      if (!targets.length) return;
+      var active = 0;
+      var threshold = window.innerHeight * 0.45;
+      for (var i = targets.length - 1; i >= 0; i--) {
+        if (offsets[i] - sy < threshold) { active = i; break; }
+      }
+      activate(targets[active].id);
+    };
+
+    tocLinks.forEach(function (a) {
+      a.addEventListener('click', function () {
+        activate(a.getAttribute('href').slice(1));
+      });
+    });
+
+    var lastSY = -1;
+    (function rafLoop() {
+      var sy = window.scrollY !== undefined ? window.scrollY : document.documentElement.scrollTop;
+      if (Math.abs(sy - lastSY) > 0.5) {
+        lastSY = sy;
+        updateToc(sy);
+        var total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        bar.style.width = (total > 0 ? (sy / total * 100) : 0) + '%';
+      }
+      requestAnimationFrame(rafLoop);
+    }());
+
+    updateToc(0);
+  }
+
+  const noMotion   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* Animations play once per page per session — same behaviour as Julia Krantz */
+  const sessionKey = 'll_' + location.pathname;
+  const firstVisit = !sessionStorage.getItem(sessionKey);
+  if (firstVisit) sessionStorage.setItem(sessionKey, '1');
+
+  /* Splash is active on homepage first visit — typewriter must wait for it */
+  const splashActive = firstVisit && !noMotion && document.body.classList.contains('home');
 
   /* ── Page intro: typewriter ── */
   (function () {
     const overlay = document.getElementById('intro');
     if (!overlay) return;
-    if (noMotion) { overlay.remove(); return; }
+    if (noMotion || !firstVisit) { overlay.remove(); return; }
 
     function collectTextNodes(root) {
       const skip = '#intro,#cursor,#cookie-banner,#cookie-modal,script,style,noscript';
@@ -59,8 +123,19 @@
       const STAGGER = 550;
       const AFTER   = 160;
 
+      /* Group text nodes by their nearest block ancestor so that inline
+         elements (e.g. <a> inside <p>) share the same charMs as the rest
+         of the paragraph and don't type at a visibly different speed. */
+      const blockLengths = new Map();
+      sorted.forEach(({ node, orig }) => {
+        const block = node.parentElement?.closest('p,h1,h2,h3,h4,li') ?? node.parentElement;
+        blockLengths.set(block, (blockLengths.get(block) || 0) + orig.length);
+      });
+
       sorted.forEach(({ node, orig, y }) => {
-        const charMs  = Math.max(2, Math.min(28, 480 / orig.length));
+        const block   = node.parentElement?.closest('p,h1,h2,h3,h4,li') ?? node.parentElement;
+        const groupLen = blockLengths.get(block) || orig.length;
+        const charMs  = Math.max(2, Math.min(28, 480 / groupLen));
         const startAt = AFTER + (y / maxY) * STAGGER;
         let i = 0;
         setTimeout(function type() {
@@ -71,10 +146,14 @@
         }, startAt);
       });
 
-      const last    = sorted[sorted.length - 1];
-      const totalMs = AFTER + STAGGER + Math.max(2, Math.min(28, 480 / (last?.orig.length || 1))) * (last?.orig.length || 0) + 400;
+      const last      = sorted[sorted.length - 1];
+      const lastBlock = last?.node.parentElement?.closest('p,h1,h2,h3,h4,li') ?? last?.node.parentElement;
+      const lastGroupLen = blockLengths.get(lastBlock) || (last?.orig.length || 1);
+      const totalMs = AFTER + STAGGER + Math.max(2, Math.min(28, 480 / lastGroupLen)) * (last?.orig.length || 0) + 400;
       setTimeout(() => { cur.style.opacity = '0'; setTimeout(() => cur.remove(), 200); }, totalMs);
-    }, 280);
+    /* On homepage first visit, wait for the splash curtain to rise before
+       fading #intro and starting the typewriter — so both happen together */
+    }, splashActive ? 2850 : 280);
 
     setTimeout(() => {
       nodes.forEach((n, i) => { n.textContent = originals[i]; });
@@ -112,9 +191,30 @@
     });
   });
 
-  /* ── bfcache fix ── */
-  window.addEventListener('pageshow', () => {
+  /* ── Homepage splash / welcome screen ── */
+  (function () {
+    if (!document.body.classList.contains('home')) return;
+    if (noMotion || !firstVisit) return;
+
+    const splash = document.createElement('div');
+    splash.id = 'splash';
+    splash.innerHTML = '<div class="splash-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><rect width="32" height="32" fill="#000"/><rect class="border-rect" x="1" y="1" width="30" height="30" fill="none" stroke="rgba(248,248,248,0.45)" stroke-width="1"/><text class="logo-text" x="16" y="19" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="500" fill="#f8f8f8" letter-spacing="-0.4">LL</text></svg></div>';
+    document.body.appendChild(splash);
+
+    requestAnimationFrame(() => requestAnimationFrame(() => splash.classList.add('visible')));
+
+    /* Border draws in 1.4s, LL text appears at 1.1s — hold then curtain-rise */
+    setTimeout(() => {
+      splash.classList.add('fade');
+      setTimeout(() => splash.remove(), 750);
+    }, 2800);
+  })();
+
+  /* ── bfcache fix — only clean up on back/forward cache restores ── */
+  window.addEventListener('pageshow', e => {
+    if (!e.persisted) return;
     document.getElementById('intro')?.remove();
+    document.getElementById('splash')?.remove();
     document.querySelectorAll('.page-veil').forEach(el => el.remove());
   });
 
@@ -164,6 +264,17 @@
       if (e.key === 'ArrowLeft') { e.preventDefault(); openAt(idx - 1); }
       if (e.key === 'ArrowRight') { e.preventDefault(); openAt(idx + 1); }
     });
+
+    /* Touch swipe on lightbox */
+    let lbTouchX = null;
+    lb.addEventListener('touchstart', e => { lbTouchX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', e => {
+      if (lbTouchX === null) return;
+      const dx = e.changedTouches[0].clientX - lbTouchX;
+      lbTouchX = null;
+      if (Math.abs(dx) < 40) return;
+      if (dx < 0) openAt(idx + 1); else openAt(idx - 1);
+    }, { passive: true });
   })();
 
   /* ── Cookie consent ── */

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Business Central Developer | Ledian Leka</title>
+  <link rel="preconnect" href="https://www.google-analytics.com">
+  <link rel="canonical" href="https://ledianleka.com/contact/">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="../favicon.png">
+  <meta name="description" content="Get in touch with Ledian Leka — Business Central developer available for AL extensions, ERP integrations, and Dynamics 365 consulting. Freelance, contract, or full-time.">
+  <meta name="author" content="Ledian Leka">
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ledianleka.com/contact/">
+  <meta property="og:title" content="Contact — Business Central Developer | Ledian Leka">
+  <meta property="og:description" content="Get in touch with Ledian Leka — Business Central developer available for AL extensions, ERP integrations, and Dynamics 365 consulting. Freelance, contract, or full-time.">
+  <meta property="og:image" content="https://ledianleka.com/content/featured/Beterna-IDC/beterna-idc.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact — Business Central Developer | Ledian Leka">
+  <meta name="twitter:description" content="Get in touch with Ledian Leka — Business Central developer available for AL extensions, ERP integrations, and Dynamics 365 consulting. Freelance, contract, or full-time.">
+  <meta name="twitter:image" content="https://ledianleka.com/content/featured/Beterna-IDC/beterna-idc.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ledianleka.com" },
+      { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://ledianleka.com/contact/" }
+    ]
+  }
+  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied'});</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3GPVW3414"></script>
+  <script>gtag('js',new Date());gtag('config','G-W3GPVW3414');</script>
+  <link rel="preload" href="../fonts/ClashDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../fonts/ClashDisplay-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      border-top: 1px solid var(--line);
+      border-left: 1px solid var(--line);
+    }
+    .contact-cell {
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: var(--pad);
+    }
+    .contact-cell--label {
+      display: flex;
+      align-items: flex-start;
+      padding-top: calc(var(--pad) + .2rem);
+    }
+    .contact-cell--label span {
+      font-family: var(--clash);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+    .contact-cell p {
+      font-family: var(--sans);
+      font-size: 1.4rem;
+      line-height: 1.75;
+      color: var(--mid);
+      margin-bottom: 1.2rem;
+    }
+    .contact-cell p:last-child { margin-bottom: 0; }
+    .contact-cell a { color: var(--fg); border-bottom: 1px solid var(--line); }
+    .contact-cell a:hover { border-color: var(--fg); }
+
+    /* availability badge */
+    .avail-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .7rem;
+      font-family: var(--clash);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--fg);
+      margin-bottom: 1.6rem;
+    }
+    .avail-dot {
+      width: .7rem; height: .7rem;
+      border-radius: 50%;
+      background: #3ecf6e;
+      flex-shrink: 0;
+      box-shadow: 0 0 6px #3ecf6e;
+    }
+
+    /* what I do tags */
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .8rem;
+    }
+    .service-tag {
+      font-family: var(--clash);
+      font-size: 1.05rem;
+      font-weight: 400;
+      letter-spacing: .05em;
+      color: var(--mid);
+      border: 1px solid var(--line);
+      padding: .5rem 1.1rem;
+    }
+
+    /* direct links — plain text, matches privacy page link style */
+    .direct-links p { font-family: var(--sans); font-size: 1.4rem; line-height: 2; color: var(--mid); margin: 0; }
+    .direct-links a { color: var(--fg); border-bottom: 1px solid var(--line); }
+    .direct-links a:hover { border-color: var(--fg); }
+
+    /* ─── FORM ─────────────────── */
+    .contact-form { display: flex; flex-direction: column; gap: 1.4rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+
+    .form-field { display: flex; flex-direction: column; gap: .6rem; }
+    .form-field label {
+      font-family: var(--clash);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+    .form-field input,
+    .form-field textarea,
+    .form-field select {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--fg);
+      font-family: var(--sans) !important;
+      font-size: 1.4rem;
+      font-weight: 300;
+      padding: 1.1rem 1.4rem;
+      outline: none;
+      transition: border-color .15s;
+      width: 100%;
+      -webkit-appearance: none;
+      appearance: none;
+      border-radius: 0;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus,
+    .form-field select:focus { border-color: rgba(248,248,248,.4); }
+    .form-field input::placeholder,
+    .form-field textarea::placeholder { color: rgba(248,248,248,.2); }
+    .form-field textarea { resize: vertical; min-height: 14rem; }
+
+    /* select arrow */
+    .form-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(248,248,248,.35)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1.4rem center; padding-right: 3.6rem; cursor: pointer; }
+    .form-field select option { background: #111; color: var(--fg); }
+
+    .form-submit {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+    }
+    .form-btn {
+      font-family: var(--clash);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--fg);
+      background: transparent;
+      border: 1px solid var(--line);
+      padding: .9rem 2rem;
+      cursor: none;
+      transition: border-color .15s;
+    }
+    .form-btn:hover { border-color: rgba(248,248,248,.4); }
+    .form-note {
+      font-family: var(--sans);
+      font-size: 1.2rem;
+      color: var(--mid);
+    }
+
+    /* arrow glyph — pulled from DM Sans so it matches the web font metrics */
+    .arr { font-family: var(--sans); font-size: .82em; font-weight: 400; letter-spacing: 0; }
+
+    /* success state */
+    .form-success {
+      display: none;
+      font-family: var(--clash);
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #3ecf6e;
+      padding: 1.6rem 0;
+    }
+
+    @media (max-width: 760px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 680px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-cell--label { padding-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="intro" role="presentation" aria-hidden="true"></div>
+
+<div id="cursor"></div>
+
+<header class="header">
+  <a href="/" class="header__logo"><img src="../favicon.svg" alt="Ledian Leka"></a>
+  <nav class="header__nav">
+    <a href="/bio/">Bio</a>
+    <a href="/experience/">Experience</a>
+    <a href="/work/">Work</a>
+    <a href="/contact/" class="active">Contact</a>
+    <a href="/Ledian-Leka-Resume.pdf" target="_blank" rel="noopener" class="header__resume">Resume</a>
+  </nav>
+</header>
+
+<div class="page">
+
+  <div class="name-banner">
+    <h1>Contact</h1>
+    <span class="page-tag">Let's work together</span>
+  </div>
+
+  <div class="contact-grid">
+
+    <div class="contact-cell contact-cell--label">
+      <span>Availability</span>
+    </div>
+    <div class="contact-cell">
+      <div class="avail-badge"><span class="avail-dot"></span>Open to new opportunities</div>
+      <p>Based in Tirana, Albania — working remotely with clients worldwide. Available for freelance projects, contract engagements, and full-time roles. I typically respond within one business day.</p>
+    </div>
+
+    <div class="contact-cell contact-cell--label">
+      <span>What I do</span>
+    </div>
+    <div class="contact-cell">
+      <div class="service-tags">
+        <span class="service-tag">AL Extensions</span>
+        <span class="service-tag">BC Upgrades</span>
+        <span class="service-tag">API Integrations</span>
+        <span class="service-tag">AppSource</span>
+        <span class="service-tag">Dynamics 365 BC</span>
+        <span class="service-tag">ERP Consulting</span>
+      </div>
+    </div>
+
+    <div class="contact-cell contact-cell--label">
+      <span>Send a message</span>
+    </div>
+    <div class="contact-cell">
+      <!-- Replace YOUR_FORM_ID with your Formspree form ID from formspree.io -->
+      <form class="contact-form" action="https://formspree.io/f/maqaklll" method="POST" id="contact-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="subject">Subject</label>
+          <select id="subject" name="subject">
+            <option value="" disabled selected>What do you need help with?</option>
+            <option value="AL Extension Development">AL Extension Development</option>
+            <option value="Business Central Upgrade">Business Central Upgrade</option>
+            <option value="API / System Integration">API / System Integration</option>
+            <option value="AppSource Development">AppSource Development</option>
+            <option value="ERP Consulting">ERP Consulting</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Describe your project or question..." required></textarea>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="form-btn"><span class="btn-label">Send</span> <span class="arr" aria-hidden="true">→</span></button>
+          <span class="form-note">No spam, ever.</span>
+        </div>
+        <div class="form-success" id="form-success">Message sent — I'll be in touch shortly.</div>
+      </form>
+    </div>
+
+    <div class="contact-cell contact-cell--label">
+      <span>Or directly</span>
+    </div>
+    <div class="contact-cell">
+      <div class="direct-links">
+        <p>
+          <a href="mailto:leka.ledian@live.co.uk">leka.ledian@live.co.uk</a><br>
+          <a href="https://www.linkedin.com/in/lekaledian/" target="_blank" rel="noopener">LinkedIn ↗&#xFE0E;</a><br>
+          <a href="https://github.com/Ledian63S" target="_blank" rel="noopener">GitHub ↗&#xFE0E;</a>
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer__bottom">
+    <span class="footer__copy">© 2026 Ledian Leka · <a href="/privacy/">Privacy</a></span>
+    <a href="/" class="footer__cta">← Back</a>
+  </div>
+</footer>
+
+<div id="cookie-banner" role="dialog" aria-label="Cookie preferences">
+  <div class="cb-text"><p>This site uses cookies to remember your preferences.</p></div>
+  <div class="cb-btns">
+    <button class="cb-btn" onclick="cookieDeny()">Reject</button>
+    <button class="cb-btn cb-customize" onclick="cookieCustomize()">Customize</button>
+    <button class="cb-btn primary" onclick="cookieAccept()">Accept all</button>
+  </div>
+</div>
+<div id="cookie-modal" role="dialog" aria-modal="true" aria-label="Cookie preferences">
+  <div class="cm-box">
+    <div class="cm-head"><h2>Preferences</h2></div>
+    <div class="cm-grid">
+      <div class="cm-cell cm-cell--active">
+        <span class="el-num">01</span><span class="el-sym">Es</span><span class="el-name">Essential</span><span class="el-cat">Always on</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle always-on"><input type="checkbox" checked disabled><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+      <div class="cm-cell" id="cm-cell-analytics">
+        <span class="el-num">02</span><span class="el-sym">An</span><span class="el-name">Analytics</span><span class="el-cat">Optional</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle"><input type="checkbox" id="toggle-analytics" onchange="document.getElementById('cm-cell-analytics').classList.toggle('cm-cell--active',this.checked)"><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+    </div>
+    <div class="cm-save">
+      <button class="cb-btn primary" onclick="cookieSavePrefs()">Save</button>
+      <button class="cb-btn" onclick="document.getElementById('cookie-modal').classList.remove('open')">Cancel</button>
+    </div>
+  </div>
+</div>
+<script src="../scripts.js"></script>
+<script>
+  // Formspree AJAX submit — keeps user on the page
+  const form = document.getElementById('contact-form');
+  const success = document.getElementById('form-success');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = form.querySelector('.form-btn');
+      btn.innerHTML = 'Sending…';
+      btn.disabled = true;
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          window.location.href = '/contact/thank-you/';
+        } else {
+          btn.innerHTML = '<span class="btn-label">Send</span> <span class="arr" aria-hidden="true">→</span>';
+          btn.disabled = false;
+          alert('Something went wrong. Please email me directly at leka.ledian@live.co.uk');
+        }
+      } catch {
+        btn.innerHTML = '<span class="btn-label">Send</span> <span class="arr" aria-hidden="true">→</span>';
+        btn.disabled = false;
+        alert('Something went wrong. Please email me directly at leka.ledian@live.co.uk');
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
