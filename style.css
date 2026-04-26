@@ -426,7 +426,7 @@ body {
 }
 .el-sym {
   font-family: var(--clash);
-  font-size: 3.5rem;
+  font-size: clamp(1.6rem, 2vw, 3rem);
   font-weight: 500;
   letter-spacing: -.04em;
   line-height: 1;
@@ -447,7 +447,7 @@ h1.el-name { font-family: var(--clash); font-weight: 500; margin: 0 0 .3rem; }
 .el-name a:hover { color: var(--mid); }
 .el-cat {
   font-family: var(--sans);
-  font-size: .85rem;
+  font-size: 1rem;
   letter-spacing: .07em;
   text-transform: uppercase;
   color: var(--mid);
@@ -661,7 +661,7 @@ h1.el-name { font-family: var(--clash); font-weight: 500; margin: 0 0 .3rem; }
   gap: .5rem;
   min-width: 0;
 }
-.exp-cell .el-sym { margin: .4rem 0; }
+.exp-cell .el-sym { font-size: 3.5rem; margin: .4rem 0; }
 .exp-role-row {
   display: flex;
   align-items: baseline;
@@ -806,7 +806,7 @@ h1.el-name { font-family: var(--clash); font-weight: 500; margin: 0 0 .3rem; }
   max-height: calc(100vh - 3.5rem);
   overflow-y: auto;
 }
-.post-aside .el-sym { margin: .4rem 0; }
+.post-aside .el-sym { font-size: 3.5rem; margin: .4rem 0; }
 .post-aside-cat {
   padding-bottom: 2rem;
   margin-bottom: 2rem;
