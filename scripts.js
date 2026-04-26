@@ -1,16 +1,38 @@
 (function () {
   'use strict';
 
-  /* ─── Reading progress bar (blog posts only) ─── */
+  /* ─── Reading progress bar + active TOC (blog posts only) ─── */
   if (document.querySelector('.post-body')) {
     const bar = document.createElement('div');
     bar.id = 'reading-progress';
     document.body.prepend(bar);
+
+    const toc = document.querySelector('.post-aside-toc');
+    const tocLinks = toc ? Array.from(toc.querySelectorAll('a')) : [];
+    const targets = tocLinks.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+
+    const activate = function (id) {
+      tocLinks.forEach(function (a) {
+        a.classList.toggle('toc-active', a.getAttribute('href') === '#' + id);
+      });
+    };
+
     window.addEventListener('scroll', function () {
       const scrolled = document.documentElement.scrollTop;
       const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+
+      if (targets.length) {
+        const threshold = scrolled + window.innerHeight * 0.3;
+        let active = targets[0];
+        targets.forEach(function (t) {
+          if (t.offsetTop <= threshold) active = t;
+        });
+        activate(active.id);
+      }
     }, { passive: true });
+
+    if (targets.length) activate(targets[0].id);
   }
 
   const noMotion   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

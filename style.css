@@ -807,6 +807,7 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
   transition: color .15s;
 }
 .post-aside-toc a:hover { color: var(--fg); }
+.post-aside-toc a.toc-active { color: var(--fg); }
 .post-body {
   padding: clamp(2.4rem, 4vw, 5rem) clamp(2rem, 4vw, 6rem);
 }
