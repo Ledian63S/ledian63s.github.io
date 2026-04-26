@@ -71,74 +71,42 @@
 
 <div class="page">
 
-  <div class="project-grid">
+  <div class="post-wrap">
 
-    <div class="project-cell project-cell--left">
-      <span class="el-num">02</span>
-      <div>
-        <div class="el-sym">AL</div>
-        <h1 class="el-name">AL Extension Development</h1>
-        <div class="el-cat">AL Development · Apr 2026</div>
-      </div>
-    </div>
+    <aside class="post-aside">
+      <div class="post-aside-num">02</div>
+      <div class="post-aside-sym">AL</div>
+      <h1 class="post-aside-title">AL Extension Development</h1>
+      <div class="post-aside-cat">AL Development · Apr 2026 · 4 min read</div>
+      <nav class="post-aside-toc">
+        <span class="post-toc-label">On this page</span>
+        <a href="#what-extensions-are">What AL extensions actually are</a>
+        <a href="#appsource">AppSource and the bar it sets</a>
+        <a href="#good-news-for-clients">Why the extension model is good news for clients</a>
+      </nav>
+    </aside>
 
-    <div class="project-cell project-cell--mid">
-      <p>AL extension development is the foundation of how Business Central is customized today — and understanding it is essential for any organization that wants to tailor BC to fit how they actually work.</p>
-    </div>
-
-    <div class="project-cell project-cell--right">
-      <div class="meta-group">
-        <span class="meta-group-label">Published</span>
-        <div class="meta-group-value">April 2026</div>
-      </div>
-      <div class="meta-group">
-        <span class="meta-group-label">Reading time</span>
-        <div class="meta-group-value">4 min read</div>
-      </div>
-      <div class="meta-group">
-        <span class="meta-group-label">On this page</span>
-        <div class="meta-group-value post-toc-inline">
-          <a href="#what-extensions-are">What AL extensions actually are</a>
-          <a href="#appsource">AppSource and the bar it sets</a>
-          <a href="#good-news-for-clients">Why the extension model is good news for clients</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="post-content">
-
-      <p>AL extension development is the foundation of how Business Central is customized today — and understanding it is essential for any organization that wants to tailor BC to fit how they actually work. Over eight years building AL extensions across industries and client sizes, from single-entity SMEs to multi-country enterprise deployments, I've come to see the extension model as one of the smarter architectural decisions Microsoft made when redesigning the platform.</p>
+    <div class="post-body">
+      <p class="post-lead">AL extension development is the foundation of how Business Central is customized today — and understanding it is essential for any organization that wants to tailor BC to fit how they actually work. Over eight years building AL extensions across industries and client sizes, from single-entity SMEs to multi-country enterprise deployments, I've come to see the extension model as one of the smarter architectural decisions Microsoft made when redesigning the platform.</p>
 
       <h2 id="what-extensions-are">What AL Extensions Actually Are</h2>
-
       <p>In the old NAV world, customizations were modifications — changes made directly to the base application's code and objects. That approach worked, but it made <a href="/blog/business-central-upgrade/">upgrades painful</a>. Every version bump required reconciling your changes against Microsoft's changes, and there was no clean separation between platform and customization.</p>
-
       <p>AL extensions changed that. An extension is a separate package that layers on top of the base application without touching it. It can add new tables, pages, and codeunits, or extend existing ones through a controlled event-and-subscriber model. When Microsoft updates BC, your extension doesn't have to be rewritten — it just needs to remain compatible.</p>
 
       <h3>The Extension Model in Practice</h3>
-
       <p>In practice, working within the extension model requires a different mindset than classic NAV development. You can't just reach into a base table and add a field anymore — you add it through a table extension. You can't modify a base codeunit directly — you subscribe to its events. That constraint is intentional, and it pushes developers toward cleaner, more maintainable designs.</p>
-
       <p>It also means the quality of an AL extension depends heavily on how well the developer understands BC's event architecture. Poorly written extensions that work around the model rather than with it tend to break on upgrades and cause subtle data integrity issues down the line.</p>
 
       <h2 id="appsource">AppSource and the Bar It Sets</h2>
-
       <p>Publishing an extension on Microsoft AppSource — as I did with <a href="/work/beterna-idc/">BE-terna IDC</a> — requires meeting a certification standard that goes beyond basic functionality. Microsoft reviews the code for security, performance, and compliance with the extension model. The process forces a level of rigor that's genuinely useful: it surfaces edge cases, validates upgrade paths, and ensures the extension handles multi-tenancy correctly.</p>
-
       <p>That experience translates directly to client work. Extensions built to AppSource standards are more reliable, easier to maintain, and far less likely to cause problems during BC's regular update cycles.</p>
 
       <h3>Custom Extensions Across Industries</h3>
-
       <p>Beyond AppSource, the bulk of AL extension work is custom — solutions built for a specific client's processes. I've built extensions for manufacturing, distribution, professional services, and retail clients, covering everything from custom approval workflows and document management to complex pricing logic and industry-specific reporting. The domain variety matters: it means encountering edge cases that a single-industry developer might never see.</p>
 
       <h2 id="good-news-for-clients">Why the Extension Model Is Good News for Clients</h2>
-
       <p>For organizations evaluating Business Central customization, the extension model is genuinely good news. It means customizations are isolated, testable, and upgradeable. It means you're not locked into a developer who made undocumented changes to base objects. And it means your investment in custom development can survive Microsoft's continuous update cadence without constant rewrites.</p>
-
       <p>If you're planning custom BC development and want extensions built to the standards that AppSource certification demands, <a href="/contact/">let's talk about what you need</a>. Also worth reading: <a href="/blog/business-central-api-integration/">how BC connects to external systems</a> — extensions and integrations often go hand in hand.</p>
-
     </div>
 
   </div>

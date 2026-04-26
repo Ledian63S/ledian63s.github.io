@@ -71,76 +71,44 @@
 
 <div class="page">
 
-  <div class="project-grid">
+  <div class="post-wrap">
 
-    <div class="project-cell project-cell--left">
-      <span class="el-num">01</span>
-      <div>
-        <div class="el-sym">Bc</div>
-        <h1 class="el-name">Business Central Upgrade</h1>
-        <div class="el-cat">Business Central · Apr 2026</div>
-      </div>
-    </div>
+    <aside class="post-aside">
+      <div class="post-aside-num">01</div>
+      <div class="post-aside-sym">Bc</div>
+      <h1 class="post-aside-title">Business Central Upgrade</h1>
+      <div class="post-aside-cat">Business Central · Apr 2026 · 4 min read</div>
+      <nav class="post-aside-toc">
+        <span class="post-toc-label">On this page</span>
+        <a href="#upgrading-from-nav">Why upgrading from NAV is different</a>
+        <a href="#data-migration">Data migration</a>
+        <a href="#upgrade-partner">What a good upgrade partner looks like</a>
+      </nav>
+    </aside>
 
-    <div class="project-cell project-cell--mid">
-      <p>A Business Central upgrade is one of the most consequential infrastructure decisions a company can make — and one of the most misunderstood. Having led migrations from NAV 2017 to Business Central across clients in Italy, Serbia, Denmark, and Ireland, I've seen the same patterns repeat.</p>
-    </div>
+    <div class="post-body">
+      <p class="post-lead">A Business Central upgrade is one of the most consequential infrastructure decisions a company can make — and one of the most misunderstood. Having led migrations from NAV 2017 to Business Central across clients in Italy, Serbia, Denmark, and Ireland, I've seen the same patterns repeat: teams underestimate the scope, rush the testing phase, and then spend months patching problems that could have been caught earlier.</p>
 
-    <div class="project-cell project-cell--right">
-      <div class="meta-group">
-        <span class="meta-group-label">Published</span>
-        <div class="meta-group-value">April 2026</div>
-      </div>
-      <div class="meta-group">
-        <span class="meta-group-label">Reading time</span>
-        <div class="meta-group-value">4 min read</div>
-      </div>
-      <div class="meta-group">
-        <span class="meta-group-label">On this page</span>
-        <div class="meta-group-value post-toc-inline">
-          <a href="#upgrading-from-nav">Why upgrading from NAV is different</a>
-          <a href="#data-migration">Data migration</a>
-          <a href="#upgrade-partner">What a good upgrade partner looks like</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="post-intro">
-    <p>A Business Central upgrade is one of the most consequential infrastructure decisions a company can make — and one of the most misunderstood. Having led migrations from NAV 2017 to Business Central across clients in Italy, Serbia, Denmark, and Ireland, I've seen the same patterns repeat: teams underestimate the scope, rush the testing phase, and then spend months patching problems that could have been caught earlier.</p>
-  </div>
-
-  <div class="post-section">
-    <div class="post-section-num">01</div>
-    <div class="post-section-content">
       <h2 id="upgrading-from-nav">Why Upgrading From NAV Is Different</h2>
       <p>Moving from Dynamics NAV to Business Central isn't just a version bump. The platform itself changed. NAV ran on C/AL code — a proprietary language built around direct table access and form-based UI. Business Central runs on AL, a modern extension model where customizations sit in isolated layers rather than baked into the base application.</p>
       <p>That architectural shift is what makes NAV-to-BC migrations genuinely complex. You're not just moving data and configurations — you're rewriting logic. Every C/AL customization needs to be evaluated: Is it still needed? Can it be replaced by standard BC functionality? Does it need to be rebuilt as an <a href="/blog/al-extension-development/">AL extension</a>?</p>
+
       <h3>The C/AL to AL Migration</h3>
       <p>Microsoft provided tooling to help convert C/AL code to AL, but the output requires significant human review. Converted code compiles, but it doesn't always behave correctly, and it rarely follows the extension model the way a freshly written AL object would. In practice, the migration is best treated as a partial rewrite — use the conversion as a starting point, not a finished product.</p>
       <p>Across the projects I've worked on, the cleanest upgrades were the ones where the team took the time to audit each customization before writing a line of AL. Some modifications turned out to be standard functionality in BC. Others were business rules that had never been properly documented. Surfacing those conversations early saves weeks of rework later.</p>
-    </div>
-  </div>
 
-  <div class="post-section">
-    <div class="post-section-num">02</div>
-    <div class="post-section-content">
       <h2 id="data-migration">Data Migration: The Part Teams Underestimate</h2>
       <p>The technical migration of the codebase tends to get the most attention, but data migration is where real-world complexity lives. Master data mapping, open transaction handling, historical data decisions — these require close coordination between the implementation team and the client's finance or operations leads.</p>
       <p>For clients with years of NAV history, the question is rarely "can we migrate this data" but "should we." Bringing over every open entry from a legacy system can introduce reconciliation headaches that outlast the go-live by years. Defining a clean cutover strategy, with parallel runs and sign-off checkpoints, matters as much as the technical work.</p>
+
       <h3>Testing and Cutover Planning</h3>
       <p>Regression testing on a BC upgrade needs to cover not just the migrated customizations but the standard processes that interact with them. Posting routines, approval workflows, reporting — all of it needs verified. A structured UAT phase with client users, not just the development team, is the difference between a smooth go-live and a fire drill.</p>
-    </div>
-  </div>
 
-  <div class="post-section">
-    <div class="post-section-num">03</div>
-    <div class="post-section-content">
       <h2 id="upgrade-partner">What a Good Upgrade Partner Looks Like</h2>
       <p>The technical skill matters, but so does the ability to manage stakeholders across finance, IT, and operations — sometimes across different countries and time zones. The migrations I've led have spanned multiple European markets, each with their own localization requirements and organizational dynamics. That cross-market experience shapes how I approach scoping, communication, and risk management on every project.</p>
       <p>If your organization is planning a Business Central upgrade and you want a developer who has navigated both the technical and human sides of the process, <a href="/contact/">get in touch</a>. You can also see an example of this work in the <a href="/work/beterna-idc/">BE-terna IDC AppSource extension</a>.</p>
     </div>
+
   </div>
 
 </div>

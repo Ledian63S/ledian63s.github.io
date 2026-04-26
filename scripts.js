@@ -2,7 +2,7 @@
   'use strict';
 
   /* ─── Reading progress bar (blog posts only) ─── */
-  if (document.querySelector('.post-section, .post-intro')) {
+  if (document.querySelector('.post-body')) {
     const bar = document.createElement('div');
     bar.id = 'reading-progress';
     document.body.prepend(bar);

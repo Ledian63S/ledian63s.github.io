@@ -71,83 +71,44 @@
 
 <div class="page">
 
-  <div class="project-grid">
+  <div class="post-wrap">
 
-    <div class="project-cell project-cell--left">
-      <span class="el-num">03</span>
-      <div>
-        <div class="el-sym">Ap</div>
-        <h1 class="el-name">BC API Integration</h1>
-        <div class="el-cat">Integrations · Apr 2026</div>
-      </div>
-    </div>
-
-    <div class="project-cell project-cell--mid">
-      <p>Business Central API integration is one of the most common requests I encounter from clients — and one of the areas where technical decisions made early have the longest-lasting consequences.</p>
-    </div>
-
-    <div class="project-cell project-cell--right">
-      <div class="meta-group">
-        <span class="meta-group-label">Published</span>
-        <div class="meta-group-value">April 2026</div>
-      </div>
-      <div class="meta-group">
-        <span class="meta-group-label">Reading time</span>
-        <div class="meta-group-value">5 min read</div>
-      </div>
-      <div class="meta-group">
-        <span class="meta-group-label">Topic</span>
-        <div class="meta-group-value">Integrations</div>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="post-layout">
-
-    <aside class="post-sidebar">
-      <span class="post-sidebar-label">On this page</span>
-      <ul class="post-toc">
-        <li><a href="#integration-patterns">The main integration patterns</a></li>
-        <li><a href="#database-queries">Direct database queries &amp; .NET interop</a></li>
-        <li><a href="#integration-failures">What makes integrations fail</a></li>
-      </ul>
+    <aside class="post-aside">
+      <div class="post-aside-num">03</div>
+      <div class="post-aside-sym">Ap</div>
+      <h1 class="post-aside-title">BC API Integration</h1>
+      <div class="post-aside-cat">Integrations · Apr 2026 · 5 min read</div>
+      <nav class="post-aside-toc">
+        <span class="post-toc-label">On this page</span>
+        <a href="#integration-patterns">The main integration patterns</a>
+        <a href="#database-queries">Direct database queries &amp; .NET interop</a>
+        <a href="#integration-failures">What makes integrations fail</a>
+      </nav>
     </aside>
 
-    <div class="post-content">
-
-      <p>Business Central API integration is one of the most common requests I encounter from clients — and one of the areas where technical decisions made early have the longest-lasting consequences. BC doesn't live in isolation. It connects to eCommerce platforms, logistics providers, payment processors, data warehouses, and a growing range of cloud services. Getting those connections right requires more than knowing the API surface; it requires understanding how BC handles data consistency, error recovery, and volume across its update cycles.</p>
+    <div class="post-body">
+      <p class="post-lead">Business Central API integration is one of the most common requests I encounter from clients — and one of the areas where technical decisions made early have the longest-lasting consequences. BC doesn't live in isolation. It connects to eCommerce platforms, logistics providers, payment processors, data warehouses, and a growing range of cloud services. Getting those connections right requires more than knowing the API surface; it requires understanding how BC handles data consistency, error recovery, and volume across its update cycles.</p>
 
       <h2 id="integration-patterns">The Main Integration Patterns</h2>
-
       <p>Most BC integrations fall into a handful of patterns, and the right choice depends on what you're connecting to and what the integration needs to do.</p>
 
       <h3>BC's Native API (OData and Custom APIs)</h3>
-
       <p>Business Central exposes a set of standard OData endpoints, and developers can publish custom API pages to expose exactly the data an external system needs. This is the cleanest approach when the external system can consume REST endpoints — it's supported by Microsoft, survives upgrades well, and gives you control over what gets exposed without touching the core application.</p>
-
       <p>For eCommerce integrations, I've used this pattern extensively: surfacing inventory levels, pricing, and order data through custom API pages, then building the sync logic on top. The key design decision is whether the integration is event-driven (BC pushes on change) or polling-based (external system pulls on a schedule). Both work; polling is simpler but generates unnecessary load at scale.</p>
 
       <h3>File-Based Integration via SFTP</h3>
-
       <p>Not every external system speaks REST. Older ERP integrations, logistics partners, and some banking systems still operate on file exchange — flat files dropped to an SFTP server on a schedule. I've built these integrations using WinSCP automation from within BC's AL layer, handling structured file formats on both the inbound and outbound sides. It's less elegant than API-to-API, but it's reliable and widely supported.</p>
 
       <h3>Azure Service Bus and Event-Driven Architecture</h3>
-
       <p>For higher-volume or more complex integration scenarios, Azure Service Bus provides a message queue that decouples BC from downstream systems. BC publishes events to the queue; consuming services process them asynchronously. This pattern handles spikes gracefully and makes the overall architecture more resilient — if a downstream system is temporarily unavailable, messages queue rather than fail.</p>
 
       <h2 id="database-queries">Direct Database Queries and .NET Interop</h2>
-
       <p>Some legacy integrations require reaching outside BC's standard data layer entirely — querying an external SQL database directly, for instance, or calling a .NET library that has no REST equivalent. AL supports .NET interop in on-premise deployments, and I've used it for cases where the integration target simply doesn't expose an API. These are the integrations that require the most careful documentation, since they tend to be the ones future developers find most opaque.</p>
 
       <h2 id="integration-failures">What Makes Integrations Fail</h2>
-
       <p>In my experience, most integration failures aren't caused by the initial build. They're caused by insufficient error handling, inadequate logging, and missing retry logic. An integration that works in normal conditions but silently swallows errors under load is worse than one that fails loudly — because silent failures cause data drift that takes weeks to detect and reconcile.</p>
-
       <p>Every integration I build includes structured error logging, alerting on repeated failures, and a documented recovery procedure. That operational thinking is as important as the technical implementation.</p>
-
       <p>If you're evaluating BC integration work and want a developer who has handled both modern API and legacy file-based scenarios across multiple production environments, <a href="/contact/">reach out to discuss your requirements</a>. Related reading: <a href="/blog/al-extension-development/">how AL extensions work</a> — most integrations are delivered as extensions that live alongside your BC customizations.</p>
-
     </div>
 
   </div>
