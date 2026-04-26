@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Message Sent — Ledian Leka</title>
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../favicon.png">
+  <meta name="robots" content="noindex, follow">
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied'});</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3GPVW3414"></script>
+  <script>gtag('js',new Date());gtag('config','G-W3GPVW3414');</script>
+  <link rel="preload" href="../../fonts/ClashDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../fonts/ClashDisplay-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../style.css">
+  <style>
+    .thank-you {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: calc(100vh - var(--hdr) - 12rem);
+      padding: var(--pad);
+      border-top: 1px solid var(--line);
+    }
+    .thank-you-tag {
+      font-family: var(--clash);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #3ecf6e;
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+    .thank-you-tag::before {
+      content: '';
+      display: inline-block;
+      width: .7rem; height: .7rem;
+      border-radius: 50%;
+      background: #3ecf6e;
+      box-shadow: 0 0 6px #3ecf6e;
+    }
+    .thank-you-msg {
+      font-family: var(--clash);
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      font-weight: 500;
+      line-height: 1.2;
+      margin-bottom: 1.6rem;
+    }
+    .thank-you-sub {
+      font-family: var(--sans);
+      font-size: 1.4rem;
+      color: var(--mid);
+      line-height: 1.75;
+      max-width: 48rem;
+      margin-bottom: 3.6rem;
+    }
+    .thank-you-link {
+      font-family: var(--clash);
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--fg);
+      border: 1px solid var(--line);
+      padding: .9rem 2rem;
+      transition: border-color .15s;
+    }
+    .thank-you-link:hover { border-color: rgba(248,248,248,.4); }
+  </style>
+</head>
+<body>
+
+<div id="intro" role="presentation" aria-hidden="true"></div>
+
+<div id="cursor"></div>
+
+<header class="header">
+  <a href="/" class="header__logo"><img src="../../favicon.svg" alt="Ledian Leka"></a>
+  <nav class="header__nav">
+    <a href="/bio/">Bio</a>
+    <a href="/experience/">Experience</a>
+    <a href="/work/">Work</a>
+    <a href="/contact/" class="active">Contact</a>
+    <a href="/resume.pdf" target="_blank" rel="noopener" class="header__resume">Resume</a>
+  </nav>
+</header>
+
+<div class="page">
+  <div class="thank-you">
+    <div class="thank-you-tag">Message received</div>
+    <div class="thank-you-msg">Thanks for reaching out.</div>
+    <p class="thank-you-sub">I'll review your message and get back to you within one business day.</p>
+    <a href="/" class="thank-you-link">← Back to home</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer__bottom">
+    <span class="footer__copy">© 2026 Ledian Leka · <a href="/privacy/">Privacy</a></span>
+  </div>
+</footer>
+
+<div id="cookie-banner" role="dialog" aria-label="Cookie preferences">
+  <div class="cb-text"><p>This site uses cookies to remember your preferences.</p></div>
+  <div class="cb-btns">
+    <button class="cb-btn" onclick="cookieDeny()">Reject</button>
+    <button class="cb-btn cb-customize" onclick="cookieCustomize()">Customize</button>
+    <button class="cb-btn primary" onclick="cookieAccept()">Accept all</button>
+  </div>
+</div>
+<div id="cookie-modal" role="dialog" aria-modal="true" aria-label="Cookie preferences">
+  <div class="cm-box">
+    <div class="cm-head"><h2>Preferences</h2></div>
+    <div class="cm-grid">
+      <div class="cm-cell cm-cell--active">
+        <span class="el-num">01</span><span class="el-sym">Es</span><span class="el-name">Essential</span><span class="el-cat">Always on</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle always-on"><input type="checkbox" checked disabled><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+      <div class="cm-cell" id="cm-cell-analytics">
+        <span class="el-num">02</span><span class="el-sym">An</span><span class="el-name">Analytics</span><span class="el-cat">Optional</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle"><input type="checkbox" id="toggle-analytics" onchange="document.getElementById('cm-cell-analytics').classList.toggle('cm-cell--active',this.checked)"><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+    </div>
+    <div class="cm-save">
+      <button class="cb-btn primary" onclick="cookieSavePrefs()">Save</button>
+      <button class="cb-btn" onclick="document.getElementById('cookie-modal').classList.remove('open')">Cancel</button>
+    </div>
+  </div>
+</div>
+<script src="../../scripts.js"></script>
+
+</body>
+</html>

@@ -360,9 +360,7 @@
           headers: { 'Accept': 'application/json' }
         });
         if (res.ok) {
-          form.reset();
-          form.style.display = 'none';
-          success.style.display = 'block';
+          window.location.href = '/contact/thank-you/';
         } else {
           btn.innerHTML = '<span class="btn-label">Send</span> <span class="arr" aria-hidden="true">→</span>';
           btn.disabled = false;
