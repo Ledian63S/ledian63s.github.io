@@ -109,24 +109,10 @@
       padding: .5rem 1.1rem;
     }
 
-    /* direct links row */
-    .direct-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.2rem;
-    }
-    .direct-link {
-      font-family: var(--sans);
-      font-size: 1.3rem;
-      font-weight: 500;
-      letter-spacing: .04em;
-      color: var(--fg);
-      border: 1px solid var(--line);
-      padding: 1rem 2rem;
-      transition: border-color .15s;
-      border-bottom-width: 1px !important;
-    }
-    .direct-link:hover { border-color: rgba(248,248,248,.5) !important; }
+    /* direct links — plain text, matches privacy page link style */
+    .direct-links p { font-family: var(--sans); font-size: 1.4rem; line-height: 2; color: var(--mid); margin: 0; }
+    .direct-links a { color: var(--fg); border-bottom: 1px solid var(--line); }
+    .direct-links a:hover { border-color: var(--fg); }
 
     /* ─── FORM ─────────────────── */
     .contact-form { display: flex; flex-direction: column; gap: 1.4rem; }
@@ -177,18 +163,18 @@
     }
     .form-btn {
       font-family: var(--clash);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 500;
       letter-spacing: .08em;
       text-transform: uppercase;
       color: var(--fg);
       background: transparent;
       border: 1px solid var(--line);
-      padding: 1.2rem 2.8rem;
+      padding: .9rem 2rem;
       cursor: none;
       transition: border-color .15s;
     }
-    .form-btn:hover { border-color: rgba(248,248,248,.5); }
+    .form-btn:hover { border-color: rgba(248,248,248,.4); }
     .form-note {
       font-family: var(--sans);
       font-size: 1.2rem;
@@ -310,9 +296,11 @@
     </div>
     <div class="contact-cell">
       <div class="direct-links">
-        <a href="mailto:leka.ledian@live.co.uk" class="direct-link">Email ↗&#xFE0E;</a>
-        <a href="https://www.linkedin.com/in/lekaledian/" target="_blank" rel="noopener" class="direct-link">LinkedIn ↗&#xFE0E;</a>
-        <a href="https://github.com/Ledian63S" target="_blank" rel="noopener" class="direct-link">GitHub ↗&#xFE0E;</a>
+        <p>
+          <a href="mailto:leka.ledian@live.co.uk">leka.ledian@live.co.uk</a><br>
+          <a href="https://www.linkedin.com/in/lekaledian/" target="_blank" rel="noopener">LinkedIn ↗&#xFE0E;</a><br>
+          <a href="https://github.com/Ledian63S" target="_blank" rel="noopener">GitHub ↗&#xFE0E;</a>
+        </p>
       </div>
     </div>
 
