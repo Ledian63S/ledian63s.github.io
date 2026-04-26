@@ -254,6 +254,7 @@ body {
 
 .cell-label {
   font-size: 1rem;
+  font-weight: 400;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--mid);
