@@ -1,6 +1,18 @@
 (function () {
   'use strict';
 
+  /* ─── Reading progress bar (blog posts only) ─── */
+  if (document.querySelector('.post-section, .post-intro')) {
+    const bar = document.createElement('div');
+    bar.id = 'reading-progress';
+    document.body.prepend(bar);
+    window.addEventListener('scroll', function () {
+      const scrolled = document.documentElement.scrollTop;
+      const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
+    }, { passive: true });
+  }
+
   const noMotion   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   /* Animations play once per page per session — same behaviour as Julia Krantz */
   const sessionKey = 'll_' + location.pathname;
