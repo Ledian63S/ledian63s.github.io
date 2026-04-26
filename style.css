@@ -1,22 +1,22 @@
 @font-face {
   font-family: 'ClashDisplay';
   src: url('fonts/ClashDisplay-Regular.woff2') format('woff2');
-  font-weight: 400; font-style: normal; font-display: swap;
+  font-weight: 400; font-style: normal; font-display: fallback;
 }
 @font-face {
   font-family: 'ClashDisplay';
   src: url('fonts/ClashDisplay-Medium.woff2') format('woff2');
-  font-weight: 500; font-style: normal; font-display: swap;
+  font-weight: 500; font-style: normal; font-display: fallback;
 }
 @font-face {
   font-family: 'ClashDisplay';
   src: url('fonts/ClashDisplay-Semibold.woff2') format('woff2');
-  font-weight: 600; font-style: normal; font-display: swap;
+  font-weight: 600; font-style: normal; font-display: fallback;
 }
 @font-face {
   font-family: 'DM Sans';
   src: url('fonts/DMSans-VariableFont_opsz,wght.ttf') format('truetype');
-  font-weight: 100 900; font-style: normal; font-display: swap;
+  font-weight: 100 900; font-style: normal; font-display: fallback;
 }
 
 /* Force ↗ and → to render as text glyphs, not emoji (Safari fix) */
@@ -32,7 +32,7 @@ button { background: none; border: none; padding: 0; }
   --bg:   #000;
   --fg:   #f8f8f8;
   --line: rgba(248,248,248,.12);
-  --mid:  rgba(248,248,248,.45);
+  --mid:  rgba(248,248,248,.55);
   --clash: 'ClashDisplay', sans-serif;
   --sans:  'DM Sans', sans-serif;
   --pad:   clamp(1.8rem, 2.8vw, 3.6rem);
