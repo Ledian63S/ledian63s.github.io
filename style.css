@@ -837,6 +837,42 @@ h1.el-name { margin: 0 0 .3rem; }
 }
 .post-aside-toc a:hover { color: var(--fg); }
 .post-aside-toc a.toc-active { color: var(--fg); }
+.post-aside-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+.post-aside-more,
+.post-aside-related { display: flex; flex-direction: column; }
+.post-aside-more a,
+.post-aside-related a {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  color: var(--mid);
+  text-decoration: none;
+  line-height: 1.4;
+  padding: .65rem 0;
+  border-top: 1px solid var(--line);
+  display: block;
+  transition: color .15s;
+}
+.post-aside-more a:hover { color: var(--fg); }
+.post-aside-related a { color: var(--fg); }
+.post-aside-related a:hover { color: var(--mid); }
+.post-aside-cta {
+  margin-top: auto;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.post-aside-cta a {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  color: var(--fg);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(248,248,248,.25);
+  width: fit-content;
+  transition: border-color .2s;
+}
+.post-aside-cta a:hover { border-color: var(--fg); }
 .post-body {
   padding: clamp(2.4rem, 4vw, 5rem) clamp(2rem, 4vw, 6rem);
   border-left: 1px solid var(--line);
