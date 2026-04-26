@@ -441,7 +441,7 @@ body {
   margin-bottom: .3rem;
   overflow-wrap: break-word;
 }
-h1.el-name { font-family: var(--clash); font-weight: 500; margin: 0 0 .3rem; }
+h1.el-name { margin: 0 0 .3rem; }
 .el-name a { color: var(--fg); transition: color .2s; }
 .el-name a:hover { color: var(--mid); }
 .el-cat {
@@ -804,6 +804,9 @@ h1.el-name { font-family: var(--clash); font-weight: 500; margin: 0 0 .3rem; }
   top: 3.5rem;
   max-height: calc(100vh - 3.5rem);
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
 }
 .post-aside .el-sym { font-size: 3.5rem; margin: .4rem 0; }
 .post-aside-cat {
