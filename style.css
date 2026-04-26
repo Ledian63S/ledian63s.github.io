@@ -431,7 +431,7 @@ body {
   letter-spacing: -.04em;
   line-height: 1;
   color: var(--fg);
-  margin: .4rem 0;
+  margin: auto 0 .4rem;
 }
 .el-name {
   font-family: var(--sans);
@@ -806,6 +806,7 @@ h1.el-name { font-family: var(--clash); font-weight: 500; margin: 0 0 .3rem; }
   max-height: calc(100vh - 3.5rem);
   overflow-y: auto;
 }
+.post-aside .el-sym { margin: .4rem 0; }
 .post-aside-cat {
   padding-bottom: 2rem;
   margin-bottom: 2rem;
