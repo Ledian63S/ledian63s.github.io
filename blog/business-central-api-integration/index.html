@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Integrating Business Central with External Systems: A Developer's Overview | Ledian Leka</title>
+  <link rel="canonical" href="https://ledianleka.com/blog/business-central-api-integration/">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../favicon.png">
+  <meta name="description" content="Business Central API integration — how BC connects to eCommerce platforms, logistics providers, CRMs, and custom portals. A practical look at the options, the patterns that work, and the common mistakes.">
+  <meta name="author" content="Ledian Leka">
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://ledianleka.com/blog/business-central-api-integration/">
+  <meta property="og:title" content="Integrating Business Central with External Systems: A Developer's Overview">
+  <meta property="og:description" content="Business Central API integration — how BC connects to eCommerce platforms, logistics providers, CRMs, and custom portals. A practical look at the options, the patterns that work, and the common mistakes.">
+  <meta property="og:image" content="https://ledianleka.com/content/featured/Beterna-IDC/beterna-idc.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Integrating Business Central with External Systems: A Developer's Overview">
+  <meta name="twitter:description" content="Business Central API integration — how BC connects to eCommerce platforms, logistics providers, CRMs, and custom portals. A practical look at the options, the patterns that work, and the common mistakes.">
+  <meta name="twitter:image" content="https://ledianleka.com/content/featured/Beterna-IDC/beterna-idc.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ledianleka.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ledianleka.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Business Central API Integration", "item": "https://ledianleka.com/blog/business-central-api-integration/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Integrating Business Central with External Systems: A Developer's Overview",
+    "description": "Business Central API integration — how BC connects to eCommerce platforms, logistics providers, CRMs, and custom portals. A practical look at the options, the patterns that work, and the common mistakes.",
+    "author": { "@type": "Person", "name": "Ledian Leka", "url": "https://ledianleka.com" },
+    "publisher": { "@type": "Person", "name": "Ledian Leka", "url": "https://ledianleka.com" },
+    "url": "https://ledianleka.com/blog/business-central-api-integration/",
+    "datePublished": "2026-04-26",
+    "keywords": ["Business Central API integration", "BC integration", "Dynamics 365 integration", "OData API", "Azure Service Bus"]
+  }
+  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied'});</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3GPVW3414"></script>
+  <script>gtag('js',new Date());gtag('config','G-W3GPVW3414');</script>
+  <link rel="preload" href="../../fonts/ClashDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../fonts/ClashDisplay-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+<div id="intro" role="presentation" aria-hidden="true"></div>
+
+<div id="cursor"></div>
+
+<header class="header">
+  <a href="/" class="header__logo"><img src="../../favicon.svg" alt="Ledian Leka"></a>
+  <nav class="header__nav">
+    <a href="/bio/">Bio</a>
+    <a href="/experience/">Experience</a>
+    <a href="/work/">Work</a>
+    <a href="/blog/" class="active">Blog</a>
+    <a href="mailto:leka.ledian@live.co.uk">Contact</a>
+    <a href="/resume.pdf" target="_blank" rel="noopener" class="header__resume">Resume</a>
+  </nav>
+</header>
+
+<div class="page">
+
+  <div class="project-grid">
+
+    <div class="project-cell project-cell--left">
+      <span class="el-num">03</span>
+      <div>
+        <div class="el-sym">Ap</div>
+        <h1 class="el-name">BC API Integration</h1>
+        <div class="el-cat">Integrations · Apr 2026</div>
+      </div>
+    </div>
+
+    <div class="project-cell project-cell--mid">
+      <p>Business Central API integration is one of the most common requests I encounter from clients — and one of the areas where technical decisions made early have the longest-lasting consequences.</p>
+    </div>
+
+    <div class="project-cell project-cell--right">
+      <div class="meta-group">
+        <span class="meta-group-label">Published</span>
+        <div class="meta-group-value">April 2026</div>
+      </div>
+      <div class="meta-group">
+        <span class="meta-group-label">Reading time</span>
+        <div class="meta-group-value">5 min read</div>
+      </div>
+      <div class="meta-group">
+        <span class="meta-group-label">Topic</span>
+        <div class="meta-group-value">Integrations</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="post-body">
+
+    <p>Business Central API integration is one of the most common requests I encounter from clients — and one of the areas where technical decisions made early have the longest-lasting consequences. BC doesn't live in isolation. It connects to eCommerce platforms, logistics providers, payment processors, data warehouses, and a growing range of cloud services. Getting those connections right requires more than knowing the API surface; it requires understanding how BC handles data consistency, error recovery, and volume across its update cycles.</p>
+
+    <h2>The Main Integration Patterns</h2>
+
+    <p>Most BC integrations fall into a handful of patterns, and the right choice depends on what you're connecting to and what the integration needs to do.</p>
+
+    <h3>BC's Native API (OData and Custom APIs)</h3>
+
+    <p>Business Central exposes a set of standard OData endpoints, and developers can publish custom API pages to expose exactly the data an external system needs. This is the cleanest approach when the external system can consume REST endpoints — it's supported by Microsoft, survives upgrades well, and gives you control over what gets exposed without touching the core application.</p>
+
+    <p>For eCommerce integrations, I've used this pattern extensively: surfacing inventory levels, pricing, and order data through custom API pages, then building the sync logic on top. The key design decision is whether the integration is event-driven (BC pushes on change) or polling-based (external system pulls on a schedule). Both work; polling is simpler but generates unnecessary load at scale.</p>
+
+    <h3>File-Based Integration via SFTP</h3>
+
+    <p>Not every external system speaks REST. Older ERP integrations, logistics partners, and some banking systems still operate on file exchange — flat files dropped to an SFTP server on a schedule. I've built these integrations using WinSCP automation from within BC's AL layer, handling structured file formats on both the inbound and outbound sides. It's less elegant than API-to-API, but it's reliable and widely supported.</p>
+
+    <h3>Azure Service Bus and Event-Driven Architecture</h3>
+
+    <p>For higher-volume or more complex integration scenarios, Azure Service Bus provides a message queue that decouples BC from downstream systems. BC publishes events to the queue; consuming services process them asynchronously. This pattern handles spikes gracefully and makes the overall architecture more resilient — if a downstream system is temporarily unavailable, messages queue rather than fail.</p>
+
+    <h2>Direct Database Queries and .NET Interop</h2>
+
+    <p>Some legacy integrations require reaching outside BC's standard data layer entirely — querying an external SQL database directly, for instance, or calling a .NET library that has no REST equivalent. AL supports .NET interop in on-premise deployments, and I've used it for cases where the integration target simply doesn't expose an API. These are the integrations that require the most careful documentation, since they tend to be the ones future developers find most opaque.</p>
+
+    <h2>What Makes Integrations Fail</h2>
+
+    <p>In my experience, most integration failures aren't caused by the initial build. They're caused by insufficient error handling, inadequate logging, and missing retry logic. An integration that works in normal conditions but silently swallows errors under load is worse than one that fails loudly — because silent failures cause data drift that takes weeks to detect and reconcile.</p>
+
+    <p>Every integration I build includes structured error logging, alerting on repeated failures, and a documented recovery procedure. That operational thinking is as important as the technical implementation.</p>
+
+    <p>If you're evaluating BC integration work and want a developer who has handled both modern API and legacy file-based scenarios across multiple production environments, <a href="mailto:leka.ledian@live.co.uk">reach out to discuss your requirements</a>.</p>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer__bottom">
+    <span class="footer__copy">© 2026 Ledian Leka · <a href="/privacy/">Privacy</a></span>
+    <a href="/blog/" class="footer__cta">← Back</a>
+  </div>
+</footer>
+
+<div id="cookie-banner" role="dialog" aria-label="Cookie preferences">
+  <div class="cb-text"><p>This site uses cookies to remember your preferences.</p></div>
+  <div class="cb-btns">
+    <button class="cb-btn" onclick="cookieDeny()">Reject</button>
+    <button class="cb-btn cb-customize" onclick="cookieCustomize()">Customize</button>
+    <button class="cb-btn primary" onclick="cookieAccept()">Accept all</button>
+  </div>
+</div>
+<div id="cookie-modal" role="dialog" aria-modal="true" aria-label="Cookie preferences">
+  <div class="cm-box">
+    <div class="cm-head"><h2>Preferences</h2></div>
+    <div class="cm-grid">
+      <div class="cm-cell cm-cell--active">
+        <span class="el-num">01</span><span class="el-sym">Es</span><span class="el-name">Essential</span><span class="el-cat">Always on</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle always-on"><input type="checkbox" checked disabled><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+      <div class="cm-cell" id="cm-cell-analytics">
+        <span class="el-num">02</span><span class="el-sym">An</span><span class="el-name">Analytics</span><span class="el-cat">Optional</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle"><input type="checkbox" id="toggle-analytics" onchange="document.getElementById('cm-cell-analytics').classList.toggle('cm-cell--active',this.checked)"><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+    </div>
+    <div class="cm-save">
+      <button class="cb-btn primary" onclick="cookieSavePrefs()">Save</button>
+      <button class="cb-btn" onclick="document.getElementById('cookie-modal').classList.remove('open')">Cancel</button>
+    </div>
+  </div>
+</div>
+<script src="../../scripts.js"></script>
+
+</body>
+</html>

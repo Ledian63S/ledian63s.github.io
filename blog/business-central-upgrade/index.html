@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Central Upgrade: A Practical Guide for NAV and Older BC Users | Ledian Leka</title>
+  <link rel="canonical" href="https://ledianleka.com/blog/business-central-upgrade/">
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+  <link rel="icon" type="image/png" sizes="192x192" href="../../favicon.png">
+  <meta name="description" content="Planning a Business Central upgrade from NAV or an older BC version? A practical guide covering scope, common blockers, and how to approach the migration without disrupting your business.">
+  <meta name="author" content="Ledian Leka">
+  <meta name="theme-color" content="#000000">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://ledianleka.com/blog/business-central-upgrade/">
+  <meta property="og:title" content="Business Central Upgrade: A Practical Guide for NAV and Older BC Users">
+  <meta property="og:description" content="Planning a Business Central upgrade from NAV or an older BC version? A practical guide covering scope, common blockers, and how to approach the migration without disrupting your business.">
+  <meta property="og:image" content="https://ledianleka.com/content/featured/Beterna-IDC/beterna-idc.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Business Central Upgrade: A Practical Guide for NAV and Older BC Users">
+  <meta name="twitter:description" content="Planning a Business Central upgrade from NAV or an older BC version? A practical guide covering scope, common blockers, and how to approach the migration without disrupting your business.">
+  <meta name="twitter:image" content="https://ledianleka.com/content/featured/Beterna-IDC/beterna-idc.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://ledianleka.com" },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://ledianleka.com/blog/" },
+      { "@type": "ListItem", "position": 3, "name": "Business Central Upgrade", "item": "https://ledianleka.com/blog/business-central-upgrade/" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Business Central Upgrade: A Practical Guide for NAV and Older BC Users",
+    "description": "Planning a Business Central upgrade from NAV or an older BC version? A practical guide covering scope, common blockers, and how to approach the migration without disrupting your business.",
+    "author": { "@type": "Person", "name": "Ledian Leka", "url": "https://ledianleka.com" },
+    "publisher": { "@type": "Person", "name": "Ledian Leka", "url": "https://ledianleka.com" },
+    "url": "https://ledianleka.com/blog/business-central-upgrade/",
+    "datePublished": "2026-04-26",
+    "keywords": ["Business Central upgrade", "NAV to BC migration", "Dynamics 365 upgrade", "C/AL to AL", "ERP upgrade"]
+  }
+  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{analytics_storage:'denied'});</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W3GPVW3414"></script>
+  <script>gtag('js',new Date());gtag('config','G-W3GPVW3414');</script>
+  <link rel="preload" href="../../fonts/ClashDisplay-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../fonts/ClashDisplay-Medium.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body>
+
+<div id="intro" role="presentation" aria-hidden="true"></div>
+
+<div id="cursor"></div>
+
+<header class="header">
+  <a href="/" class="header__logo"><img src="../../favicon.svg" alt="Ledian Leka"></a>
+  <nav class="header__nav">
+    <a href="/bio/">Bio</a>
+    <a href="/experience/">Experience</a>
+    <a href="/work/">Work</a>
+    <a href="/blog/" class="active">Blog</a>
+    <a href="mailto:leka.ledian@live.co.uk">Contact</a>
+    <a href="/resume.pdf" target="_blank" rel="noopener" class="header__resume">Resume</a>
+  </nav>
+</header>
+
+<div class="page">
+
+  <div class="project-grid">
+
+    <div class="project-cell project-cell--left">
+      <span class="el-num">01</span>
+      <div>
+        <div class="el-sym">Bc</div>
+        <h1 class="el-name">Business Central Upgrade</h1>
+        <div class="el-cat">Business Central · Apr 2026</div>
+      </div>
+    </div>
+
+    <div class="project-cell project-cell--mid">
+      <p>A Business Central upgrade is one of the most consequential infrastructure decisions a company can make — and one of the most misunderstood. Having led migrations from NAV 2017 to Business Central across clients in Italy, Serbia, Denmark, and Ireland, I've seen the same patterns repeat.</p>
+    </div>
+
+    <div class="project-cell project-cell--right">
+      <div class="meta-group">
+        <span class="meta-group-label">Published</span>
+        <div class="meta-group-value">April 2026</div>
+      </div>
+      <div class="meta-group">
+        <span class="meta-group-label">Reading time</span>
+        <div class="meta-group-value">4 min read</div>
+      </div>
+      <div class="meta-group">
+        <span class="meta-group-label">Topic</span>
+        <div class="meta-group-value">Business Central</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="post-body">
+
+    <p>A Business Central upgrade is one of the most consequential infrastructure decisions a company can make — and one of the most misunderstood. Having led migrations from NAV 2017 to Business Central across clients in Italy, Serbia, Denmark, and Ireland, I've seen the same patterns repeat: teams underestimate the scope, rush the testing phase, and then spend months patching problems that could have been caught earlier. This guide is for teams who want to do it right.</p>
+
+    <h2>Why Upgrading From NAV Is Different From a Standard BC Update</h2>
+
+    <p>Moving from Dynamics NAV to Business Central isn't just a version bump. The platform itself changed. NAV ran on C/AL code — a proprietary language built around direct table access and form-based UI. Business Central runs on AL, a modern extension model where customizations sit in isolated layers rather than baked into the base application.</p>
+
+    <p>That architectural shift is what makes NAV-to-BC migrations genuinely complex. You're not just moving data and configurations — you're rewriting logic. Every C/AL customization needs to be evaluated: Is it still needed? Can it be replaced by standard BC functionality? Does it need to be rebuilt as an AL extension?</p>
+
+    <h3>The C/AL to AL Migration</h3>
+
+    <p>Microsoft provided tooling to help convert C/AL code to AL, but the output requires significant human review. Converted code compiles, but it doesn't always behave correctly, and it rarely follows the extension model the way a freshly written AL object would. In practice, the migration is best treated as a partial rewrite — use the conversion as a starting point, not a finished product.</p>
+
+    <p>Across the projects I've worked on, the cleanest upgrades were the ones where the team took the time to audit each customization before writing a line of AL. Some modifications turned out to be standard functionality in BC. Others were business rules that had never been properly documented. Surfacing those conversations early saves weeks of rework later.</p>
+
+    <h2>Data Migration: The Part Teams Underestimate</h2>
+
+    <p>The technical migration of the codebase tends to get the most attention, but data migration is where real-world complexity lives. Master data mapping, open transaction handling, historical data decisions — these require close coordination between the implementation team and the client's finance or operations leads.</p>
+
+    <p>For clients with years of NAV history, the question is rarely "can we migrate this data" but "should we." Bringing over every open entry from a legacy system can introduce reconciliation headaches that outlast the go-live by years. Defining a clean cutover strategy, with parallel runs and sign-off checkpoints, matters as much as the technical work.</p>
+
+    <h3>Testing and Cutover Planning</h3>
+
+    <p>Regression testing on a BC upgrade needs to cover not just the migrated customizations but the standard processes that interact with them. Posting routines, approval workflows, reporting — all of it needs verified. A structured UAT phase with client users, not just the development team, is the difference between a smooth go-live and a fire drill.</p>
+
+    <h2>What a Good Upgrade Partner Looks Like</h2>
+
+    <p>The technical skill matters, but so does the ability to manage stakeholders across finance, IT, and operations — sometimes across different countries and time zones. The migrations I've led have spanned multiple European markets, each with their own localization requirements and organizational dynamics. That cross-market experience shapes how I approach scoping, communication, and risk management on every project.</p>
+
+    <p>If your organization is planning a Business Central upgrade and you want a developer who has navigated both the technical and human sides of the process, <a href="mailto:leka.ledian@live.co.uk">get in touch</a>.</p>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="footer__bottom">
+    <span class="footer__copy">© 2026 Ledian Leka · <a href="/privacy/">Privacy</a></span>
+    <a href="/blog/" class="footer__cta">← Back</a>
+  </div>
+</footer>
+
+<div id="cookie-banner" role="dialog" aria-label="Cookie preferences">
+  <div class="cb-text"><p>This site uses cookies to remember your preferences.</p></div>
+  <div class="cb-btns">
+    <button class="cb-btn" onclick="cookieDeny()">Reject</button>
+    <button class="cb-btn cb-customize" onclick="cookieCustomize()">Customize</button>
+    <button class="cb-btn primary" onclick="cookieAccept()">Accept all</button>
+  </div>
+</div>
+<div id="cookie-modal" role="dialog" aria-modal="true" aria-label="Cookie preferences">
+  <div class="cm-box">
+    <div class="cm-head"><h2>Preferences</h2></div>
+    <div class="cm-grid">
+      <div class="cm-cell cm-cell--active">
+        <span class="el-num">01</span><span class="el-sym">Es</span><span class="el-name">Essential</span><span class="el-cat">Always on</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle always-on"><input type="checkbox" checked disabled><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+      <div class="cm-cell" id="cm-cell-analytics">
+        <span class="el-num">02</span><span class="el-sym">An</span><span class="el-name">Analytics</span><span class="el-cat">Optional</span>
+        <div class="cm-cell-toggle"><label class="cm-toggle"><input type="checkbox" id="toggle-analytics" onchange="document.getElementById('cm-cell-analytics').classList.toggle('cm-cell--active',this.checked)"><span class="cm-toggle-track"></span><span class="cm-toggle-thumb"></span></label></div>
+      </div>
+    </div>
+    <div class="cm-save">
+      <button class="cb-btn primary" onclick="cookieSavePrefs()">Save</button>
+      <button class="cb-btn" onclick="document.getElementById('cookie-modal').classList.remove('open')">Cancel</button>
+    </div>
+  </div>
+</div>
+<script src="../../scripts.js"></script>
+
+</body>
+</html>
