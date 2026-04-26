@@ -713,13 +713,15 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
 }
 .exp-highlight {
   margin-top: 1rem;
-  font-family: var(--clash);
-  font-size: .82rem;
-  letter-spacing: .06em;
+  font-family: var(--sans);
+  font-size: clamp(1.1rem, .88vw, 1.25rem);
   color: var(--mid);
 }
 .exp-highlight a { color: var(--fg); text-decoration: none; border-bottom: 1px solid rgba(248,248,248,.25); transition: border-color .2s; }
 .exp-highlight a:hover { border-color: var(--fg); }
+.exp-row > .exp-cell:last-child {
+  padding: clamp(2.4rem, 4vw, 5rem) clamp(2rem, 4vw, 6rem);
+}
 
 /* ─── WORK GRID ──────────────── */
 .work-grid {
@@ -790,10 +792,11 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
   grid-template-columns: 26rem 1fr;
   border-top: 1px solid var(--line);
   border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   align-items: start;
 }
 .post-aside {
-  border-right: 1px solid var(--line);
   padding: clamp(1.6rem, 2vw, 2.8rem) clamp(1.2rem, 1.4vw, 2rem);
   position: sticky;
   top: 3.5rem;
@@ -859,6 +862,7 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
 .post-aside-toc a.toc-active { color: var(--fg); }
 .post-body {
   padding: clamp(2.4rem, 4vw, 5rem) clamp(2rem, 4vw, 6rem);
+  border-left: 1px solid var(--line);
   min-width: 0;
 }
 .post-lead {
@@ -906,6 +910,7 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
   .element-grid { grid-template-columns: repeat(5, 1fr); }
   .project-grid { grid-template-columns: 1fr 2fr 1fr; }
   .exp-row { grid-template-columns: 20rem 1fr; }
+  .exp-row > .exp-cell:last-child { padding: 2.4rem 2rem; }
   .work-grid { grid-template-columns: repeat(2, 1fr); }
   .post-wrap { grid-template-columns: 20rem 1fr; }
   .post-body { padding: 2.4rem 2rem; }
@@ -970,8 +975,9 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
   .blog-item { grid-template-columns: 3.5rem 1fr; }
   .blog-item__meta { display: none; }
   .post-wrap { grid-template-columns: 1fr; }
-  .post-aside { position: static; max-height: none; border-right: none; border-bottom: 1px solid var(--line); }
-  .post-body { padding: 2rem 1.4rem; }
+  .post-aside { position: static; max-height: none; border-bottom: 1px solid var(--line); }
+  .post-body { padding: 2rem 1.4rem; border-left: none; }
+  .exp-row > .exp-cell:last-child { padding: 2rem 1.4rem; }
   /* Typography */
   .intro-body { padding: 1.4rem; }
   .intro-body p { font-size: 1.2rem; }
