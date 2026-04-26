@@ -678,15 +678,29 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
   font-size: clamp(.8rem, .75vw, .9rem);
   color: var(--mid);
   letter-spacing: .06em;
-  white-space: nowrap;
+}
+.exp-cell-meta {
+  margin-top: auto;
+  padding-top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+}
+.exp-cell-meta span {
+  font-family: var(--clash);
+  font-size: clamp(.78rem, .72vw, .88rem);
+  color: var(--mid);
+  letter-spacing: .06em;
+  text-transform: uppercase;
 }
 .exp-cell p {
   font-size: clamp(1.1rem, .88vw, 1.25rem);
   line-height: 1.85;
   color: rgba(248,248,248,.78);
   font-weight: 400;
-  margin: 0;
+  margin: 0 0 1rem;
 }
+.exp-cell p:last-of-type { margin-bottom: 0; }
 .exp-stack { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.6rem; }
 .exp-tag {
   font-family: var(--clash);
