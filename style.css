@@ -647,7 +647,7 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
 }
 .exp-row {
   display: grid;
-  grid-template-columns: 18rem 1fr;
+  grid-template-columns: 26rem 1fr;
 }
 .exp-cell {
   border-right: 1px solid var(--line);
@@ -773,6 +773,7 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
   display: grid;
   grid-template-columns: 26rem 1fr;
   border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
   align-items: start;
 }
 .post-aside {
@@ -887,7 +888,7 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
   .intro-cell--about { grid-column: 1 / -1; }
   .element-grid { grid-template-columns: repeat(5, 1fr); }
   .project-grid { grid-template-columns: 1fr 2fr 1fr; }
-  .exp-row { grid-template-columns: 14rem 1fr; }
+  .exp-row { grid-template-columns: 20rem 1fr; }
   .work-grid { grid-template-columns: repeat(2, 1fr); }
   .post-wrap { grid-template-columns: 20rem 1fr; }
   .post-body { padding: 2.4rem 2rem; }
