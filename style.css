@@ -647,31 +647,63 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
 }
 .exp-row {
   display: grid;
-  grid-template-columns: 1fr 2.5fr 1.4fr;
+  grid-template-columns: 18rem 1fr;
 }
 .exp-cell {
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  padding: clamp(1rem, 1.2vw, 1.4rem) clamp(1rem, 1.2vw, 1.6rem);
+  padding: clamp(1rem, 1.2vw, 1.6rem) clamp(1rem, 1.2vw, 1.8rem);
   display: flex;
   flex-direction: column;
 }
 .exp-cell .el-sym { margin: .4rem 0; }
-.exp-cell p {
-  font-size: clamp(1.4rem, 1vw, 1.5rem);
-  line-height: 1.65;
-  color: var(--fg);
-  font-weight: 300;
-  max-width: 62ch;
-  margin-top: .8rem;
+.exp-role-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: .8rem;
 }
 .exp-role {
   font-family: var(--clash);
-  font-size: clamp(1.4rem, 1.1vw, 1.7rem);
+  font-size: clamp(1.3rem, 1.2vw, 1.8rem);
   font-weight: 500;
   color: var(--fg);
-  margin-top: .4rem;
+  line-height: 1.2;
 }
+.exp-period {
+  font-family: var(--clash);
+  font-size: clamp(.8rem, .75vw, .9rem);
+  color: var(--mid);
+  letter-spacing: .06em;
+  white-space: nowrap;
+}
+.exp-cell p {
+  font-size: clamp(1.1rem, .88vw, 1.25rem);
+  line-height: 1.85;
+  color: rgba(248,248,248,.78);
+  font-weight: 400;
+  margin: 0;
+}
+.exp-stack { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.6rem; }
+.exp-tag {
+  font-family: var(--clash);
+  font-size: .78rem;
+  letter-spacing: .06em;
+  color: var(--mid);
+  border: 1px solid var(--line);
+  padding: .2rem .75rem;
+}
+.exp-highlight {
+  margin-top: 1rem;
+  font-family: var(--clash);
+  font-size: .82rem;
+  letter-spacing: .06em;
+  color: var(--mid);
+}
+.exp-highlight a { color: var(--fg); text-decoration: none; border-bottom: 1px solid rgba(248,248,248,.25); transition: border-color .2s; }
+.exp-highlight a:hover { border-color: var(--fg); }
 
 /* ─── WORK GRID ──────────────── */
 .work-grid {
@@ -855,8 +887,10 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
   .intro-cell--about { grid-column: 1 / -1; }
   .element-grid { grid-template-columns: repeat(5, 1fr); }
   .project-grid { grid-template-columns: 1fr 2fr 1fr; }
-  .exp-row { grid-template-columns: 1fr 2fr; }
+  .exp-row { grid-template-columns: 14rem 1fr; }
   .work-grid { grid-template-columns: repeat(2, 1fr); }
+  .post-wrap { grid-template-columns: 20rem 1fr; }
+  .post-body { padding: 2.4rem 2rem; }
   .img-slider { margin-top: 4rem; margin-bottom: 4rem; border: none !important; scroll-snap-type: x mandatory; align-items: flex-start; }
   .img-slider__item { width: auto !important; height: 85vw !important; border: none !important; overflow: visible !important; scroll-snap-align: start; }
   .img-slider__item img { width: auto !important; height: 100% !important; object-fit: initial !important; display: block; }
@@ -910,6 +944,7 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
   .footer__copy { font-size: 1rem; }
   .footer__cta { font-size: 1rem; }
   .exp-row { grid-template-columns: 1fr; }
+  .exp-role-row { flex-direction: column; gap: .4rem; }
   .exp-cell .el-sym  { font-size: 4rem; }
   .exp-cell .el-name { font-size: 1.5rem; }
   .exp-cell .el-cat  { font-size: .85rem; }
@@ -919,8 +954,6 @@ h1.el-name { font-size: clamp(1.1rem, .9vw, 1.3rem); font-weight: 400; margin: 0
   .post-wrap { grid-template-columns: 1fr; }
   .post-aside { position: static; max-height: none; border-right: none; border-bottom: 1px solid var(--line); }
   .post-body { padding: 2rem 1.4rem; }
-  .post-wrap { grid-template-columns: 20rem 1fr; }
-  .post-body { padding: 2.4rem 2rem; }
   /* Typography */
   .intro-body { padding: 1.4rem; }
   .intro-body p { font-size: 1.2rem; }

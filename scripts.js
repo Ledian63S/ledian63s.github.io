@@ -9,7 +9,9 @@
 
     const toc = document.querySelector('.post-aside-toc');
     const tocLinks = toc ? Array.from(toc.querySelectorAll('a')) : [];
-    const targets = tocLinks.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+    const targets = tocLinks.map(function (a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    }).filter(Boolean);
 
     const activate = function (id) {
       tocLinks.forEach(function (a) {
@@ -17,22 +19,32 @@
       });
     };
 
+    const updateToc = function () {
+      if (!targets.length) return;
+      var active = targets[0];
+      for (var i = targets.length - 1; i >= 0; i--) {
+        if (targets[i].getBoundingClientRect().top <= 120) {
+          active = targets[i];
+          break;
+        }
+      }
+      activate(active.id);
+    };
+
+    tocLinks.forEach(function (a) {
+      a.addEventListener('click', function () {
+        activate(a.getAttribute('href').slice(1));
+      });
+    });
+
     window.addEventListener('scroll', function () {
       const scrolled = document.documentElement.scrollTop;
       const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
       bar.style.width = (total > 0 ? (scrolled / total * 100) : 0) + '%';
-
-      if (targets.length) {
-        const threshold = scrolled + window.innerHeight * 0.3;
-        let active = targets[0];
-        targets.forEach(function (t) {
-          if (t.offsetTop <= threshold) active = t;
-        });
-        activate(active.id);
-      }
+      updateToc();
     }, { passive: true });
 
-    if (targets.length) activate(targets[0].id);
+    updateToc();
   }
 
   const noMotion   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
