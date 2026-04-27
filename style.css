@@ -1039,8 +1039,12 @@ h1.el-name { margin: 0 0 .3rem; }
   .blog-item__meta { display: none; }
   .post-wrap { grid-template-columns: 1fr; grid-template-rows: auto; }
   .post-aside { grid-column: 1; grid-row: 1; position: static; max-height: none; border-bottom: 1px solid var(--line); }
+  .post-aside-cat { padding-bottom: 1.2rem; margin-bottom: 0; }
+  .post-aside-toc { padding-top: 1.4rem !important; }
+  .post-aside-tags { padding-bottom: 1.2rem; }
   .post-body { grid-column: 1; grid-row: 2; padding: 2rem 1.4rem; border-left: none; }
   .post-aside-foot { grid-column: 1; grid-row: 3; }
+  #back-to-top { right: 1.6rem; width: 3.6rem; height: 3.6rem; font-size: 1.4rem; }
   .exp-row > .exp-cell:last-child { padding: 2rem 1.4rem; }
   /* Typography */
   .intro-body { padding: 2rem 1.6rem; }
