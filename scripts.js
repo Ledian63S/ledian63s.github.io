@@ -45,7 +45,7 @@
 
     var lastSY = -1;
     (function rafLoop() {
-      var sy = window.scrollY !== undefined ? window.scrollY : document.documentElement.scrollTop;
+      var sy = Math.max(window.pageYOffset || 0, document.documentElement.scrollTop || 0, document.body.scrollTop || 0);
       if (Math.abs(sy - lastSY) > 0.5) {
         lastSY = sy;
         updateToc(sy);
@@ -425,7 +425,7 @@
     });
     var bttVisible = false;
     (function bttLoop() {
-      var sy = window.scrollY || document.documentElement.scrollTop;
+      var sy = Math.max(window.pageYOffset || 0, document.documentElement.scrollTop || 0, document.body.scrollTop || 0);
       var should = sy > 400;
       if (should !== bttVisible) {
         bttVisible = should;
