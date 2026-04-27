@@ -27,12 +27,13 @@
 
     var offsets = targets.map(elOffsetTop);
 
+    var hdr = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--hdr') || '52') * 10;
+
     var updateToc = function (sy) {
       if (!targets.length) return;
       var active = 0;
-      var threshold = window.innerHeight * 0.45;
       for (var i = targets.length - 1; i >= 0; i--) {
-        if (offsets[i] - sy < threshold) { active = i; break; }
+        if (offsets[i] - sy <= hdr + 24) { active = i; break; }
       }
       activate(targets[active].id);
     };
