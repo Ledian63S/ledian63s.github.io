@@ -818,7 +818,7 @@ h1.el-name { margin: 0 0 .3rem; }
 .post-wrap {
   display: grid;
   grid-template-columns: 26rem 1fr;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto;
   border-top: 1px solid var(--line);
   border-left: 1px solid var(--line);
   border-right: 1px solid var(--line);
@@ -912,17 +912,12 @@ h1.el-name { margin: 0 0 .3rem; }
 }
 .post-aside-cta a:hover { color: var(--mid); }
 .post-aside-foot {
-  grid-column: 1;
-  grid-row: 2;
-  padding: clamp(1.6rem, 2vw, 2.8rem) clamp(1.2rem, 1.4vw, 2rem);
-  border-top: 1px solid var(--line);
   display: flex;
   flex-direction: column;
 }
-.post-aside-foot > :first-child { border-top: none; padding-top: 0; }
 .post-body {
   grid-column: 2;
-  grid-row: 1 / 3;
+  grid-row: 1;
   padding: clamp(2.4rem, 4vw, 5rem) clamp(2rem, 4vw, 6rem);
   border-left: 1px solid var(--line);
   min-width: 0;
@@ -1043,7 +1038,6 @@ h1.el-name { margin: 0 0 .3rem; }
   .post-aside-toc { padding-top: 1.4rem !important; }
   .post-aside-tags { padding-bottom: 1.2rem; }
   .post-body { grid-column: 1; grid-row: 2; padding: 2rem 1.4rem; border-left: none; }
-  .post-aside-foot { grid-column: 1; grid-row: 3; }
   #back-to-top { right: 1.6rem; width: 3.6rem; height: 3.6rem; font-size: 1.4rem; }
   .exp-row > .exp-cell:last-child { padding: 2rem 1.4rem; }
   /* Typography */
