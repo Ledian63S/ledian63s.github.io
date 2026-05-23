@@ -180,6 +180,10 @@
     const href = a.getAttribute('href');
     if (!href || href.startsWith('http') || href.startsWith('mailto') || href.startsWith('#') || href.startsWith('//')) return;
     a.addEventListener('click', e => {
+      /* Let the browser handle new-tab/window intents (modifier or middle click,
+         target="_blank", downloads) instead of hijacking them into same-tab nav */
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      if (a.target === '_blank' || a.hasAttribute('download')) return;
       e.preventDefault();
       const v = document.createElement('div');
       v.className = 'page-veil';
@@ -289,7 +293,19 @@
     } else if (typeof gtag === 'function') {
       gtag('consent', 'update', { analytics_storage: stored === 'granted' ? 'granted' : 'denied' });
     }
-    if (modal) modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+    if (modal) {
+      modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('open'); });
+      document.addEventListener('keydown', e => {
+        if (!modal.classList.contains('open')) return;
+        if (e.key === 'Escape') { modal.classList.remove('open'); return; }
+        if (e.key !== 'Tab') return;
+        const f = modal.querySelectorAll('button, input:not([disabled]), select, textarea, [href], [tabindex]:not([tabindex="-1"])');
+        if (!f.length) return;
+        const first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      });
+    }
   })();
 
   window.cookieAccept = function () {
@@ -309,7 +325,11 @@
     const modal = document.getElementById('cookie-modal');
     if (tog) { tog.checked = (c === 'granted'); }
     if (cell) { cell.classList.toggle('cm-cell--active', c === 'granted'); }
-    if (modal) modal.classList.add('open');
+    if (modal) {
+      modal.classList.add('open');
+      const first = modal.querySelector('button, input:not([disabled]), select, textarea, [href], [tabindex]:not([tabindex="-1"])');
+      if (first) first.focus();
+    }
   };
   window.cookieSavePrefs = function () {
     const tog = document.getElementById('toggle-analytics');

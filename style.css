@@ -238,6 +238,13 @@ body {
 }
 .name-banner__cta:hover { color: var(--fg); }
 
+/* Inner pages: tag sits beside the heading rather than pushed to the far edge */
+.name-banner--page {
+  justify-content: flex-start;
+  gap: 1.6rem;
+  flex-wrap: nowrap;
+}
+
 /* ─── INTRO SECTION ──────────── */
 .intro-section {
   display: grid;
@@ -359,11 +366,6 @@ body {
   filter: brightness(.82);
   transition: filter .4s;
 }
-/* Per-image crop adjustments */
-.element--media[href="/beterna-idc/"] img { object-position: top center; }
-.element--media[href="/quanta/"]      img { object-position: center; }
-.element--media[href="/ruby-nights/"] img { object-position: top center; }
-.element--media[href="/degjo/"]       img { object-position: center; }
 .element--media:hover img,
 .element--media:hover video { filter: brightness(1); }
 
@@ -609,8 +611,8 @@ h1.el-name { margin: 0 0 .3rem; }
 .lightbox-next { right: 2rem; }
 .lightbox-prev:hover,
 .lightbox-next:hover { border-color: rgba(248,248,248,.55); opacity: 1; }
-.lightbox-prev:focus,
-.lightbox-next:focus { outline: none; }
+.lightbox-prev:focus-visible,
+.lightbox-next:focus-visible { border-color: rgba(248,248,248,.55); opacity: 1; outline: none; }
 .lightbox-counter {
   position: fixed;
   bottom: 2rem;

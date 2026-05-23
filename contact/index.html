@@ -185,16 +185,6 @@
     /* arrow glyph — pulled from DM Sans so it matches the web font metrics */
     .arr { font-family: var(--sans); font-size: .82em; font-weight: 400; letter-spacing: 0; }
 
-    /* success state */
-    .form-success {
-      display: none;
-      font-family: var(--clash);
-      font-size: 1.4rem;
-      font-weight: 500;
-      color: #3ecf6e;
-      padding: 1.6rem 0;
-    }
-
     @media (max-width: 760px) {
       .form-row { grid-template-columns: 1fr; }
     }
@@ -223,7 +213,7 @@
 
 <div class="page">
 
-  <div class="name-banner">
+  <div class="name-banner name-banner--page">
     <h1>Contact</h1>
     <span class="page-tag">Let's work together</span>
   </div>
@@ -256,7 +246,6 @@
       <span>Send a message</span>
     </div>
     <div class="contact-cell">
-      <!-- Replace YOUR_FORM_ID with your Formspree form ID from formspree.io -->
       <form class="contact-form" action="https://formspree.io/f/maqaklll" method="POST" id="contact-form">
         <div class="form-row">
           <div class="form-field">
@@ -288,7 +277,6 @@
           <button type="submit" class="form-btn"><span class="btn-label">Send</span> <span class="arr" aria-hidden="true">→</span></button>
           <span class="form-note">No spam, ever.</span>
         </div>
-        <div class="form-success" id="form-success">Message sent — I'll be in touch shortly.</div>
       </form>
     </div>
 
@@ -347,7 +335,6 @@
 <script>
   // Formspree AJAX submit — keeps user on the page
   const form = document.getElementById('contact-form');
-  const success = document.getElementById('form-success');
   if (form) {
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
