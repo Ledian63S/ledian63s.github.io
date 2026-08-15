@@ -175,6 +175,18 @@
     });
   }
 
+  /* ── Email links — assembled at runtime so the address never sits in the HTML source.
+        Must run before page transitions so the rewritten mailto: links are skipped there. ── */
+  document.querySelectorAll('a[data-mail]').forEach(a => {
+    let addr;
+    try { addr = atob(a.getAttribute('data-mail')); } catch { return; }
+    a.href = 'mailto:' + addr;
+    const tpl = a.getAttribute('data-mail-text');
+    if (tpl) a.textContent = tpl.replace('{mail}', addr);
+    a.removeAttribute('data-mail');
+    a.removeAttribute('data-mail-text');
+  });
+
   /* ── Page transitions ── */
   document.querySelectorAll('a[href]').forEach(a => {
     const href = a.getAttribute('href');

@@ -286,7 +286,7 @@
     <div class="contact-cell">
       <div class="direct-links">
         <p>
-          <a href="mailto:leka.ledian@live.co.uk">leka.ledian@live.co.uk</a><br>
+          <a href="#contact-form" data-mail="aGVsbG9AbGVkaWFubGVrYS5jb20=" data-mail-text="{mail}">Email me</a><br>
           <a href="https://www.linkedin.com/in/lekaledian/" target="_blank" rel="noopener">LinkedIn ↗&#xFE0E;</a><br>
           <a href="https://github.com/Ledian63S" target="_blank" rel="noopener">GitHub ↗&#xFE0E;</a>
         </p>
@@ -352,12 +352,12 @@
         } else {
           btn.innerHTML = '<span class="btn-label">Send</span> <span class="arr" aria-hidden="true">→</span>';
           btn.disabled = false;
-          alert('Something went wrong. Please email me directly at leka.ledian@live.co.uk');
+          alert('Something went wrong. Please try again, or use one of the direct links below.');
         }
       } catch {
         btn.innerHTML = '<span class="btn-label">Send</span> <span class="arr" aria-hidden="true">→</span>';
         btn.disabled = false;
-        alert('Something went wrong. Please email me directly at leka.ledian@live.co.uk');
+        alert('Something went wrong. Please try again, or use one of the direct links below.');
       }
     });
   }
